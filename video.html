@@ -4,30 +4,33 @@
 <meta charset="UTF-8">
 <title>Haber Videoları</title>
 <style>
-  body { margin: 0; font-family: Arial, sans-serif; background: #000; color: #fff; overflow-x: hidden; }
-  #videoContainer { position: relative; width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center; background: #000; }
-  video { width: 100%; max-height: 100vh; }
-  #title { position: absolute; bottom: 50px; left: 20px; font-size: 24px; text-shadow: 2px 2px 4px #000; }
-  #nextBtn, #prevBtn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); border: none; color: #fff; padding: 10px 20px; font-size: 18px; cursor: pointer; }
-  #prevBtn { left: 10px; }
-  #nextBtn { right: 10px; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: Arial, sans-serif; background: #000; color: #fff; overflow-x: hidden; }
+  #videoContainer { width: 100vw; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; }
+  video { width: 100%; height: 100vh; object-fit: cover; }
+  #title { position: absolute; bottom: 20px; left: 20px; font-size: 20px; text-shadow: 2px 2px 5px #000; }
+  .nav { position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; transform: translateY(-50%); }
+  .nav button { background: rgba(0,0,0,0.4); border: none; color: #fff; padding: 10px 20px; font-size: 18px; cursor: pointer; border-radius: 5px; }
 </style>
 </head>
 <body>
 
 <div id="videoContainer">
-  <video id="video" controls autoplay muted playsinline></video>
+  <video id="video" autoplay muted playsinline></video>
   <div id="title"></div>
-  <button id="prevBtn">&#8592; Önceki</button>
-  <button id="nextBtn">Sonraki &#8594;</button>
+  <div class="nav">
+    <button id="prevBtn">&#8593; Önceki</button>
+    <button id="nextBtn">&#8595; Sonraki</button>
+  </div>
 </div>
 
 <script>
 let videos = [];
 let currentIndex = 0;
 
+// JSON'dan videoları çek
 fetch('videos.json')
-  .then(response => response.json())
+  .then(res => res.json())
   .then(data => {
     videos = data;
     loadVideo(currentIndex);
@@ -36,6 +39,7 @@ fetch('videos.json')
 const videoEl = document.getElementById('video');
 const titleEl = document.getElementById('title');
 
+// Video yükle
 function loadVideo(index){
   const vid = videos[index];
   videoEl.src = vid.video;
@@ -43,9 +47,9 @@ function loadVideo(index){
   videoEl.play();
 }
 
-// Kaydırma mantığı
+// Kaydırma butonları
 document.getElementById('nextBtn').addEventListener('click', () => {
-  if(currentIndex < videos.length - 1){
+  if(currentIndex < videos.length -1){
     currentIndex++;
     loadVideo(currentIndex);
   }
@@ -58,10 +62,18 @@ document.getElementById('prevBtn').addEventListener('click', () => {
   }
 });
 
-// Klavye ile kontrol (opsiyonel)
-document.addEventListener('keydown', e => {
-  if(e.key === 'ArrowRight') document.getElementById('nextBtn').click();
-  if(e.key === 'ArrowLeft') document.getElementById('prevBtn').click();
+// Dokunmatik mobil kaydırma
+let startY = 0;
+let endY = 0;
+
+document.addEventListener('touchstart', e => { startY = e.touches[0].clientY; });
+document.addEventListener('touchend', e => {
+  endY = e.changedTouches[0].clientY;
+  if(startY - endY > 50){ // yukarı kaydırma
+    document.getElementById('nextBtn').click();
+  } else if(endY - startY > 50){ // aşağı kaydırma
+    document.getElementById('prevBtn').click();
+  }
 });
 </script>
 
