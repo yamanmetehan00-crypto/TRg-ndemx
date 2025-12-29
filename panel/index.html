@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Hızlı Haber Paneli</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Hızlı Haber Paneli</h1>
+
+    <form id="haberForm">
+        <label>Başlık:</label><br>
+        <input type="text" id="baslik" required><br>
+
+        <label>Açıklama:</label><br>
+        <textarea id="aciklama" required></textarea><br>
+
+        <label>İl:</label><br>
+        <input type="text" id="il" required><br>
+
+        <label>Resim URL:</label><br>
+        <input type="text" id="resim" placeholder="https://..." required><br><br>
+
+        <button type="submit">Haber Ekle</button>
+    </form>
+
+    <script src="script.js"></script>
+</body>
+</html>
