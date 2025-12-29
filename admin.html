@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Admin Panel – GündemX</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{margin:0;font-family:Inter,Arial,sans-serif;background:#f4f7fb;color:#1e293b;}
+header,footer{background:#0b1220;color:#fff;padding:15px;}
+.logo{font-size:26px;font-weight:800;}
+.logo span{color:#0066ff;}
+.container{max-width:900px;margin:auto;padding:20px;background:#fff;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,.1);}
+input,textarea,select{width:100%;margin:5px 0 10px;padding:8px;border-radius:4px;border:1px solid #ccc;}
+button{padding:10px 20px;background:#0066ff;color:#fff;border:none;border-radius:4px;cursor:pointer;}
+button:hover{background:#004ecc;}
+</style>
+</head>
+<body>
+
+<header>
+<div class="logo">Gündem<span>X</span> Admin</div>
+</header>
+
+<div class="container">
+<h2>Yeni Haber Ekle</h2>
+<input type="text" id="admin-title" placeholder="Başlık">
+<input type="text" id="admin-category" placeholder="Kategori">
+<input type="text" id="admin-city" placeholder="Şehir">
+<input type="date" id="admin-time" placeholder="Tarih">
+<textarea id="admin-content" placeholder="İçerik"></textarea>
+<input type="file" id="admin-image" accept="image/*">
+<button id="admin-add">Haber Ekle</button>
+</div>
+
+<footer>
+© 2025 GündemX – Tarafsız Habercilik
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

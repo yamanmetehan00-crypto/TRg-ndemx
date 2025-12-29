@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Hava Durumu 24 Saat – GündemX</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+  font-family: Inter, Arial, sans-serif;
+  background: #f4f7fb;
+  color: #1e293b;
+  margin: 0;
+  padding: 20px;
+}
+.weather-container {
+  max-width: 500px;
+  margin: 40px auto;
+  background: #0b1220;
+  color: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+.weather-container h2 {
+  margin: 0 0 15px;
+  color: #00aaff;
+  font-size: 26px;
+}
+.hourly-forecast {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 450px;
+  overflow-y: auto;
+}
+.forecast-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1e293b;
+  padding: 10px;
+  border-radius: 8px;
+}
+.forecast-item img {
+  width: 40px;
+  height: 40px;
+}
+.forecast-time {
+  font-weight: bold;
+}
+.forecast-temp {
+  font-size: 18px;
+}
+</style>
+</head>
+<body>
+
+<div class="weather-container">
+  <h2>Hava Durumu (24 Saat)</h2>
+  <div class="hourly-forecast" id="hourly-forecast">
+    Yükleniyor...
+  </div>
+</div>
+
+<script>
+async function getHourlyWeather() {
+  const defaultLat = 41.0082; // İstanbul
+  const defaultLon = 28.9784;
+  const apiKey = "YOUR_API_KEY_HERE"; // OpenWeatherMap API key
+
+  let lat = defaultLat, lon = defaultLon;
+
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      pos => {
+        lat = pos.coords.latitude;
+        lon = pos.coords.longitude;
+        fetchWeather(lat, lon);
+      },
+      err => fetchWeather(defaultLat, defaultLon)
+    );
+  } else {
+    fetchWeather(defaultLat, defaultLon);
+  }
+
+  async function fetchWeather(lat, lon) {
+    const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,daily,alerts&units=metric&lang=tr&appid=${apiKey}`;
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+      const container = document.getElementById("hourly-forecast");
+      container.innerHTML = "";
+
+      // İlk 24 saati al
+      data.hourly.slice(0, 24).forEach(hour => {
+        const date = new Date(hour.dt * 1000);
+        const hours = date.getHours().toString().padStart(2,'0') + ":00";
+        const temp = Math.round(hour.temp);
+        const desc = hour.weather[0].description;
+        const icon = hour.weather[0].icon;
+
+        const item = document.createElement("div");
+        item.classList.add("forecast-item");
+        item.innerHTML = `
+          <span class="forecast-time">${hours}</span>
+          <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="${desc}">
+          <span class="forecast-temp">${temp}°C</span>
+        `;
+        container.appendChild(item);
+      });
+
+    } catch (err) {
+      console.error("Hava durumu alınamadı:", err);
+      document.getElementById("hourly-forecast").innerText = "Veri alınamadı";
+    }
+  }
+}
+
+getHourlyWeather();
+</script>
+
+</body>
+</html>

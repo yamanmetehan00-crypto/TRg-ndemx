@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Haber – GündemX</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Adsense Script -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1201412624479751"
+     crossorigin="anonymous"></script>
+
+<style>
+body{
+  margin:0;
+  font-family:Inter,Arial,sans-serif;
+  background:#f4f7fb;
+  color:#1e293b;
+}
+header, footer{
+  background:#0b1220;
+  color:#fff;
+  padding:15px;
+}
+.logo{
+  font-size:26px;
+  font-weight:800;
+}
+.logo span{ color:#0066ff; }
+
+.container{
+  max-width:900px;
+  margin:auto;
+  padding:20px;
+  background:#fff;
+  border-radius:8px;
+  box-shadow:0 2px 6px rgba(0,0,0,.1);
+}
+
+.category{
+  color:#0066ff;
+  font-size:13px;
+  font-weight:600;
+  text-transform:uppercase;
+}
+
+h1{
+  font-size:28px;
+  margin:10px 0;
+  color:#0066ff;
+}
+
+.meta{
+  font-size:13px;
+  color:#777;
+  margin-bottom:20px;
+}
+
+.news-image{
+  width:100%;
+  border-radius:8px;
+  margin-bottom:20px;
+}
+
+.content p{
+  line-height:1.7;
+  font-size:16px;
+  margin-bottom:16px;
+}
+
+.ad{
+  background:#e6f0ff;
+  text-align:center;
+  padding:15px;
+  margin:20px 0;
+  color:#0066ff;
+  border-radius:6px;
+}
+
+/* Paylaşım */
+#social-share {
+  margin-top:20px;
+  font-size:14px;
+}
+#social-share a {
+  text-decoration:none;
+  color:#0066ff;
+  margin-right:10px;
+}
+
+/* Yorum alanı */
+#comments-section {
+  margin-top:30px;
+}
+#comments-section h3 {
+  margin-bottom:10px;
+}
+#comments-list div {
+  border-bottom:1px solid #ccc;
+  padding:8px 0;
+}
+#comment-input {
+  width:100%;
+  padding:8px;
+  margin-top:10px;
+  border-radius:4px;
+  border:1px solid #ccc;
+  resize:none;
+}
+#comment-submit {
+  margin-top:8px;
+  padding:8px 12px;
+  background:#0066ff;
+  color:#fff;
+  border:none;
+  border-radius:4px;
+  cursor:pointer;
+}
+#comment-submit:hover {
+  background:#004fcc;
+}
+
+/* Diğer Haberler Kart */
+#otherNewsContainer{
+  margin-top:30px;
+}
+#otherNewsContainer h3{
+  margin-bottom:10px;
+  color:#0066ff;
+}
+.other-news-list{
+  display:flex;
+  gap:12px;
+  overflow-x:auto;
+  padding-bottom:10px;
+}
+.other-news-card{
+  min-width:220px;
+  background:#fff;
+  border-radius:8px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+  flex-shrink:0;
+  cursor:pointer;
+  transition:transform 0.2s;
+}
+.other-news-card:hover{
+  transform:translateY(-3px);
+}
+.other-news-card img{
+  width:100%;
+  height:120px;
+  object-fit:cover;
+  border-radius:8px 8px 0 0;
+}
+.other-news-card h4{
+  font-size:14px;
+  margin:6px;
+  color:#0066ff;
+}
+.other-news-card span{
+  font-size:12px;
+  color:#555;
+  margin:0 6px 6px 6px;
+  display:block;
+}
+
+/* KAR YAĞIŞI */
+.snowflake{
+  position:fixed; top:-10px; z-index:9999; user-select:none;
+  color:#fff; font-size:1em; pointer-events:none;
+  animation-name:fall; animation-duration:10s; animation-iteration-count:infinite;
+}
+@keyframes fall{
+  0%{transform:translateY(0);}
+  100%{transform:translateY(100vh);}
+}
+
+/* MUTUBOT */
+#mutubot{
+  position:fixed; bottom:20px; right:20px; width:50px; height:50px; border-radius:50%; background:#0066ff;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.3);z-index:10000;
+  transition:transform 0.2s ease;
+}
+#mutubot:hover{transform:scale(1.1);}
+#mutubot img{width:28px;height:28px;}
+#mutubot-window{
+  position:fixed; bottom:80px; right:20px; width:300px; max-height:400px; background:#fff; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.3); display:none; flex-direction:column; overflow:hidden; z-index:10000; font-size:14px;
+}
+#mutubot-window-header{background:#0066ff; color:#fff; padding:10px; font-weight:600;}
+#mutubot-window-body{flex:1; padding:8px; overflow-y:auto;}
+#mutubot-window-body p{margin:6px 0;}
+#mutubot-window-footer{display:flex; border-top:1px solid #ccc;}
+#mutubot-input{flex:1; border:none; padding:8px; font-size:14px;}
+#mutubot-send{background:#0066ff; color:#fff; border:none; padding:0 12px; cursor:pointer;}
+#mutubot-send:hover{background:#004fcc;}
+
+/* ALT BUTONLAR (WHATSAPP & INSTAGRAM) */
+#quick-buttons{
+  position:fixed;
+  bottom:85px;
+  right:20px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  z-index:10001;
+}
+.quick-btn{
+  width:50px; height:50px; border-radius:50%; display:flex; justify-content:center; align-items:center; cursor:pointer; box-shadow:0 4px 12px rgba(0,0,0,0.3); transition:transform 0.2s ease;
+}
+.quick-btn:hover{transform:scale(1.1);}
+.quick-btn.whatsapp{background:#25d366;}
+.quick-btn.instagram{background:#c32aa3;}
+.quick-btn img{width:28px;height:28px;}
+</style>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">Gündem<span>X</span></div>
+</header>
+
+<div class="container" id="newsContainer">
+
+  <img id="newsImage" class="news-image" src="">
+  <div class="category" id="newsCategory"></div>
+  <h1 id="newsTitle"></h1>
+  <div class="meta" id="newsMeta"></div>
+
+  <div class="ad">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1201412624479751" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
+
+  <div class="content" id="newsContent"></div>
+
+  <div class="ad">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1201412624479751" data-ad-slot="1234567891" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
+
+  <div id="social-share">
+    <strong>Paylaş: </strong>
+    <a href="#" id="share-facebook" target="_blank">Facebook</a>
+    <a href="#" id="share-twitter" target="_blank">Twitter</a>
+    <a href="#" id="share-whatsapp" target="_blank">WhatsApp</a>
+  </div>
+
+  <div id="comments-section">
+    <h3>Yorumlar</h3>
+    <div id="comments-list"></div>
+    <textarea id="comment-input" placeholder="Yorumunuzu yazın..." rows="3"></textarea>
+    <button id="comment-submit">Gönder</button>
+  </div>
+
+  <!-- Diğer Haberler -->
+  <div id="otherNewsContainer">
+    <h3>Diğer Haberler</h3>
+    <div class="other-news-list" id="otherNewsList"></div>
+  </div>
+
+</div>
+
+<footer>
+© 2025 GündemX – Tarafsız Habercilik
+</footer>
+
+<!-- MutuBot -->
+<div id="mutubot">
+  <img src="https://cdn-icons-png.flaticon.com/512/4712/4712043.png" alt="MutuBot">
+</div>
+<div id="mutubot-window">
+  <div id="mutubot-window-header">MutuBot</div>
+  <div id="mutubot-window-body"></div>
+  <div id="mutubot-typing">Yazıyor...</div>
+  <div id="mutubot-window-footer">
+    <input id="mutubot-input" placeholder="Bir şey sor...">
+    <button id="mutubot-send">Gönder</button>
+  </div>
+</div>
+
+<!-- Alt Hızlı Butonlar -->
+<div id="quick-buttons">
+  <div class="quick-btn whatsapp" onclick="window.open('https://wa.me/','_blank')">
+    <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="WhatsApp">
+  </div>
+  <div class="quick-btn instagram" onclick="window.open('https://instagram.com/','_blank')">
+    <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
+  </div>
+</div>
+
+<script>
+// Firebase Ayarları
+const firebaseConfig = {
+  apiKey: "AIzaSyDzaK6-NkzyEeH4SMgu599iZ0YKx1SYl-o",
+  authDomain: "gundemx-2de07.firebaseapp.com",
+  projectId: "gundemx-2de07",
+  storageBucket: "gundemx-2de07.firebasestorage.app",
+  messagingSenderId: "643741538710",
+  appId: "1:643741538710:web:7f172e31d4996c6d19a5b7",
+  measurementId: "G-2C1M1EGLES"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
+(async function() {
+  const params = new URLSearchParams(window.location.search);
+  const id = parseInt(params.get("id"));
+
+  if(!id){
+    document.getElementById("newsContainer").innerHTML = "<h2>Haber bulunamadı</h2>";
+    return;
+  }
+
+  try {
+    const res = await fetch(`data/news.json?t=${Date.now()}`);
+    const newsList = await res.json();
+
+    const news = newsList.find(n => n.id === id);
+    if(!news){
+      document.getElementById("newsContainer").innerHTML = "<h2>Haber bulunamadı</h2>";
+      return;
+    }
+
+    // DOM'a bas
+    document.getElementById("newsImage").src = news.image;
+    document.getElementById("newsTitle").innerText = news.title;
+    document.getElementById("newsCategory").innerText = news.category;
+    document.getElementById("newsMeta").innerText = `GündemX • ${news.city} • ${news.time}`;
+    document.getElementById("newsContent").innerHTML = `<p>${news.content}</p>`;
+
+    // Sosyal paylaşım
+    const pageUrl = encodeURIComponent(window.location.href);
+    const pageTitle = encodeURIComponent(news.title);
+    document.getElementById("share-facebook").href = `https://www.facebook.com/sharer.php?u=${pageUrl}`;
+    document.getElementById("share-twitter").href = `https://twitter.com/intent/tweet?text=${pageTitle}&url=${pageUrl}`;
+    document.getElementById("share-whatsapp").href = `https://wa.me/?text=${pageTitle}%20${pageUrl}`;
+
+    // Yorumları Firestore'dan yükle
+    const commentsKey = "news_" + id;
+    const commentsList = document.getElementById('comments-list');
+
+    async function loadComments(){
+      commentsList.innerHTML = "";
+      const doc = await db.collection("comments").doc(commentsKey).get();
+      if(doc.exists){
+        const data = doc.data();
+        if(data && data.list){
+          data.list.forEach(c => {
+            const div = document.createElement('div');
+            div.innerHTML = `<strong>${c.name}</strong><p>${c.comment}</p>`;
+            commentsList.appendChild(div);
+          });
+        }
+      }
+    }
+
+    loadComments();
+
+    document.getElementById('comment-submit').addEventListener('click', async () => {
+      const commentInput = document.getElementById('comment-input');
+      const text = commentInput.value.trim();
+      if(!text) return alert("Yorum boş olamaz!");
+
+      const docRef = db.collection("comments").doc(commentsKey);
+      const docSnap = await docRef.get();
+
+      let updated = [];
+      if(docSnap.exists){
+        updated = docSnap.data().list || [];
+      }
+
+      updated.push({ name: "Anonim", comment: text });
+      await docRef.set({ list: updated });
+
+      commentInput.value = "";
+      loadComments();
+    });
+
+    // Diğer Haberler
+    const otherNewsListEl = document.getElementById("otherNewsList");
+    otherNewsListEl.innerHTML = "";
+    newsList.filter(n => n.id !== id).slice(0,10).forEach(n => {
+      const card = document.createElement("div");
+      card.className="other-news-card";
+      card.innerHTML = `
+        <img src="${n.image}" alt="${n.title}">
+        <h4>${n.title}</h4>
+        <span>${n.city} • ${n.time}</span>
+      `;
+      card.addEventListener("click",()=>{ window.location.href=`haber.html?id=${n.id}`; });
+      otherNewsListEl.appendChild(card);
+    });
+
+  } catch (error) {
+    document.getElementById("newsContainer").innerHTML = "<h2>Haber yüklenemedi</h2>";
+    console.error(error);
+  }
+})();
+
+// KAR YAĞIŞI
+function createSnow(){
+  const snow=document.createElement('div');
+  snow.className='snowflake';
+  snow.style.left=Math.random()*window.innerWidth+'px';
+  snow.style.fontSize=(Math.random()*10+10)+'px';
+  snow.style.animationDuration=(Math.random()*5+5)+'s';
+  snow.innerText='❄';
+  document.body.appendChild(snow);
+  setTimeout(()=>snow.remove(),10000);
+}
+setInterval(createSnow,200);
+
+// MUTUBOT
+const bot=document.createElement('div');
+bot.id='mutubot';
+bot.innerHTML='<img src="https://cdn-icons-png.flaticon.com/512/4712/4712043.png">';
+document.body.appendChild(bot);
+
+const botWindow=document.createElement('div');
+botWindow.id='mutubot-window';
+botWindow.innerHTML=`
+<div id="mutubot-window-header">MutuBot</div>
+<div id="mutubot-window-body"></div>
+<div id="mutubot-typing">Yazıyor...</div>
+<div id="mutubot-window-footer">
+  <input id="mutubot-input" placeholder="Bir şey sor...">
+  <button id="mutubot-send">Gönder</button>
+</div>
+`;
+document.body.appendChild(botWindow);
+
+bot.addEventListener('click',()=>{botWindow.style.display=botWindow.style.display==='flex'?'none':'flex';});
+const botBody=document.getElementById('mutubot-window-body');
+const botInput=document.getElementById('mutubot-input');
+const botSend=document.getElementById('mutubot-send');
+const botTyping=document.getElementById('mutubot-typing');
+
+function botReply(msg){
+  botTyping.style.display='block';
+  setTimeout(()=>{
+    botTyping.style.display='none';
+    let response='Merhaba! Haberlerle ilgili bir şey sorabilirsiniz. Örn: "Son haber nedir?"';
+    const p=document.createElement('p'); p.innerText=response;
+    botBody.appendChild(p);
+    botBody.scrollTop=botBody.scrollHeight;
+  },500);
+}
+
+botSend.addEventListener('click',()=>{
+  const msg=botInput.value.trim(); if(!msg) return;
+  botInput.value=''; botReply(msg);
+});
+botInput.addEventListener('keypress',e=>{if(e.key==='Enter'){botSend.click(); e.preventDefault();}});
+
+// ALT HIZLI BUTONLAR
+const quickButtons=document.createElement('div');
+quickButtons.id='quick-buttons';
+quickButtons.innerHTML=`
+<div class="quick-btn whatsapp" onclick="window.open('https://wa.me/','_blank')">
+  <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png">
+</div>
+<div class="quick-btn instagram" onclick="window.open('https://instagram.com/','_blank')">
+  <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png">
+</div>
+`;
+document.body.appendChild(quickButtons);
+</script>
+</body>
+</html>

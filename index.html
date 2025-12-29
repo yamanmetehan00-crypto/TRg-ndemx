@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>GündemX – Gündeme Net Bakış</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+:root{
+  --primary:#0066ff;
+  --dark:#0b1220;
+  --bg:#f4f7fb;
+  --text:#1e293b;
+}
+*{box-sizing:border-box;}
+body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--text);}
+a{text-decoration:none;color:inherit;}
+
+/* LOADING */
+#loading-screen{
+  position:fixed; inset:0; background:#fff;
+  display:flex; align-items:center; justify-content:center; z-index:9999;
+}
+.x-loader{
+  font-size:140px; font-weight:900; color:transparent;
+  -webkit-text-stroke:4px var(--primary);
+  background:linear-gradient(to top,var(--primary) 0%,var(--primary) 50%,transparent 50%);
+  background-size:100% 200%; background-position:bottom;
+  -webkit-background-clip:text; background-clip:text;
+  animation:fillX 2.5s ease forwards;
+}
+@keyframes fillX{from{background-position:bottom} to{background-position:top}}
+
+/* HEADER */
+header{
+  background:var(--dark); color:#fff;
+  padding:14px 20px; display:flex;
+  justify-content:space-between; align-items:center;
+  flex-wrap: wrap;
+}
+.logo{font-size:26px;font-weight:800}
+.logo span{color:var(--primary)}
+.social-header{display:flex;gap:10px;margin-left:12px}
+.social-link{text-decoration:none;color:#fff;background:var(--primary);padding:4px 8px;border-radius:4px;font-weight:600;transition:all 0.3s ease}
+.social-link:hover{background:#004fcc;transform:scale(1.05)}
+nav a{margin-left:16px;font-size:14px;opacity:.9}
+@media(max-width:768px){header{flex-direction:column;align-items:center} .social-header{margin:8px 0;justify-content:center} nav{display:none}}
+
+/* MAIN */
+.container{max-width:1200px;margin:auto;padding:16px;}
+.grid{display:grid;grid-template-columns:1fr;gap:20px;}
+.box{background:#fff;padding:20px;margin-bottom:20px;}
+.box h2{border-bottom:2px solid var(--primary);padding-bottom:6px;margin-bottom:14px;}
+.provinces{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;}
+.provinces a{background:#f8f9fb;padding:10px;text-align:center;border:1px solid #e5e7eb;font-size:13px;}
+
+/* SLIDER */
+.top-slider{position:relative;overflow:hidden;width:100%;height:300px;margin-bottom:20px;border-radius:12px}
+.slide{width:100%;height:100%;position:absolute;top:0;left:100%;transition:left 0.5s ease-in-out;display:flex;align-items:flex-end}
+.slide.active{left:0}
+.slide img{width:100%;height:100%;object-fit:cover;border-radius:12px}
+.slide-content{position:absolute;bottom:20px;left:20px;color:#fff;background:rgba(0,0,0,0.4);padding:12px;border-radius:6px}
+.slide-content h2{margin:0;font-size:22px}
+.slide-content p{margin:4px 0 0;font-size:14px}
+
+/* NEWS CARD */
+.news-card{display:flex;gap:12px;background:#fff;border-radius:10px;padding:10px;align-items:center;box-shadow:0 6px 16px rgba(0,0,0,0.05);transition:transform 0.2s ease,box-shadow 0.2s ease;cursor:pointer}
+.news-card:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(0,0,0,0.08)}
+.news-card img{width:90px;height:70px;object-fit:cover;border-radius:8px}
+.news-card h3{font-size:15px;margin:0 0 6px;line-height:1.3}
+.news-card span{font-size:12px;color:#64748b}
+.news-list{display:flex;flex-direction:column;gap:14px}
+
+/* CURRENCY CARD */
+.currency-card{background:#fff;border-top:2px solid var(--primary);padding:8px 12px;border-radius:6px 6px 0 0;width:100%;max-width:350px;margin:20px auto 0 auto;box-shadow:0 2px 6px rgba(0,0,0,0.08)}
+.currency-item{display:flex;justify-content:space-between;margin-bottom:4px}
+.currency-item span:first-child{font-weight:600;color:#1e293b}
+.currency-item span:last-child{color:var(--primary)}
+
+/* FOOTER */
+footer{background:var(--dark);color:#aaa;padding:20px;text-align:center;font-size:13px}
+
+/* BREAKING NEWS */
+.breaking-news-container {
+  width: 100%; background-color: #0b1220; overflow: hidden; white-space: nowrap;
+  border-top: 3px solid #0066ff; border-bottom: 3px solid #0066ff; padding: 8px 0;
+}
+.breaking-news { display: inline-block; color: #00aaff; font-weight: 600; font-size: 16px; position: relative; left: 100%; animation: marquee 15s linear infinite; }
+.breaking-news:hover { animation-play-state: paused; }
+@keyframes marquee { 0%{left:100%}100%{left:-100%}}
+
+/* MUTUBOT */
+#mutubot{
+  position:fixed; bottom:20px; right:20px; width:50px; height:50px; border-radius:50%; background:var(--primary);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.3);z-index:10000;
+  transition:transform 0.2s ease;
+}
+#mutubot:hover{transform:scale(1.1);}
+#mutubot img{width:28px;height:28px;}
+#mutubot-window{
+  position:fixed; bottom:80px; right:20px; width:300px; max-height:400px; background:#fff; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.3); display:none; flex-direction:column; overflow:hidden; z-index:10000; font-size:14px;
+}
+#mutubot-window-header{background:var(--primary); color:#fff; padding:10px; font-weight:600;}
+#mutubot-window-body{flex:1; padding:8px; overflow-y:auto;}
+#mutubot-window-body p{margin:6px 0;}
+#mutubot-window-footer{display:flex; border-top:1px solid #ccc;}
+#mutubot-input{flex:1; border:none; padding:8px; font-size:14px;}
+#mutubot-send{background:var(--primary); color:#fff; border:none; padding:0 12px; cursor:pointer;}
+#mutubot-send:hover{background:#004fcc;}
+#mutubot-typing{font-size:12px;color:#555;margin:2px 0;display:none;}
+
+/* KAR YAĞIŞI */
+.snowflake{
+  position:fixed; top:-10px; z-index:9999; user-select:none;
+  color:#fff; font-size:1em; pointer-events:none;
+  animation-name:fall; animation-duration:10s; animation-iteration-count:infinite;
+}
+@keyframes fall{
+  0%{transform:translateY(0);}
+  100%{transform:translateY(100vh);}
+}
+
+/* HOŞGELDİN BİLDİRİMİ */
+#welcome-notification {
+  position: fixed;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.85);
+  color: #fff;
+  padding: 14px 24px;
+  border-radius: 12px;
+  font-size: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  opacity: 0;
+  z-index: 11000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.6s ease;
+}
+#welcome-notification.show {
+  bottom: 40px;
+  opacity: 1;
+}
+/* ALT BUTONLAR (WHATSAPP & INSTAGRAM) */
+#quick-buttons{
+  position:fixed;
+  bottom:90px;
+  right:85px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  z-index:10001;
+}
+.quick-btn{
+  width:45px; height:45px; border-radius:50%; background:#25d366; display:flex; justify-content:center; align-items:center; cursor:pointer; box-shadow:0 4px 12px rgba(0,0,0,0.3);
+  color:#fff; font-weight:600; font-size:12px; text-align:center;
+  transition:transform 0.2s ease;
+}
+.quick-btn.instagram{background:#c32aa3;}
+.quick-btn:hover{transform:scale(1.1);}
+.header-box {
+  display: inline-block;
+  padding: 8px 14px;
+  background: #0066ff;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+.header-box:hover { background: #004fcc; }
+
+.live-users {
+  font-size: 14px;
+  color: #2563eb;
+  margin-top: 6px;
+}
+
+</style>
+</head>
+<body>
+
+<!-- LOADING -->
+<div id="loading-screen"><div class="x-loader">X</div></div>
+
+<header>
+  <div class="logo">Gündem<span>X</span></div>
+<div class="social-header">
+  <a href="hava-durumu.html" class="social-link">Hava Durumu</a>
+  <a href="biyografiler.html" class="social-link">Biyografiler</a>
+</div>
+  <div class="breaking-news-container">
+    <div class="breaking-news" id="breakingNews"></div>
+  </div>
+  <nav>
+    <a href="index.html">Gündem</a>
+    <a href="il.html">Siyaset</a>
+    <a href="il.html">Halkın Sesi</a>
+    <a href="il.html">Gençlik</a>
+    <a href="index.html#analiz">Analiz</a>
+  </nav>
+</header>
+
+<div class="container">
+  <div class="top-slider" id="top-slider"></div>
+  <div class="grid">
+    <div>
+      <div class="box">
+        <h2>Gündem</h2>
+        <div class="news-list" id="news-container"></div>
+      </div>
+    </div>
+  </div>
+  <!-- İLLER KATEGORİSİ EN ALTA -->
+  <div class="box">
+    <h2>İller</h2>
+    <div class="provinces" id="province-list">
+      <!-- 81 İL BURAYA EKLENECEK -->
+      <a href="#" data-city="Adana">Adana</a>
+      <a href="#" data-city="Adıyaman">Adıyaman</a>
+      <a href="#" data-city="Afyonkarahisar">Afyonkarahisar</a>
+      <a href="#" data-city="Ağrı">Ağrı</a>
+      <a href="#" data-city="Amasya">Amasya</a>
+      <a href="#" data-city="Ankara">Ankara</a>
+      <a href="#" data-city="Antalya">Antalya</a>
+      <a href="#" data-city="Artvin">Artvin</a>
+      <a href="#" data-city="Aydın">Aydın</a>
+      <a href="#" data-city="Balıkesir">Balıkesir</a>
+      <a href="#" data-city="Bilecik">Bilecik</a>
+      <a href="#" data-city="Bingöl">Bingöl</a>
+      <a href="#" data-city="Bitlis">Bitlis</a>
+      <a href="#" data-city="Bolu">Bolu</a>
+      <a href="#" data-city="Burdur">Burdur</a>
+      <a href="#" data-city="Bursa">Bursa</a>
+      <a href="#" data-city="Çanakkale">Çanakkale</a>
+      <a href="#" data-city="Çankırı">Çankırı</a>
+      <a href="#" data-city="Çorum">Çorum</a>
+      <a href="#" data-city="Denizli">Denizli</a>
+      <a href="#" data-city="Diyarbakır">Diyarbakır</a>
+      <a href="#" data-city="Edirne">Edirne</a>
+      <a href="#" data-city="Elazığ">Elazığ</a>
+      <a href="#" data-city="Erzincan">Erzincan</a>
+      <a href="#" data-city="Erzurum">Erzurum</a>
+      <a href="#" data-city="Eskişehir">Eskişehir</a>
+      <a href="#" data-city="Gaziantep">Gaziantep</a>
+      <a href="#" data-city="Giresun">Giresun</a>
+      <a href="#" data-city="Gümüşhane">Gümüşhane</a>
+      <a href="#" data-city="Hakkari">Hakkari</a>
+      <a href="#" data-city="Hatay">Hatay</a>
+      <a href="#" data-city="Isparta">Isparta</a>
+      <a href="#" data-city="Mersin">Mersin</a>
+      <a href="#" data-city="İstanbul">İstanbul</a>
+      <a href="#" data-city="İzmir">İzmir</a>
+      <a href="#" data-city="Kars">Kars</a>
+      <a href="#" data-city="Kastamonu">Kastamonu</a>
+      <a href="#" data-city="Kayseri">Kayseri</a>
+      <a href="#" data-city="Kırklareli">Kırklareli</a>
+      <a href="#" data-city="Kırşehir">Kırşehir</a>
+      <a href="#" data-city="Kocaeli">Kocaeli</a>
+      <a href="#" data-city="Konya">Konya</a>
+      <a href="#" data-city="Kütahya">Kütahya</a>
+      <a href="#" data-city="Malatya">Malatya</a>
+      <a href="#" data-city="Manisa">Manisa</a>
+      <a href="#" data-city="Kahramanmaraş">Kahramanmaraş</a>
+      <a href="#" data-city="Mardin">Mardin</a>
+      <a href="#" data-city="Muğla">Muğla</a>
+      <a href="#" data-city="Muş">Muş</a>
+      <a href="#" data-city="Nevşehir">Nevşehir</a>
+      <a href="#" data-city="Niğde">Niğde</a>
+      <a href="#" data-city="Ordu">Ordu</a>
+      <a href="#" data-city="Rize">Rize</a>
+      <a href="#" data-city="Sakarya">Sakarya</a>
+      <a href="#" data-city="Samsun">Samsun</a>
+      <a href="#" data-city="Siirt">Siirt</a>
+      <a href="#" data-city="Sinop">Sinop</a>
+      <a href="#" data-city="Sivas">Sivas</a>
+      <a href="#" data-city="Tekirdağ">Tekirdağ</a>
+      <a href="#" data-city="Tokat">Tokat</a>
+      <a href="#" data-city="Trabzon">Trabzon</a>
+      <a href="#" data-city="Tunceli">Tunceli</a>
+      <a href="#" data-city="Şanlıurfa">Şanlıurfa</a>
+      <a href="#" data-city="Uşak">Uşak</a>
+      <a href="#" data-city="Van">Van</a>
+      <a href="#" data-city="Yozgat">Yozgat</a>
+      <a href="#" data-city="Zonguldak">Zonguldak</a>
+      <a href="#" data-city="Aksaray">Aksaray</a>
+      <a href="#" data-city="Bayburt">Bayburt</a>
+      <a href="#" data-city="Karaman">Karaman</a>
+      <a href="#" data-city="Kırıkkale">Kırıkkale</a>
+      <a href="#" data-city="Batman">Batman</a>
+      <a href="#" data-city="Şırnak">Şırnak</a>
+      <a href="#" data-city="Bartın">Bartın</a>
+      <a href="#" data-city="Ardahan">Ardahan</a>
+      <a href="#" data-city="Iğdır">Iğdır</a>
+      <a href="#" data-city="Yalova">Yalova</a>
+      <a href="#" data-city="Karabük">Karabük</a>
+      <a href="#" data-city="Kilis">Kilis</a>
+      <a href="#" data-city="Osmaniye">Osmaniye</a>
+      <a href="#" data-city="Düzce">Düzce</a>
+    </div>
+  </div>
+</div>
+
+<div class="currency-card">
+  <div class="currency-item"><span>USD</span> <span id="usd">--</span> TL</div>
+  <div class="currency-item"><span>EUR</span> <span id="eur">--</span> TL</div>
+  <div class="currency-item"><span>GBP</span> <span id="gbp">--</span> TL</div>
+</div>
+
+<!-- Footer'ın hemen üstüne ekle -->
+<div class="ad" style="margin:20px auto; max-width:900px; text-align:center;">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1201412624479751"
+       data-ad-slot="1234567892"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
+
+<footer>
+  © 2025 GündemX – Gündeme Net Bakış<br>Tarafsız • Halk Odaklı • Sade Habercilik
+</footer>
+
+<!-- MutuBot -->
+<div id="mutubot">
+  <img src="https://cdn-icons-png.flaticon.com/512/4712/4712043.png" alt="MutuBot">
+</div>
+<div id="mutubot-window">
+  <div id="mutubot-window-header">MutuBot</div>
+  <div id="mutubot-window-body"></div>
+  <div id="mutubot-typing">Yazıyor...</div>
+  <div id="mutubot-window-footer">
+    <input id="mutubot-input" placeholder="Bir şey sor...">
+    <button id="mutubot-send">Gönder</button>
+  </div>
+</div
+
+<!-- Alt Hızlı Butonlar (Botun tam üstünde, logo ile) -->
+<div id="quick-buttons">
+  <div class="quick-btn whatsapp" onclick="window.open('https://whatsapp.com/channel/0029VbBnOuTLY6dEuRZX022q/')">
+    <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="WhatsApp" style="width:24px;height:24px;">
+  </div>
+  <div class="quick-btn instagram" onclick="window.open('https://instagram.com/','_blank')">
+    <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" style="width:24px;height:24px;">
+  </div>
+</div>
+
+<style>
+#quick-buttons{
+  position:fixed;
+  bottom:85px; /* bot ile aynı hizada, tam üstünde */
+  right:20px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  z-index:10001;
+}
+.quick-btn{
+  width:50px; height:50px; border-radius:50%; display:flex; justify-content:center; align-items:center; cursor:pointer; box-shadow:0 4px 12px rgba(0,0,0,0.3); transition:transform 0.2s ease;
+}
+.quick-btn:hover{transform:scale(1.1);}
+.quick-btn.whatsapp{background:#25d366;}
+.quick-btn.instagram{background:#c32aa3;}
+.quick-btn img{width:28px;height:28px;}
+</style>
+
+<!-- Canlı kullanıcı sayısı (sadece sayı) -->
+<div id="liveUsers" style="
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background: rgba(0,0,0,0.3);
+    color: #fff;
+    padding: 10px 10px;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    z-index: 10000;
+">
+    <div id="redDot" style="
+        width: 6px;
+        height: 6px;
+        background: red;
+        border-radius: 50%;
+        margin-right: 6px;
+        animation: blink 1s infinite;
+    "></div>
+    <span id="userCount">0 Kişi Sitede</span>
+</div>
+
+<style>
+@keyframes blink {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0; }
+}
+</style>
+
+<script>
+function updateUserCount() {
+    const count = Math.floor(Math.random() * (100 - 20 + 1)) + 20; // 20–100 arası
+    document.getElementById("userCount").innerText = count + " kişi sitede";
+}
+
+// İlk başta göster
+updateUserCount();
+
+// 30 dakikada bir güncelle
+setInterval(updateUserCount, 30 * 60 * 1000);
+</script>
+
+
+<!-- HOŞGELDİN BİLDİRİMİ -->
+<div id="welcome-notification">
+  <span>📩</span> Sitemize Hoş Geldiniz!
+</div>
+<audio id="welcome-sound" src="images/ses.mp3" preload="auto"></audio>
+
+<script>
+// LOADING
+window.addEventListener("load",()=>{
+  setTimeout(()=>{
+    const l=document.getElementById("loading-screen");
+    l.style.opacity="0";
+    setTimeout(()=>l.style.display="none",300);
+  },1200);
+});
+
+// Hoş Geldiniz bildirimi
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    const notification = document.getElementById("welcome-notification");
+    const sound = document.getElementById("welcome-sound");
+    notification.classList.add("show");
+    sound.play();
+    setTimeout(() => {
+      notification.classList.remove("show");
+    }, 4000);
+  }, 1500);
+});
+
+// Döviz
+async function getCurrencies(){
+  try{
+    const res=await fetch("https://api.genelpara.com/json/?list=doviz&sembol=USD,EUR,GBP");
+    const data=await res.json();
+    document.getElementById("usd").innerText=data?.USD?.satis||"--";
+    document.getElementById("eur").innerText=data?.EUR?.satis||"--";
+    document.getElementById("gbp").innerText=data?.GBP?.satis||"--";
+  }catch(err){console.error(err);}
+}
+getCurrencies(); setInterval(getCurrencies,60000);
+
+// Haberler ve slider
+async function loadNews(){
+  try{
+    const res = await fetch("data/news.json?t="+Date.now());
+    const newsList = await res.json();
+    const sorted = newsList.sort((a,b)=>b.id - a.id);
+
+    // SLIDER - en güncel 2 haber
+    const slider = document.getElementById("top-slider"); slider.innerHTML="";
+    sorted.slice(0,2).forEach(item=>{
+      const slide = document.createElement("div"); slide.className="slide";
+      slide.innerHTML = `<img src="${item.image}" alt="${item.title}"><div class="slide-content"><h2>${item.title}</h2><p>${item.city} • ${item.time}</p></div>`;
+      slider.appendChild(slide);
+    });
+    const slides = slider.querySelectorAll('.slide'); let current=0;
+    function showSlide(i){slides.forEach(s=>s.classList.remove('active'));slides[i].classList.add('active');}
+    showSlide(current); setInterval(()=>{current=(current+1)%slides.length;showSlide(current);},4000);
+
+    // ANA HABER LİSTESİ - sadece son 5 haber
+    const newsContainer = document.getElementById("news-container"); 
+    newsContainer.innerHTML = "";
+    sorted.slice(0,5).forEach(item=>{
+      const card = document.createElement('div'); card.className='news-card';
+      card.innerHTML = `<img src="${item.image}" alt="${item.title}"><div><h3>${item.title}</h3><span>${item.city} • ${item.time}</span></div>`;
+      card.addEventListener('click',()=>{ window.location.href=`haber.html?id=${item.id}`; });
+      newsContainer.appendChild(card);
+    });
+
+    // Son haber metni
+    const latestNews = sorted[0];
+    document.getElementById('breakingNews').innerText = "SON HABER: " + latestNews.title;
+    window.latestNewsList = sorted;
+    
+  } catch(err){
+    console.error("Haberler yüklenemedi:", err); 
+    document.getElementById("news-container").innerHTML = "<p>Haberler yüklenemedi.</p>";
+  }
+}
+
+// MutuBot
+const bot=document.getElementById('mutubot');
+const botWindow=document.getElementById('mutubot-window');
+const botBody=document.getElementById('mutubot-window-body');
+const botInput=document.getElementById('mutubot-input');
+const botSend=document.getElementById('mutubot-send');
+const botTyping=document.getElementById('mutubot-typing');
+
+bot.addEventListener('click',()=>{botWindow.style.display=botWindow.style.display==='flex'?'none':'flex';});
+
+function botReply(msg){
+  botTyping.style.display='block';
+  setTimeout(()=>{
+    botTyping.style.display='none';
+    let response='';
+    const newsList=window.latestNewsList || [];
+    const lower=msg.toLowerCase();
+
+    if(/haber|son dakika|gündem/.test(lower)){
+      if(newsList.length===0) response='Şu anda haber bulunmamaktadır.';
+      else{
+        const news=newsList.shift();
+        response=`Son haber: ${news.title}\nAçıklama: ${news.content}`;
+      }
+    } else if(/küfür|hakaret|salak|aptal/.test(lower)){
+      response='Lütfen nazik bir dille sorunuz, hakaret kabul edilmiyor.';
+    } else {
+      response='Merhaba! Haberlerle ilgili bir şey sorabilirsiniz. Örn: "Son haber nedir?"';
+    }
+
+    const p=document.createElement('p'); p.innerText=response;
+    botBody.appendChild(p);
+    botBody.scrollTop=botBody.scrollHeight;
+  },500);
+}
+
+botSend.addEventListener('click',()=>{
+  const msg=botInput.value.trim(); if(!msg) return;
+  botInput.value=''; botReply(msg);
+});
+botInput.addEventListener('keypress',e=>{if(e.key==='Enter'){botSend.click(); e.preventDefault();}});
+
+// İl tıklamaları
+document.querySelectorAll('#province-list a').forEach(a=>{
+  a.addEventListener('click',()=>{ window.location.href=`il.html?id=${a.dataset.city}`; });
+});
+
+// Kar yağışı
+function createSnow(){
+  const snow=document.createElement('div');
+  snow.className='snowflake';
+  snow.style.left=Math.random()*window.innerWidth+'px';
+  snow.style.fontSize=(Math.random()*10+10)+'px';
+  snow.style.animationDuration=(Math.random()*5+5)+'s';
+  snow.innerText='❄';
+  document.body.appendChild(snow);
+  setTimeout(()=>snow.remove(),10000);
+}
+setInterval(createSnow,200);
+
+loadNews();
+
+</script>
+
+<!-- Bildirim için HTML (body sonunda ekle) -->
+<div id="locationNotification" style="display:none;"></div>
+<audio id="notificationSound" src="images/ses.mp3" preload="auto"></audio>
+
+<script>
+window.addEventListener("load", () => {
+  // Hoş geldiniz bildirimi
+  const welcomeNotification = document.getElementById("welcome-notification");
+  const welcomeSound = document.getElementById("welcome-sound");
+
+  setTimeout(() => {
+    welcomeNotification.classList.add("show");
+    welcomeSound.play();
+    setTimeout(() => {
+      welcomeNotification.classList.remove("show");
+      // Hoş geldiniz bildirimi kaybolduktan sonra konum bildirimi
+      showLocalNewsNotification();
+    }, 4000);
+  }, 1500);
+
+  async function showLocalNewsNotification() {
+    const notification = document.getElementById("locationNotification");
+    const sound = document.getElementById("notificationSound");
+    let city = "İstanbul"; // varsayılan
+
+    // Kullanıcının konumunu al
+    if (navigator.geolocation) {
+      try {
+        const pos = await new Promise((resolve, reject) => {
+          navigator.geolocation.getCurrentPosition(resolve, reject, {timeout:8000});
+        });
+        const lat = pos.coords.latitude;
+        const lon = pos.coords.longitude;
+
+        // OpenStreetMap Nominatim API ile şehir bul
+        const res = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`);
+        const data = await res.json();
+        city = data.address.city || data.address.town || data.address.village || city;
+      } catch(e) {
+        console.warn("Konum alınamadı, varsayılan İstanbul kullanılıyor.", e);
+      }
+    }
+
+    // Son haberi al
+    let latestNews;
+    try {
+      const newsRes = await fetch("data/news.json?t="+Date.now());
+      const newsList = await newsRes.json();
+      // Şehir bazlı en son haber
+      latestNews = newsList.filter(n=>n.city===city).sort((a,b)=>b.id-a.id)[0] || newsList.sort((a,b)=>b.id-a.id)[0];
+    } catch(e) {
+      console.error("Haberler alınamadı.", e);
+    }
+
+    if(latestNews){
+      notification.innerHTML = `
+        <div style="font-size:16px; font-weight:bold; margin-bottom:6px;">${city} - Son Haber</div>
+        <div style="font-size:14px;">${latestNews.title}</div>
+        <a href="haber.html?id=${latestNews.id}" style="color:#fff; text-decoration:underline; font-size:13px;">Haberi Oku</a>
+      `;
+      // Stil
+Object.assign(notification.style, {
+        display:"flex",
+        flexDirection:"column",
+        position:"fixed",
+        bottom:"20px",
+        left:"50%",
+        transform:"translateX(-50%)",
+        background:"#0066ff",
+        color:"#fff",
+        padding:"15px 30px",  // yatay genişlik arttı, üstten inceltildi
+        borderRadius:"12px",
+        boxShadow:"0 4px 12px rgba(0,0,0,0.3)",
+        fontSize:"16px",
+        zIndex:"9999",
+        maxWidth:"450px",      // daha geniş
+        minWidth:"300px"
+      });
+
+      sound.play();
+      // 5 saniye sonra kaybolsun
+      setTimeout(()=>{ notification.style.display="none"; }, 5000);
+    }
+  }
+});
+</script>
+
+</body>
+</html>

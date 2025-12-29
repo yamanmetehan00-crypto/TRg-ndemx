@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GündemX – İller</title>
+
+<style>
+:root{
+  --primary:#0066ff;
+  --dark:#0b1220;
+  --bg:#f4f7fb;
+  --text:#1e293b;
+}
+
+/* ===== BODY ve SABİTLEME ===== */
+html, body {
+  margin:0;
+  padding:0;
+  width:100%;
+  max-width:100%;
+  overflow-x:hidden; /* Yatay kaydırmayı tamamen engeller */
+  -webkit-overflow-scrolling: touch;
+  font-family:Inter,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  background:var(--dark);
+  color:#fff;
+  padding:14px 20px;
+  flex-wrap:wrap;
+}
+.logo{font-size:26px;font-weight:800}
+.logo span{color:var(--primary)}
+.social-header{display:flex;gap:10px;margin-left:12px;}
+.social-link{text-decoration:none;color:#fff;background:var(--primary);padding:4px 8px;border-radius:4px;font-weight:600;}
+nav a{margin-left:16px;font-size:14px;opacity:.9}
+
+/* ===== CONTAINER ===== */
+.container{
+  max-width:1200px;
+  width:100%;
+  margin:auto;
+  padding:16px;
+  box-sizing:border-box;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:20px;
+  width:100%;
+  box-sizing:border-box;
+}
+
+/* ===== CARD ===== */
+.card{
+  background:#fff;
+  border:1px solid #ccc;
+  border-radius:6px;
+  overflow:hidden;
+  cursor:pointer;
+  transition:transform .2s;
+}
+.card:hover{transform:scale(1.02)}
+.card img{width:100%;height:auto;display:block;}
+.card-content{padding:10px}
+.card-content h3{margin:0 0 5px;font-size:16px}
+.card-content p{margin:0;font-size:13px;color:#64748b}
+
+/* ===== LOADING ===== */
+#loading-screen{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  background:#fff;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+  overflow:hidden;
+}
+.x-loader{
+  font-size:120px;
+  font-weight:900;
+  color:transparent;
+  -webkit-text-stroke:4px var(--primary);
+  background:linear-gradient(to top,var(--primary) 0%,var(--primary) 50%,transparent 50%);
+  background-size:100% 200%;
+  background-position:bottom;
+  -webkit-background-clip:text;
+  background-clip:text;
+  animation: fillX 0.8s ease-in-out forwards;
+}
+@keyframes fillX{from{background-position:bottom;}to{background-position:top;}}
+</style>
+</head>
+
+<body>
+
+<div id="loading-screen">
+  <div class="x-loader">X</div>
+</div>
+
+<header>
+  <div class="logo">Gündem<span>X</span></div>
+  <div class="social-header">
+    <a href="#" class="social-link">WhatsApp</a>
+    <a href="#" class="social-link">Instagram</a>
+  </div>
+  <nav>
+    <a href="index.html">Gündem</a>
+    <a href="il.html">İller</a>
+  </nav>
+</header>
+
+<div class="container">
+  <h1 id="city-title">İl Haberleri</h1>
+  <div class="grid news-container"></div>
+</div>
+
+<script>
+// Loader
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    const l = document.getElementById("loading-screen");
+    l.style.opacity = "0";
+    setTimeout(() => l.style.display = "none", 300);
+  }, 1200);
+});
+
+// URL parametresinden il adını al
+function getCityFromURL(){
+  const params = new URLSearchParams(window.location.search);
+  return params.get('id') || 'İstanbul';
+}
+
+// Haberleri JSON'dan çek ve kart oluştur
+async function renderCity(city){
+  const container = document.querySelector(".news-container");
+  container.innerHTML = "";
+
+  try {
+    const res = await fetch(`data/news.json?t=${Date.now()}`); // cache önleme
+    const allNews = await res.json();
+
+    const filtered = allNews.filter(n => n.city.toLowerCase() === city.toLowerCase());
+
+    if(filtered.length === 0){
+      container.innerHTML = "<p>Bu il için henüz haber yok.</p>";
+      return;
+    }
+
+    filtered.forEach(item => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <a href="haber.html?id=${item.id}" style="text-decoration:none;color:inherit">
+          <img src="${item.image}" alt="${item.title}">
+          <div class="card-content">
+            <h3>${item.title}</h3>
+            <p>${item.city} • ${item.time}</p>
+          </div>
+        </a>
+      `;
+      container.appendChild(card);
+    });
+
+  } catch (error) {
+    container.innerHTML = "<p>Haberler yüklenemedi.</p>";
+    console.error(error);
+  }
+}
+
+const city = getCityFromURL();
+document.getElementById("city-title").innerText = city + " Haberleri";
+renderCity(city);
+</script>
+
+</body>
+</html>
