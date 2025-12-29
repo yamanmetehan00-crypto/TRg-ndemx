@@ -194,6 +194,18 @@ footer{background:var(--dark);color:#aaa;padding:20px;text-align:center;font-siz
     </div>
   </div>
 
+<script>
+let clickCount = 0;
+const logo = document.getElementById('logo');
+
+logo.addEventListener('click', () => {
+  clickCount++;
+  if(clickCount >= 5){
+    window.location.href = "tutu-macera.html";
+  }
+});
+</script>
+
   <div class="breaking-news-container">
     <div class="breaking-news" id="breakingNews"></div>
   </div>
