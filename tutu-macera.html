@@ -2,164 +2,128 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>Tutunun Macerası</title>
+<title>Tutu'nun Macerası</title>
 <style>
-body { margin:0; padding:0; font-family: Arial, sans-serif; background:#87ceeb; overflow:hidden; }
-#gameContainer { position: relative; width: 100vw; height: 100vh; background: #87ceeb; }
-#player { position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%); width: 50px; height: 50px; background: red; border-radius: 50%; transition: bottom 0.1s, left 0.1s; }
-.heart { position: absolute; width: 30px; height: 30px; background: pink; border-radius: 50%; }
-.obstacle { position: absolute; width: 40px; height: 40px; background: black; border-radius: 10%; }
-#scoreBoard { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); font-size: 20px; font-weight:bold; color:#fff; }
-#message { position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); font-size: 30px; color:yellow; display:none; text-align:center;}
+body { margin:0; font-family: Arial, sans-serif; background:#f0f0f0; display:flex; flex-direction:column; align-items:center; justify-content:center; height:100vh; }
+canvas { border:2px solid #007BFF; background:#fff; touch-action: none; }
+#score { margin:10px; font-weight:bold; font-size:18px; }
+#message { margin-top:10px; font-weight:bold; color:green; text-align:center; }
+button { margin-top:10px; padding:10px 20px; border:none; border-radius:5px; background:#007BFF; color:white; cursor:pointer; }
 </style>
 </head>
 <body>
 
-<div id="gameContainer">
-  <div id="player"></div>
-  <div id="scoreBoard">Kalpler: 0 / 30</div>
-  <div id="message"></div>
-</div>
+<canvas id="gameCanvas" width="400" height="500"></canvas>
+<div id="score">Kalpler: 0 / 30</div>
+<div id="message"></div>
+<button onclick="window.location.href='index.html'">Ana Sayfaya Dön</button>
 
 <script>
-const gameContainer = document.getElementById('gameContainer');
-const player = document.getElementById('player');
-const scoreBoard = document.getElementById('scoreBoard');
-const message = document.getElementById('message');
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
 
-let score = 0;
+const player = {x:180, y:440, width:40, height:40, color:'blue'};
 let hearts = [];
 let obstacles = [];
-let gameInterval;
-let gameSpeed = 2;
-let maxHearts = 30;
-
-// Player hareketi
-let playerX = window.innerWidth / 2 - 25;
-let playerY = window.innerHeight - 100;
-
-function movePlayer(x,y){
-  playerX = Math.min(Math.max(0, x), window.innerWidth - 50);
-  playerY = Math.min(Math.max(0, y), window.innerHeight - 50);
-  player.style.left = playerX + 'px';
-  player.style.top = playerY + 'px';
-}
+let score = 0;
+const targetScore = 30;
 
 // Kalp oluştur
-function createHeart(){
-  const heart = document.createElement('div');
-  heart.className = 'heart';
-  heart.style.left = Math.random() * (window.innerWidth - 30) + 'px';
-  heart.style.top = '-30px';
-  gameContainer.appendChild(heart);
-  hearts.push(heart);
+function spawnHearts(){
+  hearts = [];
+  for(let i=0;i<10;i++){
+    hearts.push({x:Math.random()*(canvas.width-30), y:Math.random()*(canvas.height-150), width:30, height:30, color:'red'});
+  }
 }
 
 // Engel oluştur
-function createObstacle(){
-  const obs = document.createElement('div');
-  obs.className = 'obstacle';
-  obs.style.left = Math.random() * (window.innerWidth - 40) + 'px';
-  obs.style.top = '-40px';
-  gameContainer.appendChild(obs);
-  obstacles.push(obs);
+function spawnObstacles(){
+  obstacles = [];
+  for(let i=0;i<5;i++){
+    obstacles.push({x:Math.random()*(canvas.width-30), y:Math.random()*(canvas.height-150), width:30, height:30, color:'black'});
+  }
 }
 
 // Çarpışma kontrolü
-function checkCollision(a, b){
-  const aRect = a.getBoundingClientRect();
-  const bRect = b.getBoundingClientRect();
-  return !(aRect.right < bRect.left || 
-           aRect.left > bRect.right || 
-           aRect.bottom < bRect.top || 
-           aRect.top > bRect.bottom);
+function collision(a,b){
+  return a.x < b.x+b.width && a.x+a.width > b.x && a.y < b.y+b.height && a.y+a.height > b.y;
+}
+
+// Oyuncu hareketi
+let keys = {};
+document.addEventListener('keydown', e => keys[e.key] = true);
+document.addEventListener('keyup', e => keys[e.key] = false);
+
+// Mobil için dokunmatik kontrol
+let touchStartX=null, touchStartY=null;
+canvas.addEventListener('touchstart', e=>{
+  touchStartX = e.touches[0].clientX;
+  touchStartY = e.touches[0].clientY;
+});
+canvas.addEventListener('touchmove', e=>{
+  if(!touchStartX || !touchStartY) return;
+  const dx = e.touches[0].clientX - touchStartX;
+  const dy = e.touches[0].clientY - touchStartY;
+  player.x += dx; player.y += dy;
+  if(player.x<0) player.x=0; if(player.x+player.width>canvas.width) player.x=canvas.width-player.width;
+  if(player.y<0) player.y=0; if(player.y+player.height>canvas.height) player.y=canvas.height-player.height;
+  touchStartX = e.touches[0].clientX;
+  touchStartY = e.touches[0].clientY;
+});
+
+function updatePlayer(){
+  const step=5;
+  if(keys['ArrowLeft'] || keys['a']) player.x -= step;
+  if(keys['ArrowRight'] || keys['d']) player.x += step;
+  if(keys['ArrowUp'] || keys['w']) player.y -= step;
+  if(keys['ArrowDown'] || keys['s']) player.y += step;
+
+  // Canvas sınırları
+  if(player.x<0) player.x=0; if(player.x+player.width>canvas.width) player.x=canvas.width-player.width;
+  if(player.y<0) player.y=0; if(player.y+player.height>canvas.height) player.y=canvas.height-player.height;
 }
 
 // Oyun döngüsü
 function gameLoop(){
-  // Kalpleri hareket ettir
-  hearts.forEach((heart, idx) => {
-    let top = parseFloat(heart.style.top);
-    top += gameSpeed;
-    heart.style.top = top + 'px';
-    if(checkCollision(player, heart)){
-      heart.remove();
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  // Oyuncu
+  updatePlayer();
+  ctx.fillStyle = player.color;
+  ctx.fillRect(player.x, player.y, player.width, player.height);
+
+  // Kalpler
+  hearts.forEach((h, idx)=>{
+    ctx.fillStyle = h.color;
+    ctx.fillRect(h.x, h.y, h.width, h.height);
+    if(collision(player,h)){
       hearts.splice(idx,1);
       score++;
-      scoreBoard.textContent = `Kalpler: ${score} / ${maxHearts}`;
-      if(score % 10 === 0) gameSpeed += 0.5; // Hız artışı
-      if(score >= maxHearts){
-        endGame();
+      document.getElementById('score').innerText = `Kalpler: ${score} / ${targetScore}`;
+      if(score >= targetScore){
+        document.getElementById('message').innerText = "Tebrikler! Tutu artık mutlu bir şekilde yattı!";
       }
-    } else if(top > window.innerHeight){
-      heart.remove();
-      hearts.splice(idx,1);
     }
   });
 
-  // Engelleri hareket ettir
-  obstacles.forEach((obs, idx)=>{
-    let top = parseFloat(obs.style.top);
-    top += gameSpeed;
-    obs.style.top = top + 'px';
-    if(checkCollision(player, obs)){
-      obs.style.background = 'red';
-      player.style.background = 'orange';
-      setTimeout(()=>{player.style.background='red'; obs.style.background='black';},300);
-    }
-    if(top > window.innerHeight){
-      obs.remove();
-      obstacles.splice(idx,1);
+  // Engeller
+  obstacles.forEach(o=>{
+    ctx.fillStyle = o.color;
+    ctx.fillRect(o.x,o.y,o.width,o.height);
+    if(collision(player,o)){
+      // Engel çarpışması: geri it
+      player.x -= 10;
+      player.y -= 10;
     }
   });
+
+  if(score < targetScore) requestAnimationFrame(gameLoop);
 }
 
-// Oyun bitişi
-function endGame(){
-  clearInterval(gameInterval);
-  hearts.forEach(h=>h.remove());
-  obstacles.forEach(o=>o.remove());
-  message.style.display = 'block';
-  message.textContent = 'Tebrikler! Tutu mutlu yatıyor 🎉';
-}
-
-// Oyunu başlat
-function startGame(){
-  score = 0;
-  gameSpeed = 2;
-  scoreBoard.textContent = `Kalpler: ${score} / ${maxHearts}`;
-  gameInterval = setInterval(gameLoop, 20);
-  setInterval(()=>{createHeart(); createObstacle();},1000);
-}
-
-// Mouse / touch hareketi
-document.addEventListener('mousemove', e => movePlayer(e.clientX - 25, playerY));
-document.addEventListener('touchmove', e => {
-  const touch = e.touches[0];
-  movePlayer(touch.clientX - 25, playerY);
-});
-
-// Basılı tutunca oyun başlat
-let holdTime = 0;
-const holdThreshold = 500; // 0.5 saniye
-
-const logo = document.querySelector('.logo');
-logo.addEventListener('mousedown', ()=>{
-  holdTime = Date.now();
-});
-logo.addEventListener('mouseup', ()=>{
-  if(Date.now() - holdTime >= holdThreshold){
-    startGame();
-    message.style.display='none';
-  }
-});
-logo.addEventListener('touchstart', ()=>{ holdTime = Date.now(); });
-logo.addEventListener('touchend', ()=>{
-  if(Date.now() - holdTime >= holdThreshold){
-    startGame();
-    message.style.display='none';
-  }
-});
+spawnHearts();
+spawnObstacles();
+gameLoop();
 </script>
+
 </body>
 </html>
