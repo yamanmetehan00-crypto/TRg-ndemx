@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Video Haberler</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: black;
+  color: white;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+/* Ana container */
+#videoFeed {
+  height: 100vh;
+  width: 100%;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+}
+
+/* Her video */
+.video-item {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  scroll-snap-align: start;
+}
+
+video {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* Yazı alanı */
+.info {
+  position: absolute;
+  bottom: 90px;
+  left: 15px;
+  z-index: 10;
+}
+.info h3 {
+  font-size: 18px;
+}
+.info p {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* Reklam alanı */
+.ad-box {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255,255,255,0.15);
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 13px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="videoFeed"></div>
+
+<script>
+fetch("videos/videos.json")
+.then(res => res.json())
+.then(data => {
+  const feed = document.getElementById("videoFeed");
+
+  data.forEach(item => {
+    const div = document.createElement("div");
+    div.className = "video-item";
+
+    div.innerHTML = `
+      <video src="${item.video}" muted loop playsinline></video>
+
+      <div class="info">
+        <h3>${item.title}</h3>
+        <p>${item.description}</p>
+      </div>
+
+      <div class="ad-box">
+        Reklam Alanı
+      </div>
+    `;
+
+    feed.appendChild(div);
+  });
+
+  const videos = document.querySelectorAll("video");
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      const video = entry.target;
+      if (entry.isIntersecting) {
+        video.play();
+      } else {
+        video.pause();
+      }
+    });
+  }, { threshold: 0.7 });
+
+  videos.forEach(v => observer.observe(v));
+});
+</script>
+
+</body>
+</html>
