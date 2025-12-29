@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Tutu'nun Macerası</title>
+<style>
+body { margin:0; font-family: Arial, sans-serif; background:#f4f4f4; display:flex; justify-content:center; align-items:center; height:100vh; flex-direction:column; }
+canvas { border:2px solid #007BFF; background:#fff; }
+#gameMessage { margin-top:10px; font-weight:bold; color:green; text-align:center; }
+</style>
+</head>
+<body>
+
+<canvas id="gameCanvas" width="400" height="500"></canvas>
+<div id="gameMessage"></div>
+<button onclick="window.location.href='index.html'">Ana Sayfaya Dön</button>
+
+<script>
+let canvas = document.getElementById('gameCanvas');
+let ctx = canvas.getContext('2d');
+
+let player = {x:canvas.width/2-20, y:canvas.height-60, width:40, height:40, color:'blue'};
+let hearts=[], obstacles=[], score=0;
+
+function spawnHearts(){ for(let i=0;i<5;i++){ hearts.push({x:Math.random()*(canvas.width-30), y:Math.random()*(canvas.height-200), width:30, height:30, color:'red'}); } }
+function spawnObstacles(){ for(let i=0;i<3;i++){ obstacles.push({x:Math.random()*(canvas.width-30), y:Math.random()*(canvas.height-200), width:30, height:30, color:'black'}); } }
+
+function movePlayer(e){
+  const step = 20;
+  if(e.key==='ArrowLeft' && player.x>0) player.x-=step;
+  if(e.key==='ArrowRight' && player.x+player.width<canvas.width) player.x+=step;
+  if(e.key==='ArrowUp' && player.y>0) player.y-=step;
+  if(e.key==='ArrowDown' && player.y+player.height<canvas.height) player.y+=step;
+}
+
+function collision(a,b){ return a.x < b.x+b.width && a.x+a.width > b.x && a.y < b.y+b.height && a.y+a.height > b.y; }
+
+function gameLoop(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle = player.color; ctx.fillRect(player.x, player.y, player.width, player.height);
+
+  hearts.forEach((h,idx)=>{
+    ctx.fillStyle=h.color; ctx.fillRect(h.x,h.y,h.width,h.height);
+    if(collision(player,h)){ hearts.splice(idx,1); score++; if(score>=30){ document.getElementById('gameMessage').innerText="Tebrikler! Tutu mutlu bir şekilde yattı!"; return; } }
+  });
+
+  obstacles.forEach(o=>{ ctx.fillStyle=o.color; ctx.fillRect(o.x,o.y,o.width,o.height); });
+
+  if(score<30) requestAnimationFrame(gameLoop);
+}
+
+spawnHearts(); spawnObstacles();
+document.addEventListener('keydown', movePlayer);
+gameLoop();
+</script>
+
+</body>
+</html>
