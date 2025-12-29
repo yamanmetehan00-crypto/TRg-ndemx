@@ -2,19 +2,19 @@
   {
     "id": 1,
     "title": "İstanbul’da Kar Alarmı!",
-    "video": "videos/v1.mp4",
+    "video": "v1.mp4",
     "description": "Meteoroloji uyardı, yoğun kar geliyor."
   },
   {
     "id": 2,
     "title": "Ankara’da Trafik Felç",
-    "video": "videos/v2.mp4",
+    "video": "v2.mp4",
     "description": "Sabah saatlerinde trafik durma noktasına geldi."
   },
   {
     "id": 3,
     "title": "Ekonomide Son Dakika",
-    "video": "videos/v3.mp4",
+    "video": "v3.mp4",
     "description": "Piyasalarda sert hareketler yaşanıyor."
   }
 ]
