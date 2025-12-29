@@ -1,20 +1,5 @@
 [
-  {
-    "id": 1,
-    "title": "İstanbul’da Kar Alarmı!",
-    "video": "v1.mp4",
-    "description": "Meteoroloji uyardı, yoğun kar geliyor."
-  },
-  {
-    "id": 2,
-    "title": "Ankara’da Trafik Felç",
-    "video": "v2.mp4",
-    "description": "Sabah saatlerinde trafik durma noktasına geldi."
-  },
-  {
-    "id": 3,
-    "title": "Ekonomide Son Dakika",
-    "video": "v3.mp4",
-    "description": "Piyasalarda sert hareketler yaşanıyor."
-  }
+  { "id": 1, "title": "Video 1", "video": "v1.mp4" },
+  { "id": 2, "title": "Video 2", "video": "v2.mp4" },
+  { "id": 3, "title": "Video 3", "video": "v3.mp4" }
 ]
