@@ -58,7 +58,7 @@ body {
 <body>
 
 <div class="weather-container">
-  <h2>Hava Durumu (24 Saat)</h2>
+  <h2 id="cityTitle">İstanbul – 24 Saatlik Hava Durumu</h2>
   <div class="hourly-forecast" id="hourly-forecast">
     Yükleniyor...
   </div>
@@ -69,6 +69,17 @@ async function getHourlyWeather() {
 
   const ISTANBUL_LAT = 41.0082;
   const ISTANBUL_LON = 28.9784;
+
+  async function setCityName(lat, lon) {
+    try {
+      const res = await fetch(`https://geocoding-api.open-meteo.com/v1/reverse?latitude=${lat}&longitude=${lon}&language=tr`);
+      const data = await res.json();
+      const city = data.results && data.results[0] ? data.results[0].name : "İstanbul";
+      document.getElementById("cityTitle").innerText = city + " – 24 Saatlik Hava Durumu";
+    } catch {
+      document.getElementById("cityTitle").innerText = "İstanbul – 24 Saatlik Hava Durumu";
+    }
+  }
 
   function fetchWeather(lat, lon) {
     fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,weathercode&timezone=Europe/Istanbul`)
@@ -99,10 +110,17 @@ async function getHourlyWeather() {
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
-      pos => fetchWeather(pos.coords.latitude, pos.coords.longitude),
-      () => fetchWeather(ISTANBUL_LAT, ISTANBUL_LON)
+      pos => {
+        setCityName(pos.coords.latitude, pos.coords.longitude);
+        fetchWeather(pos.coords.latitude, pos.coords.longitude);
+      },
+      () => {
+        setCityName(ISTANBUL_LAT, ISTANBUL_LON);
+        fetchWeather(ISTANBUL_LAT, ISTANBUL_LON);
+      }
     );
   } else {
+    setCityName(ISTANBUL_LAT, ISTANBUL_LON);
     fetchWeather(ISTANBUL_LAT, ISTANBUL_LON);
   }
 }
