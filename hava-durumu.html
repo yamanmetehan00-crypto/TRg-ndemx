@@ -43,10 +43,6 @@ body {
   padding: 10px;
   border-radius: 8px;
 }
-.forecast-item img {
-  width: 40px;
-  height: 40px;
-}
 .forecast-time {
   font-weight: bold;
 }
@@ -59,69 +55,76 @@ body {
 
 <div class="weather-container">
   <h2 id="cityTitle">İstanbul – 24 Saatlik Hava Durumu</h2>
-  <div class="hourly-forecast" id="hourly-forecast">
-    Yükleniyor...
-  </div>
+  <div class="hourly-forecast" id="hourly-forecast">Yükleniyor...</div>
 </div>
 
 <script>
 async function getHourlyWeather() {
 
-  const ISTANBUL_LAT = 41.0082;
-  const ISTANBUL_LON = 28.9784;
+  const IST_LAT = 41.0082;
+  const IST_LON = 28.9784;
 
-  async function setCityName(lat, lon) {
-    try {
-      const res = await fetch(`https://geocoding-api.open-meteo.com/v1/reverse?latitude=${lat}&longitude=${lon}&language=tr`);
-      const data = await res.json();
-      const city = data.results && data.results[0] ? data.results[0].name : "İstanbul";
-      document.getElementById("cityTitle").innerText = city + " – 24 Saatlik Hava Durumu";
-    } catch {
-      document.getElementById("cityTitle").innerText = "İstanbul – 24 Saatlik Hava Durumu";
+  function renderWeather(data) {
+    const container = document.getElementById("hourly-forecast");
+    container.innerHTML = "";
+
+    for (let i = 0; i < 24; i++) {
+      const time = new Date(data.hourly.time[i]);
+      const hour = time.getHours().toString().padStart(2,"0") + ":00";
+      const temp = Math.round(data.hourly.temperature_2m[i]);
+
+      const item = document.createElement("div");
+      item.className = "forecast-item";
+      item.innerHTML = `
+        <span class="forecast-time">${hour}</span>
+        <span>🌤️</span>
+        <span class="forecast-temp">${temp}°C</span>
+      `;
+      container.appendChild(item);
     }
   }
 
-  function fetchWeather(lat, lon) {
-    fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,weathercode&timezone=Europe/Istanbul`)
-      .then(res => res.json())
-      .then(data => {
-        const container = document.getElementById("hourly-forecast");
-        container.innerHTML = "";
+  async function fetchWeather(lat, lon) {
+    try {
+      const res = await fetch(
+        `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m&timezone=Europe/Istanbul`
+      );
+      const data = await res.json();
+      renderWeather(data);
+    } catch {
+      document.getElementById("hourly-forecast").innerText = "Hava durumu alınamadı";
+    }
+  }
 
-        for (let i = 0; i < 24; i++) {
-          const time = new Date(data.hourly.time[i]);
-          const hour = time.getHours().toString().padStart(2,"0") + ":00";
-          const temp = Math.round(data.hourly.temperature_2m[i]);
-
-          const item = document.createElement("div");
-          item.className = "forecast-item";
-          item.innerHTML = `
-            <span class="forecast-time">${hour}</span>
-            <span>🌤️</span>
-            <span class="forecast-temp">${temp}°C</span>
-          `;
-          container.appendChild(item);
-        }
-      })
-      .catch(() => {
-        document.getElementById("hourly-forecast").innerText = "Veri alınamadı";
-      });
+  // İl adı arka planda (hata olsa bile sayfa çalışır)
+  async function setCityName(lat, lon) {
+    try {
+      const res = await fetch(
+        `https://geocoding-api.open-meteo.com/v1/reverse?latitude=${lat}&longitude=${lon}&language=tr`
+      );
+      const data = await res.json();
+      if (data.results && data.results[0]) {
+        document.getElementById("cityTitle").innerText =
+          data.results[0].name + " – 24 Saatlik Hava Durumu";
+      }
+    } catch {}
   }
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
       pos => {
-        setCityName(pos.coords.latitude, pos.coords.longitude);
         fetchWeather(pos.coords.latitude, pos.coords.longitude);
+        setCityName(pos.coords.latitude, pos.coords.longitude);
       },
       () => {
-        setCityName(ISTANBUL_LAT, ISTANBUL_LON);
-        fetchWeather(ISTANBUL_LAT, ISTANBUL_LON);
-      }
+        fetchWeather(IST_LAT, IST_LON);
+        setCityName(IST_LAT, IST_LON);
+      },
+      { timeout: 5000 }
     );
   } else {
-    setCityName(ISTANBUL_LAT, ISTANBUL_LON);
-    fetchWeather(ISTANBUL_LAT, ISTANBUL_LON);
+    fetchWeather(IST_LAT, IST_LON);
+    setCityName(IST_LAT, IST_LON);
   }
 }
 
