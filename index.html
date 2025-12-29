@@ -450,17 +450,23 @@ window.addEventListener("load", () => {
 });
 
 // Döviz
+<script>
 async function getCurrencies(){
   try{
-    const res=await fetch("https://api.genelpara.com/json/?list=doviz&sembol=USD,EUR,GBP");
-    const data=await res.json();
-    document.getElementById("usd").innerText=data?.USD?.satis||"--";
-    document.getElementById("eur").innerText=data?.EUR?.satis||"--";
-    document.getElementById("gbp").innerText=data?.GBP?.satis||"--";
-  }catch(err){console.error(err);}
-}
-getCurrencies(); setInterval(getCurrencies,60000);
+    const res = await fetch("https://open.er-api.com/v6/latest/TRY");
+    const data = await res.json();
 
+    document.getElementById("usd").innerText = (1 / data.rates.USD).toFixed(2);
+    document.getElementById("eur").innerText = (1 / data.rates.EUR).toFixed(2);
+    document.getElementById("gbp").innerText = (1 / data.rates.GBP).toFixed(2);
+  }catch(e){
+    console.error("Döviz alınamadı", e);
+  }
+}
+
+getCurrencies();
+setInterval(getCurrencies, 60000);
+</script>
 // Haberler ve slider
 async function loadNews(){
   try{
