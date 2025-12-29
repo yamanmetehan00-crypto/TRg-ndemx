@@ -184,32 +184,16 @@ footer{background:var(--dark);color:#aaa;padding:20px;text-align:center;font-siz
 
 <!-- LOADING -->
 <div id="loading-screen"><div class="x-loader">X</div></div>
-
+    
 <header>
-  <div class="header-container">
-    <div class="logo">Gündem<span>X</span></div>
-    <div class="links-container">
-      <a href="hava-durumu.html" class="social-link">Hava Durumu</a>
-      <a href="biyografiler.html" class="social-link">Biyografiler</a>
-    </div>
-  </div>
-
-<script>
-let clickCount = 0;
-const logo = document.getElementById('logo');
-
-logo.addEventListener('click', () => {
-  clickCount++;
-  if(clickCount >= 5){
-    window.location.href = "tutu-macera.html";
-  }
-});
-</script>
-
+  <div class="logo">Gündem<span>X</span></div>
+<div class="social-header">
+  <a href="hava-durumu.html" class="social-link">Hava Durumu</a>
+  <a href="biyografiler.html" class="social-link">Biyografiler</a>
+</div>
   <div class="breaking-news-container">
     <div class="breaking-news" id="breakingNews"></div>
   </div>
-
   <nav>
     <a href="index.html">Gündem</a>
     <a href="il.html">Siyaset</a>
@@ -217,50 +201,6 @@ logo.addEventListener('click', () => {
     <a href="il.html">Gençlik</a>
     <a href="index.html#analiz">Analiz</a>
   </nav>
-
-  <style>
-    /* Header üst kısmı kapsayıcı */
-    .header-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .logo {
-      font-size: 24px;
-      font-weight: bold;
-    }
-
-    .links-container {
-      display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    .social-link {
-      text-decoration: none;
-      color: #007BFF;
-      font-weight: 500;
-    }
-
-    .social-link:hover {
-      text-decoration: underline;
-    }
-
-    /* Mobil uyumlu */
-    @media (max-width: 600px) {
-      .header-container {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .links-container {
-        flex-direction: row;
-        gap: 10px;
-      }
-    }
-  </style>
 </header>
 
 <div class="container">
