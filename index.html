@@ -357,19 +357,6 @@ if(weatherLink){
   <div class="currency-item"><span>GBP</span> <span id="gbp">--</span> TL</div>
 </div>
 
-<!-- Footer'ın hemen üstüne ekle -->
-<div class="ad" style="margin:20px auto; max-width:900px; text-align:center;">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-1201412624479751"
-       data-ad-slot="1234567892"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-  <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-</div>
-
 <footer>
 <footer style="text-align:center; padding:20px; font-size:14px;">
   <a href="about.html">Hakkımızda</a> |
@@ -531,17 +518,6 @@ async function loadNews(){
     const slides = slider.querySelectorAll('.slide'); let current=0;
     function showSlide(i){slides.forEach(s=>s.classList.remove('active'));slides[i].classList.add('active');}
     showSlide(current); setInterval(()=>{current=(current+1)%slides.length;showSlide(current);},4000);
-
-<!-- Örnek: Haberler üstü reklam -->
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-client="ca-pub-1201412624479751"
-     data-ad-slot="1234567890"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
 
 
     // ANA HABER LİSTESİ - sadece son 5 haber
