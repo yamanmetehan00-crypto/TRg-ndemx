@@ -268,7 +268,7 @@
     "time": "30 Aralık 2025",
     "image": "images/47-images.jpg",
     "content": "Toplu Konut İdaresi Başkanlığı (TOKİ), İzmit’te yaşayanlar için umut veren yeni bir adım attı! 2022’de duyurulan “İlk İşyerim” projesi kapsamında, Sekbanlı ve Sepetçi mahallelerinde 454 adet yeni işyeri inşa edilecek. Bu kapsamlı proje sadece dükkanları değil, çevre ve altyapı düzenlemelerini de kapsıyor.Projeye ilişkin ihale, 29 Aralık 2025 tarihinde, Ankara’da TOKİ toplantı salonunda saat 14.00’te yapılacak. İhalenin tamamlanmasının ardından da yüklenici firmaya resmi yer teslimi gerçekleştirilecek."
-  }, 
+  },
   {
     "id": 48,
     "title": "Bu Sigara Markaları KAYBOLDU!! - İşte Detaylar 👇",
@@ -277,14 +277,23 @@
     "time": "30 Aralık 2025",
     "image": "images/48-images.jpg",
     "content": "Aralık 2025’te Türkiye’de market raflarından bazı popüler sigara markaları bir anda kayboldu. Tüketiciler, özellikle Marlboro, President ve Philip Morris’e ulaşamadığını sosyal medyada paylaşıyor. Sebepler belirsiz; kullanıcılar stok ve dağıtım sorunlarından şüpheleniyor. Yetkililerden henüz resmi bir açıklama gelmedi."
-  }, 
-   {
-      "id": 49,
+  },
+  {
+    "id": 49,
     "title": "GÜNDEMX YENİ YILINIZI KUTLAR!!",
     "city": "Türkiye Geneli",
     "category": "Yeni Yıl Mesajı",
     "time": "31 Aralık 2025",
     "image": "images/49-images.jpg",
     "content": "GündemX olarak yeni yılınızı kutluyor ve Yeni yılın sizlere sağlık, huzur, bereket getirmesini temenni ediyoruz.İyi Yıllar TÜRKİYE 🇹🇷"
+  },
+  {
+    "id": 50,
+    "title": "2026’da Türkiye Haritası Şok Değişiyor! : İl Olmaya Aday İlçelerle Yeni Harita Gündemde!! !",
+    "city": "Türkiye Gündemi",
+    "category": "Gündem",
+    "time": "31 Aralık 2025",
+    "image": "images/50-images.jpg",
+    "content": "2025 yılı verileriyle yeniden güncellenen çalışmaya göre Türkiye’nin idari yapısında ciddi bir dönüşüm gündemde! Nüfus, ekonomik büyüklük, sanayi gücü ve stratejik konum gibi kriterler esas alınarak hazırlanan “il olmaya aday ilçeler” listesi genişletildi. Son değerlendirmeye göre Lüleburgaz, Çerkezköy, Silivri, Çorlu ve Büyükçekmece gibi ilçeler yeni listeye eklendi ve toplam aday sayısı arttı. Özellikle İstanbul’dan Silivri, Büyükçekmece ve Tuzla gibi ilçelerin adaylar arasında yer alması büyük tartışma yarattı. Bu ilçelerin başarılı olması durumunda Türkiye’nin il sayısı 81’den daha fazlaya çıkabilir ve ülkenin idari haritası yeniden şekillenebilir."
   }
 ]
