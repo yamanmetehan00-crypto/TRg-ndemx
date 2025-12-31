@@ -184,6 +184,9 @@ footer{background:var(--dark);color:#aaa;padding:20px;text-align:center;font-siz
 
 <!-- LOADING -->
 <div id="loading-screen"><div class="x-loader">X</div></div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1201412624479751"
+     crossorigin="anonymous"></script>
     
 <header>
   <div class="logo">Gündem<span>X</span></div>
@@ -528,6 +531,18 @@ async function loadNews(){
     const slides = slider.querySelectorAll('.slide'); let current=0;
     function showSlide(i){slides.forEach(s=>s.classList.remove('active'));slides[i].classList.add('active');}
     showSlide(current); setInterval(()=>{current=(current+1)%slides.length;showSlide(current);},4000);
+
+<!-- Örnek: Haberler üstü reklam -->
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-client="ca-pub-1201412624479751"
+     data-ad-slot="1234567890"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 
     // ANA HABER LİSTESİ - sadece son 5 haber
     const newsContainer = document.getElementById("news-container"); 
