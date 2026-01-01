@@ -576,6 +576,10 @@ document.querySelectorAll('#province-list a').forEach(a=>{
   a.addEventListener('click',()=>{ window.location.href=`il.html?id=${a.dataset.city}`; });
 });
 
+loadNews().then(()=>{
+  document.getElementById('loading-screen').style.display = 'none';
+});
+
 
 <script type="application/ld+json">
 {
