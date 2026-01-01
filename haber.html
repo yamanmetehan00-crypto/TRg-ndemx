@@ -485,5 +485,35 @@ quickButtons.innerHTML=`
 `;
 document.body.appendChild(quickButtons);
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "NewsArticle",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": window.location.href
+  },
+  "headline": document.title,
+  "description": document.querySelector("meta[name='description']")?.content || "GündemX tarafsız ve güncel haberler.",
+  "image": {
+    "@type": "ImageObject",
+    "url": document.getElementById("newsImage")?.src || "https://www.gundemx.online/logo.png"
+  },
+  "datePublished": new Date().toISOString(),
+  "dateModified": new Date().toISOString(),
+  "author": {
+    "@type": "Organization",
+    "name": "GündemX"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "GündemX",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.gundemx.online/logo.png"
+    }
+  }
+}
+</script>
 </body>
 </html>
