@@ -186,6 +186,26 @@ fetch("data/news.json?t=" + Date.now())
   });
 });
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Ana Sayfa",
+      "item": "https://www.gundemx.online/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Kategori",
+      "item": window.location.href
+    }
+  ]
+}
+</script>
 
 </body>
 </html>
