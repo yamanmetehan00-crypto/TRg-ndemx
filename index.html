@@ -371,12 +371,110 @@ if(weatherLink){
     });
 }
 </script>
-<section id="categories" class="categories-section">
-  <h2>Kategoriler</h2>
-  <div class="categories-grid" id="categoriesGrid">
-    <!-- JS ile doldurulacak -->
-  </div>
+<section class="category-section">
+  <h2 class="section-title">Kategoriler</h2>
+  <div class="category-grid" id="categoryGrid"></div>
 </section>
+
+<style>
+.category-section {
+  margin: 25px 0;
+}
+
+.section-title {
+  font-size: 20px;
+  color: #0b3c5d;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.category-card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  transition: 0.25s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+}
+
+.category-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+
+.category-content {
+  padding: 12px 14px;
+}
+
+.category-name {
+  font-size: 13px;
+  font-weight: bold;
+  color: #1e88e5;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.category-content h3 {
+  font-size: 15px;
+  margin: 0 0 6px;
+  color: #222;
+}
+
+.category-content p {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.4;
+}
+</style>
+
+<script>
+const categories = [
+  "Gündem",
+  "Siyaset",
+  "Ekonomi",
+  "Trafik",
+  "Türkiye Geneli"
+];
+
+fetch("data/news.json")
+  .then(res => res.json())
+  .then(data => {
+    const grid = document.getElementById("categoryGrid");
+
+    categories.forEach(cat => {
+      const lastNews = data
+        .filter(n => n.category === cat)
+        .sort((a, b) => new Date(b.time) - new Date(a.time))[0];
+
+      if (!lastNews) return;
+
+      const shortText = lastNews.content.substring(0, Math.floor(lastNews.content.length * 0.1)) + "...";
+
+      grid.innerHTML += `
+        <a href="category.html?category=${encodeURIComponent(cat)}">
+          <div class="category-card">
+            <img src="${lastNews.image}" alt="${lastNews.title}">
+            <div class="category-content">
+              <div class="category-name">${cat}</div>
+              <h3>${lastNews.title}</h3>
+              <p>${shortText}</p>
+            </div>
+          </div>
+        </a>
+      `;
+    });
+  });
+</script>
 
 
   <!-- İLLER KATEGORİSİ EN ALTA -->
