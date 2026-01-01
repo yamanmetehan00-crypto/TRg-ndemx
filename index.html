@@ -194,27 +194,12 @@ links.forEach(link => {
     }  
 });  
   
-if(weatherLink){  
-    // Masaüstü için basılı tutma  
-    weatherLink.addEventListener('mousedown', function(e) {  
-        pressTimer = setTimeout(function() {  
-            window.location.href = "tutu-macera.html"; // Oyun HTML'i  
-        }, 1500); // 1,5 saniye basılı tutunca  
-    });  
-  
     weatherLink.addEventListener('mouseup', function(e) {  
         clearTimeout(pressTimer);  
     });  
   
     weatherLink.addEventListener('mouseleave', function(e) {  
         clearTimeout(pressTimer);  
-    });  
-  
-    // Dokunmatik ekran için basılı tutma  
-    weatherLink.addEventListener('touchstart', function(e) {  
-        pressTimer = setTimeout(function() {  
-            window.location.href = "tutu-macera.html";  
-        }, 1500);  
     });  
   
     weatherLink.addEventListener('touchend', function(e) {  
@@ -502,18 +487,6 @@ document.querySelectorAll('#province-list a').forEach(a=>{
 
 loadNews();  
   
-</script>  <!-- Bildirim için HTML (body sonunda ekle) -->  <div id="locationNotification" style="display:none;"></div>  
-<audio id="notificationSound" src="images/ses.mp3" preload="auto"></audio>  <script>  
-window.addEventListener("load", () => {  
-  // Hoş geldiniz bildirimi  
-  const welcomeNotification = document.getElementById("welcome-notification");  
-  const welcomeSound = document.getElementById("welcome-sound");  
-  
-  setTimeout(() => {  
-    welcomeNotification.classList.add("show");   
-    setTimeout(() => {  
-      welcomeNotification.classList.remove("show");  
-  
     // Son haberi al  
     let latestNews;  
     try {  
@@ -550,7 +523,6 @@ Object.assign(notification.style, {
         minWidth:"300px"  
       });  
   
-      sound.play();  
       // 5 saniye sonra kaybolsun  
       setTimeout(()=>{ notification.style.display="none"; }, 5000);  
     }  
