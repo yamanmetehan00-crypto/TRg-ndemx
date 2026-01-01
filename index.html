@@ -947,6 +947,33 @@ fetch("data/news.json") // JSON dosya yolunu kendi yapına göre düzenle
     });
   });
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "GündemX",
+  "url": "https://www.gundemx.online/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://www.gundemx.online/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "GündemX",
+  "url": "https://www.gundemx.online/",
+  "logo": "https://www.gundemx.online/logo.png",
+  "sameAs": [
+    "https://www.instagram.com/",
+    "https://www.facebook.com/"
+  ]
+}
+</script>
 
 </body>
 </html>
