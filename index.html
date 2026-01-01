@@ -219,6 +219,74 @@ footer{background:var(--dark);color:#aaa;padding:20px;text-align:center;font-siz
   text-decoration: none;
   color: inherit;
 }
+/* === ANA SAYFA KATEGORİ KARTLARI === */
+
+.categories-section {
+  margin: 35px 0;
+}
+
+.categories-section h2 {
+  font-size: 22px;
+  margin-bottom: 18px;
+  color: #0b3c5d;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.category-box {
+  background: linear-gradient(135deg, #ffffff, #f4f8fb);
+  border: 1px solid #e3edf5;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 6px 18px rgba(11, 60, 93, 0.08);
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.category-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right, #1e88e5, #42a5f5);
+}
+
+.category-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(11, 60, 93, 0.15);
+}
+
+.category-box h3 {
+  font-size: 17px;
+  color: #1e88e5;
+  margin-bottom: 10px;
+}
+
+.category-box strong {
+  display: block;
+  font-size: 15px;
+  margin-bottom: 8px;
+  color: #222;
+}
+
+.category-box p {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+}
+
+.category-box a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
 
 </style>
 </head>
