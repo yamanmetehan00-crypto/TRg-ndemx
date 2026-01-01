@@ -570,9 +570,7 @@ async function loadNews(){
     document.getElementById("news-container").innerHTML = "<p>Haberler yüklenemedi.</p>";
   }
 }
-</script>
 
-<script>
 // İl tıklamaları
 document.querySelectorAll('#province-list a').forEach(a=>{
   a.addEventListener('click',()=>{ window.location.href=`il.html?id=${a.dataset.city}`; });
