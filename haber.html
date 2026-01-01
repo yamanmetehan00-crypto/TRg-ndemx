@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
+<meta name="google-adsense-account" content="ca-pub-1201412624479751">
 <meta charset="UTF-8">
 <title>Haber – GündemX</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- Adsense Script -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1201412624479751"
-     crossorigin="anonymous"></script>
 
 <style>
 body{
@@ -163,17 +160,6 @@ h1{
   display:block;
 }
 
-/* KAR YAĞIŞI */
-.snowflake{
-  position:fixed; top:-10px; z-index:9999; user-select:none;
-  color:#fff; font-size:1em; pointer-events:none;
-  animation-name:fall; animation-duration:10s; animation-iteration-count:infinite;
-}
-@keyframes fall{
-  0%{transform:translateY(0);}
-  100%{transform:translateY(100vh);}
-}
-
 /* MUTUBOT */
 #mutubot{
   position:fixed; bottom:20px; right:20px; width:50px; height:50px; border-radius:50%; background:#0066ff;
@@ -228,35 +214,11 @@ h1{
   <img id="newsImage" class="news-image" src="">
   <div class="category" id="newsCategory"></div>
   <h1 id="newsTitle"></h1>
-  <div class="meta" id="newsMeta"></div>
 
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1201412624479751"
-     crossorigin="anonymous"></script>
-<!-- Haber2 -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-1201412624479751"
-     data-ad-slot="8301451752"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+<div class="meta" id="newsMeta"></div>
+<div class="content" id="newsContent"></div>
 
-  <div class="content" id="newsContent"></div>
 
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1201412624479751"
-     crossorigin="anonymous"></script>
-<!-- Haber2 -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-1201412624479751"
-     data-ad-slot="2007506147"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
 
   <div id="social-share">
     <strong>Paylaş: </strong>
@@ -430,49 +392,7 @@ function createSnow(){
 }
 setInterval(createSnow,200);
 
-// MUTUBOT
-const bot=document.createElement('div');
-bot.id='mutubot';
-bot.innerHTML='<img src="https://cdn-icons-png.flaticon.com/512/4712/4712043.png">';
-document.body.appendChild(bot);
-
-const botWindow=document.createElement('div');
-botWindow.id='mutubot-window';
-botWindow.innerHTML=`
-<div id="mutubot-window-header">MutuBot</div>
-<div id="mutubot-window-body"></div>
-<div id="mutubot-typing">Yazıyor...</div>
-<div id="mutubot-window-footer">
-  <input id="mutubot-input" placeholder="Bir şey sor...">
-  <button id="mutubot-send">Gönder</button>
-</div>
-`;
-document.body.appendChild(botWindow);
-
-bot.addEventListener('click',()=>{botWindow.style.display=botWindow.style.display==='flex'?'none':'flex';});
-const botBody=document.getElementById('mutubot-window-body');
-const botInput=document.getElementById('mutubot-input');
-const botSend=document.getElementById('mutubot-send');
-const botTyping=document.getElementById('mutubot-typing');
-
-function botReply(msg){
-  botTyping.style.display='block';
-  setTimeout(()=>{
-    botTyping.style.display='none';
-    let response='Merhaba! Haberlerle ilgili bir şey sorabilirsiniz. Örn: "Son haber nedir?"';
-    const p=document.createElement('p'); p.innerText=response;
-    botBody.appendChild(p);
-    botBody.scrollTop=botBody.scrollHeight;
-  },500);
-}
-
-botSend.addEventListener('click',()=>{
-  const msg=botInput.value.trim(); if(!msg) return;
-  botInput.value=''; botReply(msg);
-});
-botInput.addEventListener('keypress',e=>{if(e.key==='Enter'){botSend.click(); e.preventDefault();}});
-
-// ALT HIZLI BUTONLAR
+// JS
 const quickButtons=document.createElement('div');
 quickButtons.id='quick-buttons';
 quickButtons.innerHTML=`
