@@ -540,25 +540,9 @@ fetch("data/news.json")
   <a href="privacy.html">Gizlilik Politikası</a> |  
   <a href="contact.html">İletişim</a>  
 © 2025 GündemX – Gündeme Net Bakış<br>Tarafsız • Halk Odaklı • Sade Habercilik  
-</footer>  <!-- MutuBot -->  <div id="mutubot">  
-  <img src="https://cdn-icons-png.flaticon.com/512/4712/4712043.png" alt="MutuBot">  
-</div>  
-<div id="mutubot-window">  
-  <div id="mutubot-window-header">MutuBot</div>  
-  <div id="mutubot-window-body"></div>  
-  <div id="mutubot-typing">Yazıyor...</div>  
-  <div id="mutubot-window-footer">  
-    <input id="mutubot-input" placeholder="Bir şey sor...">  
-    <button id="mutubot-send">Gönder</button>  
-  </div>  
-</div  <!-- Alt Hızlı Butonlar (Botun tam üstünde, logo ile) -->  <div id="quick-buttons">  
-  <div class="quick-btn whatsapp" onclick="window.open('https://whatsapp.com/channel/0029VbBnOuTLY6dEuRZX022q/')">  
-    <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="WhatsApp" style="width:24px;height:24px;">  
-  </div>  
-  <div class="quick-btn instagram" onclick="window.open('https://instagram.com/','_blank')">  
-    <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" style="width:24px;height:24px;">  
-  </div>  
-</div>  <style>  
+</footer>   
+</div 
+<style>  
 #quick-buttons{  
   position:fixed;  
   bottom:85px; /* bot ile aynı hizada, tam üstünde */  
@@ -575,49 +559,8 @@ fetch("data/news.json")
 .quick-btn.whatsapp{background:#25d366;}  
 .quick-btn.instagram{background:#c32aa3;}  
 .quick-btn img{width:28px;height:28px;}  
-</style>  <!-- Canlı kullanıcı sayısı (sadece sayı) -->  <div id="liveUsers" style="  
-    position: fixed;  
-    top: 10px;  
-    left: 10px;  
-    background: rgba(0,0,0,0.3);  
-    color: #fff;  
-    padding: 10px 10px;  
-    border-radius: 15px;  
-    font-weight: bold;  
-    font-size: 12px;  
-    display: flex;  
-    align-items: center;  
-    z-index: 10000;  
-">  
-    <div id="redDot" style="  
-        width: 6px;  
-        height: 6px;  
-        background: red;  
-        border-radius: 50%;  
-        margin-right: 6px;  
-        animation: blink 1s infinite;  
-    "></div>  
-    <span id="userCount">0 Kişi Sitede</span>  
-</div>  <style>  
-@keyframes blink {  
-    0%, 50%, 100% { opacity: 1; }  
-    25%, 75% { opacity: 0; }  
-}  
-</style>  <script>  
-function updateUserCount() {  
-    const count = Math.floor(Math.random() * (100 - 20 + 1)) + 20; // 20–100 arası  
-    document.getElementById("userCount").innerText = count + " kişi sitede";  
-}  
-  
-// İlk başta göster  
-updateUserCount();  
-  
-// 30 dakikada bir güncelle  
-setInterval(updateUserCount, 30 * 60 * 1000);  
-</script>  <!-- HOŞGELDİN BİLDİRİMİ -->  <div id="welcome-notification">  
-  <span>📩</span> Sitemize Hoş Geldiniz!  
-</div>  
-<audio id="welcome-sound" src="images/ses.mp3" preload="auto"></audio>  <script>  
+</style>  
+<script>  
 // LOADING  
 window.addEventListener("load",()=>{  
   setTimeout(()=>{  
@@ -626,19 +569,7 @@ window.addEventListener("load",()=>{
     setTimeout(()=>l.style.display="none",300);  
   },1200);  
 });  
-  
-// Hoş Geldiniz bildirimi  
-window.addEventListener("load", () => {  
-  setTimeout(() => {  
-    const notification = document.getElementById("welcome-notification");  
-    const sound = document.getElementById("welcome-sound");  
-    notification.classList.add("show");  
-    sound.play();  
-    setTimeout(() => {  
-      notification.classList.remove("show");  
-    }, 4000);  
-  }, 1500);  
-});  
+
   
 // Döviz  
 async function getCurrencies(){  
@@ -696,50 +627,7 @@ async function loadNews(){
     document.getElementById("news-container").innerHTML = "<p>Haberler yüklenemedi.</p>";  
   }  
 }  
-  
-  
-// MutuBot  
-const bot=document.getElementById('mutubot');  
-const botWindow=document.getElementById('mutubot-window');  
-const botBody=document.getElementById('mutubot-window-body');  
-const botInput=document.getElementById('mutubot-input');  
-const botSend=document.getElementById('mutubot-send');  
-const botTyping=document.getElementById('mutubot-typing');  
-  
-bot.addEventListener('click',()=>{botWindow.style.display=botWindow.style.display==='flex'?'none':'flex';});  
-  
-function botReply(msg){  
-  botTyping.style.display='block';  
-  setTimeout(()=>{  
-    botTyping.style.display='none';  
-    let response='';  
-    const newsList=window.latestNewsList || [];  
-    const lower=msg.toLowerCase();  
-  
-    if(/haber|son dakika|gündem/.test(lower)){  
-      if(newsList.length===0) response='Şu anda haber bulunmamaktadır.';  
-      else{  
-        const news=newsList.shift();  
-        response=`Son haber: ${news.title}\nAçıklama: ${news.content}`;  
-      }  
-    } else if(/küfür|hakaret|salak|aptal/.test(lower)){  
-      response='Lütfen nazik bir dille sorunuz, hakaret kabul edilmiyor.';  
-    } else {  
-      response='Merhaba! Haberlerle ilgili bir şey sorabilirsiniz. Örn: "Son haber nedir?"';  
-    }  
-  
-    const p=document.createElement('p'); p.innerText=response;  
-    botBody.appendChild(p);  
-    botBody.scrollTop=botBody.scrollHeight;  
-  },500);  
-}  
-  
-botSend.addEventListener('click',()=>{  
-  const msg=botInput.value.trim(); if(!msg) return;  
-  botInput.value=''; botReply(msg);  
-});  
-botInput.addEventListener('keypress',e=>{if(e.key==='Enter'){botSend.click(); e.preventDefault();}});  
-  
+
 // İl tıklamaları  
 document.querySelectorAll('#province-list a').forEach(a=>{  
   a.addEventListener('click',()=>{ window.location.href=`il.html?id=${a.dataset.city}`; });  
