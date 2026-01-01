@@ -745,21 +745,6 @@ document.querySelectorAll('#province-list a').forEach(a=>{
   a.addEventListener('click',()=>{ window.location.href=`il.html?id=${a.dataset.city}`; });  
 });  
   
-// Kar yağışı  
-function createSnow(){  
-  const snow=document.createElement('div');  
-  snow.className='snowflake';  
-  snow.style.left=Math.random()*window.innerWidth+'px';  
-  snow.style.fontSize=(Math.random()*10+10)+'px';  
-  snow.style.animationDuration=(Math.random()*5+5)+'s';  
-  snow.innerText='❄';  
-  document.body.appendChild(snow);  
-  setTimeout(()=>snow.remove(),10000);  
-}  
-setInterval(createSnow,200);  
-  
-loadNews();  
-  
 </script>  <!-- Bildirim için HTML (body sonunda ekle) -->  <div id="locationNotification" style="display:none;"></div>  
 <audio id="notificationSound" src="images/ses.mp3" preload="auto"></audio>  <script>  
 window.addEventListener("load", () => {  
@@ -768,37 +753,9 @@ window.addEventListener("load", () => {
   const welcomeSound = document.getElementById("welcome-sound");  
   
   setTimeout(() => {  
-    welcomeNotification.classList.add("show");  
-    welcomeSound.play();  
+    welcomeNotification.classList.add("show");   
     setTimeout(() => {  
       welcomeNotification.classList.remove("show");  
-      // Hoş geldiniz bildirimi kaybolduktan sonra konum bildirimi  
-      showLocalNewsNotification();  
-    }, 4000);  
-  }, 1500);  
-  
-  async function showLocalNewsNotification() {  
-    const notification = document.getElementById("locationNotification");  
-    const sound = document.getElementById("notificationSound");  
-    let city = "İstanbul"; // varsayılan  
-  
-    // Kullanıcının konumunu al  
-    if (navigator.geolocation) {  
-      try {  
-        const pos = await new Promise((resolve, reject) => {  
-          navigator.geolocation.getCurrentPosition(resolve, reject, {timeout:8000});  
-        });  
-        const lat = pos.coords.latitude;  
-        const lon = pos.coords.longitude;  
-  
-        // OpenStreetMap Nominatim API ile şehir bul  
-        const res = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`);  
-        const data = await res.json();  
-        city = data.address.city || data.address.town || data.address.village || city;  
-      } catch(e) {  
-        console.warn("Konum alınamadı, varsayılan İstanbul kullanılıyor.", e);  
-      }  
-    }  
   
     // Son haberi al  
     let latestNews;  
