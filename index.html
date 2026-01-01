@@ -193,23 +193,7 @@ links.forEach(link => {
         weatherLink = link;  
     }  
 });  
-  
-    weatherLink.addEventListener('mouseup', function(e) {  
-        clearTimeout(pressTimer);  
-    });  
-  
-    weatherLink.addEventListener('mouseleave', function(e) {  
-        clearTimeout(pressTimer);  
-    });  
-  
-    weatherLink.addEventListener('touchend', function(e) {  
-        clearTimeout(pressTimer);  
-    });  
-  
-    weatherLink.addEventListener('touchmove', function(e) {  
-        clearTimeout(pressTimer);  
-    });  
-}  
+
 </script>  <section class="category-section">  
   <h2 class="section-title">Kategoriler</h2>  
   <div class="category-grid" id="categoryGrid"></div>  
@@ -487,6 +471,18 @@ document.querySelectorAll('#province-list a').forEach(a=>{
 
 loadNews();  
   
+</script>  <!-- Bildirim için HTML (body sonunda ekle) -->  <div id="locationNotification" style="display:none;"></div>  
+<audio id="notificationSound" src="images/ses.mp3" preload="auto"></audio>  <script>  
+window.addEventListener("load", () => {  
+  // Hoş geldiniz bildirimi  
+  const welcomeNotification = document.getElementById("welcome-notification");  
+  const welcomeSound = document.getElementById("welcome-sound");  
+  
+  setTimeout(() => {  
+    welcomeNotification.classList.add("show");   
+    setTimeout(() => {  
+      welcomeNotification.classList.remove("show");  
+  
     // Son haberi al  
     let latestNews;  
     try {  
@@ -523,6 +519,7 @@ Object.assign(notification.style, {
         minWidth:"300px"  
       });  
   
+      sound.play();  
       // 5 saniye sonra kaybolsun  
       setTimeout(()=>{ notification.style.display="none"; }, 5000);  
     }  
