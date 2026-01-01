@@ -1,97 +1,97 @@
 [
+{
+  "id": 1,
+  "title": "2025 Türkiye Ekonomisi: Dalgalı Seyir ve Öne Çıkan Gelişmeler",
+  "city": "Ankara",
+  "category": "Gündem",
+  "time": "27 Aralık 2025",
+  "image": "images/ekonomi.jpg",
+  "content": "2025 yılı Türkiye ekonomisi açısından hareketli ve zaman zaman belirsizliklerin yaşandığı bir dönem oldu. Döviz kurları, enflasyon ve finans piyasalarındaki gelişmeler yıl boyunca yakından takip edildi.\n\nBorsa İstanbul’da bazı sektörlerde yükselişler görülürken, genel tabloda temkinli bir seyir öne çıktı. Döviz kurları dalgalı bir görünüm sergilerken, Merkez Bankası’nın aldığı kararlar piyasaların yönü üzerinde belirleyici oldu.\n\nEnflasyon yılın ilk aylarında baskı oluşturdu. İkinci yarıda ise beklentilerde sınırlı bir toparlanma dikkat çekti. İstihdam tarafında bazı sektörlerde artış yaşanırken, altın ve kıymetli metaller güvenli liman arayışında öne çıktı.\n\nGenel değerlendirmede 2025 yılı, Türkiye ekonomisinin denge arayışının sürdüğü bir yıl olarak kayıtlara geçti."
+}, 
   {
-    "id": 1,
-    "title": "2025 Türkiye Ekonomisi: Dalgalı Bir Yıl ve Yatırımcıların Merakla Takip Ettiği Gelişmeler",
-    "city": "Ankara",
-    "category": "Gündem",
-    "time": "27 Aralık 2025",
-    "image": "images/ekonomi.jpg",
-    "content": "2025 yılı Türkiye ekonomisi için dalgalı, sürprizlerle dolu ve dikkat çekici bir yıl oldu. Borsa İstanbul, yatırımcı beklentilerini tam olarak karşılayamasa da bazı sektörlerde güçlü hareketler gözlendi. Döviz kurları yıl boyunca dalgalı bir seyir izledi; dolar yükseliş gösterirken euro tarafında zaman zaman düşüşler görüldü. Merkez Bankası ve piyasa raporlarına göre enflasyon yıl içinde bazı dönemlerde baskı oluşturdu, ancak özellikle ikinci yarıda enflasyon beklentilerinde hafif bir iyileşme görüldü. İşsizlik oranları dalgalansa da bazı sektörlerde istihdam artışı dikkat çekti. 2025, altın ve diğer kıymetli metallerin tarihi zirvelere ulaştığı bir yıl olarak kayıtlara geçti. Tüm gelişmeler Türkiye ekonomisinin global ve yerel risklerle fırsatları dengelemeye çalıştığını gösteriyor."
-  },
+  "id": 2,
+  "title": "Ankara’da Şehir Merkezinde Trafik Düzenlemesi",
+  "city": "Ankara",
+  "category": "Trafik",
+  "time": "27 Aralık 2025",
+  "image": "images/trafik.jpg",
+  "content": "Ankara’da şehir merkezini kapsayan yeni trafik düzenlemeleri 27 Aralık 2025 itibarıyla uygulanmaya başlandı. Bazı cadde ve sokaklarda geçici kapanmalar yapıldı.\n\nYetkililer, özellikle Ulus, Eski TBMM çevresi ve Dikmen hattında sürücülerin dikkatli olması gerektiğini belirtti. Trafik akışının kontrollü şekilde sağlanacağı ifade edildi.\n\nVatandaşlara toplu taşıma araçlarını tercih etmeleri ve alternatif güzergâhları kullanmaları önerildi. Düzenlemenin geçici olduğu bildirildi."
+},
   {
-    "id": 2,
-    "title": "Ankara’da Trafik Değişiyor!!",
-    "city": "Ankara",
-    "category": "Gündem",
-    "time": "27 Aralık 2025",
-    "image": "images/trafik.jpg",
-    "content": "Ankara’da 27 Aralık 2025 itibariyle şehir merkezinde önemli trafik düzenlemeleri yürürlüğe giriyor. Yetkililer, bazı ana cadde ve sokakların geçici olarak trafiğe kapatılacağını açıkladı. Vatandaşlar ve sürücüler, özellikle Ulus bölgesi, Eski TBMM çevresi ve Dikmen hattı gibi yoğun güzergahlarda dikkatli olmaları konusunda uyarılıyor. Toplu taşımayı tercih etmeleri ve alternatif güzergahlar kullanmaları öneriliyor. Trafik akışı, etkinlik süresince kontrollü şekilde sağlanacak."
-  },
+  "id": 4,
+  "title": "İstanbul Barajlarında Doluluk Oranı Yükseliyor",
+  "city": "İstanbul",
+  "category": "Gündem",
+  "time": "27 Aralık 2025",
+  "image": "images/barajlar.jpg",
+  "content": "İstanbul’da etkili olan yağışların ardından barajlardaki doluluk oranları artış gösterdi. Özellikle Alibeyköy, Ömerli ve Terkos barajlarında su seviyelerinin yükseldiği bildirildi.\n\nYetkililer, bu artışın şehir için olumlu bir gelişme olduğunu belirtti. Ancak su tasarrufunun öneminin devam ettiği vurgulandı.\n\nÖnümüzdeki günlerde yağışların sürmesi beklenirken, baraj doluluk oranlarının daha da artabileceği ifade ediliyor."
+},
   {
-    "id": 4,
-    "title": "İstanbul Barajları Doluyor!",
-    "city": "İstanbul",
-    "category": "Gündem",
-    "time": "27 Aralık 2025",
-    "image": "images/barajlar.jpg",
-    "content": "İstanbul’un susuzluk endişesiyle beklediği kış yağmurları şehirde yüzleri güldürdü. Barajlardaki doluluk oranları yoğun yağışlarla hızla yükseldi. Uzmanlar, özellikle Alibeyköy, Ömerli ve Terkos barajlarında su seviyelerinin kritik eşiklerin üzerine çıktığını belirtiyor. Yetkililer, bu artışın İstanbul’un su ihtiyacını uzun bir süre güvence altına alacağını vurgularken, vatandaşlara tasarrufun önemini hatırlatıyor. Önümüzdeki günlerde yağışların devam etmesi bekleniyor ve barajların doluluk oranının daha da yükselmesi muhtemel."
-  },
+  "id": 5,
+  "title": "İsrail Basınında Türkiye’ye Yönelik Değerlendirmeler",
+  "city": "Ankara",
+  "category": "Siyaset",
+  "time": "27 Aralık 2025",
+  "image": "images/basinisr.jpg",
+  "content": "İsrail basınında son günlerde Türkiye’nin bölgesel politikalarıyla ilgili değerlendirmelere yer veriliyor. Bazı analizlerde Türkiye’nin diplomatik ve askeri hamleleri ele alınıyor.\n\nSuriye ve Doğu Akdeniz’deki gelişmeler, İsrail medyasında dikkat çeken başlıklar arasında yer aldı. Türkiye’nin artan etkinliğinin bölgesel dengelere etkisi tartışılıyor.\n\nYapılan yorumlarda, iki ülke arasındaki ilişkilerin geleceğine dair farklı görüşler öne çıkıyor."
+},
   {
-    "id": 5,
-    "title": "İsrail Basını Türkiye'yi Konuşuyor!!",
-    "city": "Ankara",
-    "category": "Siyaset",
-    "time": "27 Aralık 2025",
-    "image": "images/basinisr.jpg",
-    "content": "İsrail medyasında son günlerde Türkiye’yi stratejik bir tehdit olarak değerlendiren yazılar ve analizler dikkat çekiyor. Bazı köşe yazarları, Türkiye’nin hem bölgesel hem de uluslararası politikadaki artan etkisini öne çıkararak, İsrail’in güvenliği açısından olası riskleri masaya yatırıyor. Suriye ve Doğu Akdeniz’deki hamleler, radar sistemleri konuşlandırma planları ve diplomatik girişimler İsrail medyasında “Türkiye birincil tehdit” olarak yorumlanıyor. Analistler, Türkiye’nin artan etkinliğinin İsrail’in bölgedeki stratejik hesaplarını zorlaştırabileceğini belirtiyor."
-  },
+  "id": 6,
+  "title": "İstanbul Merkezli Soruşturmada Yeni Gelişmeler",
+  "city": "İstanbul",
+  "category": "Gündem",
+  "time": "27 Aralık 2025",
+  "image": "images/fenomenist.jpg",
+  "content": "İstanbul Cumhuriyet Başsavcılığı tarafından yürütülen bir soruşturma kapsamında İstanbul merkezli olmak üzere farklı illerde operasyonlar gerçekleştirildi. Çalışmalar çerçevesinde çok sayıda kişi hakkında işlem yapıldığı bildirildi.\n\nYetkililerden yapılan bilgilendirmeye göre soruşturma, uyuşturucu maddeyle bağlantılı iddialar ve bazı organize suç başlıklarını kapsıyor. Operasyonlar İstanbul’un yanı sıra Muğla, Adana ve Antalya’da da yürütüldü.\n\nSoruşturmanın devam ettiği belirtilirken, süreçle ilgili yeni gelişmelerin resmi açıklamalarla paylaşılacağı ifade edildi."
+},
+{
+  "id": 7,
+  "title": "Pazar Günleri Marketlerle İlgili İddialar Gündemde",
+  "city": "İstanbul",
+  "category": "Gündem",
+  "time": "27 Aralık 2025",
+  "image": "images/marketler2025.jpg",
+  "content": "Pazar günleri marketlerin kapatılacağı yönündeki iddialar kamuoyunda tartışma konusu oldu. Konuyla ilgili şu ana kadar resmi bir karar açıklanmadı.\n\nBazı çevreler uygulamanın çalışanların dinlenme hakkı açısından değerlendirilebileceğini savunurken, perakende sektöründe olası ekonomik etkiler de gündeme geldi.\n\nYetkililerden yapılacak resmi açıklamaların takip edilmesi gerektiği vurgulanıyor."
+},
+{
+  "id": 8,
+  "title": "Meteoroloji 38 İl İçin Yağış ve Kar Uyarısında Bulundu",
+  "city": "Türkiye Geneli",
+  "category": "Meteoroloji",
+  "time": "27 Aralık 2025",
+  "image": "images/sdyagis.jpg",
+  "content": "Meteoroloji Genel Müdürlüğü, yaklaşan hava koşulları nedeniyle 38 il için kuvvetli yağış ve kar uyarısı yaptı. Uyarılar sarı ve turuncu kod kapsamında yayımlandı.\n\nMarmara, Karadeniz, İç Anadolu ve Doğu bölgelerinde yağmur ve yüksek kesimlerde kar yağışı bekleniyor. Yetkililer, özellikle sürücülerin buzlanma ve don riskine karşı dikkatli olmaları gerektiğini belirtti.\n\nHava koşullarının önümüzdeki günlerde de etkisini sürdürebileceği ifade edildi."
+}, 
   {
-    "id": 6,
-    "title": "Fenomenler Gözaltında!!!",
-    "city": "İstanbul",
-    "category": "Gündem",
-    "time": "27 Aralık 2025",
-    "image": "images/fenomenist.jpg",
-    "content": "İstanbul Cumhuriyet Başsavcılığı’nın yürüttüğü geniş çaplı uyuşturucu soruşturmasında yeni bir gelişme yaşandı. İstanbul merkezli düzenlenen eş zamanlı operasyonda toplam 20 şüpheli gözaltına alındı; 17 kişi tutuklanarak cezaevine gönderildi. Operasyon İstanbul’un yanı sıra Muğla, Adana ve Antalya’da da gerçekleştirildi. Soruşturma kapsamında uyuşturucu madde imal ve ticareti, kullanımını kolaylaştırma ve fuhşa teşvik gibi suçlamalar yer alıyor. Gözaltına alınan isimler arasında iş insanları, modeller ve sosyal medya fenomenleri bulunuyor. Sosyal medya fenomeni Ezgi Fındık hakkında yakalama kararı çıkarıldı."
-  },
+  "id": 9,
+  "title": "Adana’da Gece Saatlerinde Yaşanan Olayla İlgili Soruşturma",
+  "city": "Adana",
+  "category": "Gündem",
+  "time": "27 Aralık 2025",
+  "image": "images/haber6_9.jpg",
+  "content": "Adana’nın Yüreğir ilçesinde gece saatlerinde yaşanan bir olayla ilgili geniş çaplı soruşturma başlatıldı. Olayın ardından güvenlik ekipleri bölgede inceleme yaptı.\n\nYetkililerden alınan bilgilere göre yaşanan olayda can kaybı ve yaralanmalar meydana geldi. Soruşturma kapsamında bazı kişiler gözaltına alındı.\n\nOlayın nedenine ilişkin çalışmalar sürerken, sürecin resmi açıklamalarla netlik kazanacağı belirtildi."
+},
   {
-    "id": 7,
-    "title": "Pazar Günü Marketler Kapanacak!!",
-    "city": "İstanbul",
-    "category": "Gündem",
-    "time": "27 Aralık 2025",
-    "image": "images/marketler2025.jpg",
-    "content": "Pazar günü marketlerin kapatılacağı iddiaları gündemi meşgul ediyor. Konuyla ilgili henüz resmi açıklama yapılmamış olsa da vatandaşlar ve esnaf arasında tartışmalar başladı. Bazı uzmanlar, hafta sonu dinlenme hakkının korunması ve yoğun kalabalığın önlenmesi için marketlerin geçici olarak kapatılmasını öneriyor. Büyük perakende zincirleri ise ekonomik etkiler ve tedarik zinciri sorunları gerekçesiyle karşı çıkıyor. Resmi karar önümüzdeki günlerde duyurulacak. Vatandaşlar bu süreçte resmi açıklamalara dikkat etmeli."
-  },
+  "id": 10,
+  "title": "Adıyaman’da Trafik Kazası: Yaralılar Hastaneye Kaldırıldı",
+  "city": "Adıyaman",
+  "category": "Trafik",
+  "time": "27 Aralık 2025",
+  "image": "images/haber6_10.jpg",
+  "content": "Adıyaman’ın Gölbaşı ilçesinde meydana gelen trafik kazasında üç kişi yaralandı. Sabah saatlerinde yaşanan kazada iki otomobilin çarpıştığı öğrenildi.\n\nOlay yerine gelen sağlık ekipleri, yaralılara ilk müdahaleyi yaptıktan sonra hastaneye sevk etti. Yaralılardan birinin durumunun yakından takip edildiği belirtildi.\n\nPolis ekipleri kazayla ilgili inceleme başlatırken, bölgede trafik akışı kontrollü şekilde sağlandı."
+},
   {
-    "id": 8,
-    "title": "Meteorolojiden 38 İl İçin Kuvvetli Yağış ve Kar Uyarısı!",
-    "city": "Türkiye Geneli",
-    "category": "Gündem",
-    "time": "27 Aralık 2025",
-    "image": "images/sdyagis.jpg",
-    "content": "Meteoroloji Genel Müdürlüğü, Türkiye genelinde etkili olması beklenen hava koşulları nedeniyle 38 il için sarı ve turuncu kodlu kuvvetli yağış ve kar uyarısı yayınladı. Özellikle Marmara, Karadeniz, İç Anadolu ve Doğu bölgelerinde yağmur, gök gürültülü sağanak yağış ve yüksek kesimlerde kar yağışı bekleniyor. Sürücüler buzlanma ve don olaylarına karşı tedbirli olmaya çağrıldı."
-  },
-  {
-    "id": 9,
-    "title": "Adana’da Sokak Ortasında Kanlı Kavga: 2 Genç Hayatını Kaybetti, 1 Kişi Yaralı!",
-    "city": "Adana",
-    "category": "Gündem",
-    "time": "27 Aralık 2025",
-    "image": "images/haber6_9.jpg",
-    "content": "Adana’nın Yüreğir ilçesinde gece saatlerinde bir kahvehanede başlayan tartışma, kısa sürede sokak ortasında silahlı kavgaya dönüştü. Tabancaların konuştuğu çatışmada Tolgahan Akyüz (25) ve Berdan Balsak (22) hayatını kaybederken, Bekir A. (25) çeşitli yerlerinden yaralandı. Olay sonrası polis ekipleri hızla müdahale etti ve toplam 9 kişi gözaltına alındı. Olayın nedeni henüz netleşmezken, çevre sakinleri yaşanan şiddet sahnelerinden derin şekilde etkilendi."
-  },
-  {
-    "id": 10,
-    "title": "Adıyaman’da Feci Trafik Kazası: 3 Kişi Yaralandı, Biri Ağır!",
-    "city": "Adıyaman",
-    "category": "Gündem",
-    "time": "27 Aralık 2025",
-    "image": "images/haber6_10.jpg",
-    "content": "Adıyaman’ın Gölbaşı ilçesinde korkunç bir trafik kazası yaşandı. Sabah saatlerinde iki otomobilin çarpışması sonucu meydana gelen kazada sürücüler ve araçta bulunan bir yolcu yaralandı. Yaralılardan birinin sağlık durumu ağır olduğu bildirildi. Olay yerine sevk edilen 112 acil sağlık ekipleri, yaralılara ilk müdahaleyi yaparak hızla Gölbaşı Devlet Hastanesi’ne kaldırdı. Polis ekipleri kazayla ilgili geniş çaplı soruşturma başlattı ve karayolu güvenlik tedbirleri artırıldı. Bu üzücü gelişme, bölgede trafik güvenliği tartışmalarını yeniden gündeme getirdi."
-  },
-  {
-    "id": 11,
-    "title": "Afyon’da İsyan: Elektrikler Kesildi, Su Birikiyor — Vatandaşlar Çaresiz!",
-    "city": "Afyonkarahisar",
-    "category": "Gündem",
-    "time": "27 Aralık 2025",
-    "image": "images/haber6_11.jpg",
-    "content": "Afyonkarahisar’ın Selçuklu Mahallesi sakinleri, yıllardır süren elektrik kesintileri ve biriken yağmur sularıyla mücadele ediyor. Şehir merkezinde çarşı bölgesinde gün içinde defalarca yaşanan elektrik kopmaları, esnaf ve halkın tepkisini çekti. Birçok mahallede altyapı yetersizliği nedeniyle oluşan su birikintileri, yolları kullanılamaz hale getirirken, vatandaşlar yetkililere defalarca başvurmalarına rağmen çözüm üretilmediğini belirtti. Esnaf cihazlarının zarar gördüğünü, aileler ise gündelik yaşamlarının zorlaştığını ifade ediyor. Yetkililerden somut açıklama bekleniyor."
-  },
+  "id": 11,
+  "title": "Afyonkarahisar’da Elektrik Kesintileri ve Altyapı Sorunları Gündemde",
+  "city": "Afyonkarahisar",
+  "category": "Gündem",
+  "time": "27 Aralık 2025",
+  "image": "images/haber6_11.jpg",
+  "content": "Afyonkarahisar’da bazı mahallelerde yaşanan elektrik kesintileri ve altyapı sorunları vatandaşların tepkisine neden oldu. Gün içinde yaşanan kesintiler günlük yaşamı olumsuz etkiledi.\n\nYağışların ardından oluşan su birikintileri de bazı bölgelerde ulaşımı zorlaştırdı. Esnaf ve mahalle sakinleri, sorunların kalıcı şekilde çözülmesini istiyor.\n\nYetkililerden konuyla ilgili yapılacak çalışmaların sürdüğü yönünde açıklama bekleniyor."
+},
   {
     "id": 12,
-    "title": "Ağrı’da Büyük Operasyon: 34 Kesinleşmiş Hükümlü Yakalandı!",
+    "title": "Ağrı’da Büyük Operasyon: 34 Kesinleşmiş Hükümlü Yakalandı",
     "city": "Ağrı",
     "category": "Gündem",
     "time": "27 Aralık 2025",
@@ -109,7 +109,7 @@
   },
   {
     "id": 15,
-    "title": "Antalya’da Yürekler Ağza Geldi: 6 Yaşındaki Eyüp Foseptiğe Düştü, Büyük Kurtarma!",
+    "title": "Antalya’da Yürekler Ağza Geldi: 6 Yaşındaki Eyüp Foseptiğe Düştü, Büyük Kurtarma",
     "city": "Antalya",
     "category": "Gündem",
     "time": "27 Aralık 2025",
@@ -118,7 +118,7 @@
   },
   {
     "id": 16,
-    "title": "Şehitkamil Belediyesi’nden Gaziantep Tarihine Büyük Katkı: “Gaziantep Savaşı’nın İç Yüzü” Artık Herkesin!",
+    "title": "Şehitkamil Belediyesi’nden Gaziantep Tarihine Büyük Katkı: “Gaziantep Savaşı’nın İç Yüzü” Artık Herkesin",
     "city": "Gaziantep",
     "category": "Gündem",
     "time": "27 Aralık 2025",
@@ -127,16 +127,16 @@
   },
   {
     "id": 17,
-    "title": "Kastamonu’da Feci Trafik Kazası: Otomobil Tırın Altına Girdi — 1 Kişi Hayatını Kaybetti, 2’si Ağır Yaralandı!",
+    "title": "Kastamonu’da Feci Trafik Kazası: Otomobil Tırın Altına Girdi — 1 Kişi Hayatını Kaybetti, 2’si Ağır Yaralandı",
     "city": "Kastamonu",
-    "category": "Gündem",
+    "category": "Trafik",
     "time": "27 Aralık 2025",
     "image": "images/haber6_17.jpg",
     "content": "Kastamonu-Ankara kara yolunun Budamış Mahallesi kavşağında gece saatlerinde meydana gelen kazada, tomruk yüklü tırın dorsesine arkadan çarpan otomobilin içindekiler büyük tehlike atlattı. Çarpışmanın şiddetiyle otomobil tırın altında kalan araçta bulunanlardan 37 yaşındaki Mehmet Ali Furat olay yerinde hayatını kaybetti. Diğer iki kişi ise itfaiye ve sağlık ekiplerinin çabaları sonucu kurtarılarak Kastamonu Eğitim ve Araştırma Hastanesine kaldırıldı. Yaralıların durumunun ciddiyetini koruduğu bildirildi ve ekipler kazayla ilgili soruşturma başlattı."
   },
   {
     "id": 18,
-    "title": "Kocaeli’de Narkotik Operasyonu: Yunus Timleri Şüpheliyi Yakalandı — Uyuşturucu Maddeler Ele Geçirildi!",
+    "title": "Kocaeli’de Narkotik Operasyonu: Yunus Timleri Şüpheliyi Yakalandı — Uyuşturucu Maddeler Ele Geçirildi",
     "city": "Kocaeli",
     "category": "Gündem",
     "time": "27 Aralık 2025",
@@ -145,21 +145,12 @@
   },
   {
     "id": 23,
-    "title": "Zonguldak’ta Trafik Kazası: 3 Kişi Yaralı!",
+    "title": "Zonguldak’ta Trafik Kazası: 3 Kişi Yaralı",
     "city": "Zonguldak",
-    "category": "Gündem",
+    "category": "Trafik",
     "time": "28 Aralık 2025",
     "image": "images/haber_1.jpg",
     "content": "Zonguldak’ın Çaycuma ilçesinde sabah saatlerinde meydana gelen trafik kazasında 3 kişi yaralandı. Olay, şehir merkezine yakın ana yol üzerinde gerçekleşti ve iki aracın çarpışması sonucu trafiğe aksaklıklar yaşandı. Yaralılar, olay yerine sevk edilen sağlık ekipleri tarafından ambulanslarla Çaycuma Devlet Hastanesine kaldırıldı. Polis, kazanın meydana geldiği bölgedeki güvenlik önlemlerini artırırken, kazanın yol koşulları ve sürücülerin dikkatsizliği nedeniyle meydana gelmiş olabileceğini açıkladı. Yetkililer, sürücülerin özellikle kar yağışı ve kaygan yol şartları nedeniyle dikkatli olmaları gerektiğini vurguladı ve trafik akışının kontrollü bir şekilde sağlandığını belirtti."
-  },
-  {
-    "id": 24,
-    "title": "Ankara’da Sudan Egemenlik Konseyi Başkanı Burhan’ın Resmi Ziyareti",
-    "city": "Ankara",
-    "category": "Siyaset",
-    "time": "28 Aralık 2025",
-    "image": "images/haber_2.jpg",
-    "content": "Sudan Egemenlik Konseyi Başkanı General Abdel Fattah Burhan, Ankara’da resmi temaslarda bulundu. Ziyaret sırasında iki ülke arasında diplomatik ilişkiler, ekonomik işbirliği ve bölgesel güvenlik konuları detaylı şekilde ele alındı. Ankara yetkilileri, ziyaretin stratejik işbirliği için büyük bir fırsat olduğunu belirtirken, taraflar arasında uzun vadeli anlaşmaların temellerinin atılacağını açıkladı. Resmi görüşmelerin ardından düzenlenen ortak basın toplantısında, bölgesel meselelerde Türkiye-Sudan dayanışmasının önemi vurgulandı ve ilerleyen dönemde ikili ilişkilerin güçleneceğine dair mesajlar verildi."
   },
   {
     "id": 25,
@@ -174,7 +165,7 @@
     "id": 26,
     "title": "Kocaeli’de Yol Verme Kavgası: 4 Kişi Gözaltında",
     "city": "Kocaeli",
-    "category": "Gündem",
+    "category": "Trafik",
     "time": "28 Aralık 2025",
     "image": "images/haber_4.jpg",
     "content": "Kocaeli’de trafikte yaşanan yol verme meselesi, kısa sürede kavgaya dönüştü ve 4 kişi gözaltına alındı. Olay, şehir merkezine yakın yoğun trafiğin olduğu caddelerde meydana geldi. Kavga sırasında araçlar durdu ve çevredeki vatandaşlar büyük korku yaşadı. Polis ekipleri, olay yerine gelerek tarafları ayırdı ve adli işlem başlattı. Yetkililer, trafikte agresif davranışların ciddi kazalara yol açabileceğini belirterek sürücülere sakin olmaları ve trafikte dikkatli davranmaları konusunda uyarılarda bulundu. Olayın ardından trafik akışı kontrollü şekilde sağlandı."
@@ -190,7 +181,7 @@
   },
   {
     "id": 28,
-    "title": "Kocaeli Gebze’de Trafoda Ani Parlama Panik Yarattı",
+    "title": "Kocaeli Gebze’de Trafoda Ani Arıza Panik Yarattı",
     "city": "Kocaeli",
     "category": "Gündem",
     "time": "28 Aralık 2025",
@@ -208,7 +199,7 @@
   },
   {
     "id": 40,
-    "title": "Fatih Altaylı Tahliye Edildi: Kamuoyunda Geniş Yankı Uyandıran Süreçte Yeni Gelişme! ",
+    "title": "Fatih Altaylı Tahliye Edildi: Kamuoyunda Geniş Yankı Uyandıran Süreçte Yeni Gelişme ",
     "city": "İstanbul",
     "category": "Gündem",
     "time": "29 Aralık 2025",
@@ -217,7 +208,7 @@
   },
   {
     "id": 41,
-    "title": "Alaplı’da Asansör Güvenliği İçin Büyük Adım: “Tüm Asansörler Denetlenecek!”",
+    "title": "Alaplı’da Asansör Güvenliği İçin Büyük Adım: “Tüm Asansörler Denetlenecek”",
     "city": "Zonguldak",
     "category": "Gündem",
     "time": "29 Aralık 2025",
@@ -226,7 +217,7 @@
   },
   {
     "id": 42,
-    "title": "Gebze’de Kuvvetli Rüzgar Ağaç Dallarını Kopardı, Park Halindeki Araçlara Zarar Verdi!",
+    "title": "Gebze’de Kuvvetli Rüzgar Maddi Hasara Yol Açtı",
     "city": "Kocaeli",
     "category": "Hava Durumu",
     "time": "29 Aralık 2025",
@@ -234,26 +225,26 @@
     "content": "Kocaeli’nin Gebze ilçesinde etkili olan kuvvetli rüzgar, ağaç dallarının kırılmasına yol açtı ve park halindeki bir cip ile plakalı bir otomobilin üzerine düşen dallar araçlarda maddi hasar oluşturdu. İtfaiye, zabıta ve belediye ekipleri olay yerine gelerek dalları araçların üzerinden kaldırdı. Şans eseri kimsenin yaralanmadığı olayda, araç sahipleri sadece maddi zarar yaşadı. "
   },
   {
-    "id": 43,
-    "title": "Milyonlar Bekliyor: Memur ve Emekli Zam Oranları 5 Ocak’ta Netleşiyor!",
-    "city": "Türkiye Geneli",
-    "category": "Ekonomi",
-    "time": "29 Aralık 2025",
-    "image": "images/zamlar2025.jpg",
-    "content": "Yeni yılda milyonlarca memur ve emeklinin maaşına yapılacak zam oranları, 5 Ocak Pazartesi günü açıklanacak Aralık ayı enflasyon verisiyle kesinleşecek. Yapılan hesaplamalara göre memurlar için yüzde 11’lik toplu sözleşme zammı ve 5 aylık enflasyon farkı birlikte enflasyon rakamına bağlı olarak artış gösterecek. SSK ve Bağ-Kur emeklilerinin alacağı zam da son 6 aylık enflasyon oranına göre belirlenecek. Bu gelişme yaklaşık 17 milyon emekliyi ve 4 milyon memuru doğrudan etkileyecek."
-  },
+  "id": 43,
+  "title": "Memur ve Emekli Zam Oranları 5 Ocak’ta Netleşecek",
+  "city": "Türkiye Geneli",
+  "category": "Ekonomi",
+  "time": "29 Aralık 2025",
+  "image": "images/zamlar2025.jpg",
+  "content": "Milyonlarca memur ve emeklinin maaşlarına yapılacak zam oranları, 5 Ocak’ta açıklanacak Aralık ayı enflasyon verisiyle kesinleşecek.\n\nMemurların toplu sözleşme zammı ile enflasyon farkı birlikte değerlendirilirken, SSK ve Bağ-Kur emeklilerinin zam oranı son altı aylık enflasyona göre belirlenecek.\n\nAçıklanacak verilerin yaklaşık 21 milyon kişiyi doğrudan etkilemesi bekleniyor."
+},
   {
-    "id": 44,
-    "title": "Uzmanlar Uyardı: “Bu QR Kodları Okutmak Kabus Gibi!”",
-    "city": "İstanbul",
-    "category": "Gündem",
-    "time": "29 Aralık 2025",
-    "image": "images/imagesqr.jpg",
-    "content": "Son dönemde sokaklarda, otoparklarda, restoranlarda ve kargo bildirimlerinde sıkça karşılaşılan bazı QR kodlar, vatandaşlar için ciddi bir güvenlik riski oluşturuyor. Uzmanlar, kötü niyetli kişilerin gerçek QR kodların üzerine sahte etiketler yapıştırarak kullanıcıları banka benzeri sahte sitelere yönlendirdiğini belirtiyor. Bu yöntemle kart bilgileri, kişisel veriler ve dijital hesaplar ele geçirilebiliyor. Özellikle ödeme, ceza veya teslimat gibi aciliyet hissi yaratan QR kodlara karşı temkinli olunması gerektiği vurgulanırken, bilinmeyen bağlantılara kişisel bilgi girilmemesi konusunda uyarı yapılıyor."
-  },
+  "id": 44,
+  "title": "Uzmanlardan QR Kod Uyarısı",
+  "city": "İstanbul",
+  "category": "Gündem",
+  "time": "29 Aralık 2025",
+  "image": "images/imagesqr.jpg",
+  "content": "Son dönemde birçok alanda kullanılan QR kodlar, bazı durumlarda güvenlik riski oluşturabiliyor.\n\nUzmanlar, sahte QR kodlar aracılığıyla kullanıcıların zararlı sitelere yönlendirilebileceğini ve kişisel bilgilerin ele geçirilebileceğini belirtiyor.\n\nVatandaşların özellikle ödeme ve bilgi girişi istenen QR kodlar konusunda dikkatli olmaları gerektiği vurgulanıyor."
+},
   {
     "id": 45,
-    "title": "Sıcak Su Torbası Patladı, Genç Kadın Ağır Yaralandı — “O Acının Tarifi Yok!”",
+    "title": "Sıcak Su Torbası Patladı:Genç Kadın Yaralandı!",
     "city": "İstanbul",
     "category": "Gündem",
     "time": "29 Aralık 2025",
@@ -270,17 +261,17 @@
     "content": "Toplu Konut İdaresi Başkanlığı (TOKİ), İzmit’te yaşayanlar için umut veren yeni bir adım attı! 2022’de duyurulan “İlk İşyerim” projesi kapsamında, Sekbanlı ve Sepetçi mahallelerinde 454 adet yeni işyeri inşa edilecek. Bu kapsamlı proje sadece dükkanları değil, çevre ve altyapı düzenlemelerini de kapsıyor.Projeye ilişkin ihale, 29 Aralık 2025 tarihinde, Ankara’da TOKİ toplantı salonunda saat 14.00’te yapılacak. İhalenin tamamlanmasının ardından da yüklenici firmaya resmi yer teslimi gerçekleştirilecek."
   },
   {
-    "id": 48,
-    "title": "Bu Sigara Markaları KAYBOLDU!! - İşte Detaylar 👇",
-    "city": "Türkiye Geneli",
-    "category": "Gündem",
-    "time": "30 Aralık 2025",
-    "image": "images/48-images.jpg",
-    "content": "Aralık 2025’te Türkiye’de market raflarından bazı popüler sigara markaları bir anda kayboldu. Tüketiciler, özellikle Marlboro, President ve Philip Morris’e ulaşamadığını sosyal medyada paylaşıyor. Sebepler belirsiz; kullanıcılar stok ve dağıtım sorunlarından şüpheleniyor. Yetkililerden henüz resmi bir açıklama gelmedi."
-  },
+  "id": 48,
+  "title": "Bazı Sigara Markalarına Ulaşımda Sorun Yaşanıyor",
+  "city": "Türkiye Geneli",
+  "category": "Gündem",
+  "time": "30 Aralık 2025",
+  "image": "images/48-images.jpg",
+  "content": "Aralık ayı itibarıyla bazı sigara markalarının market raflarında bulunamaması dikkat çekti.\n\nTüketiciler, özellikle belirli markalara ulaşmakta zorlandıklarını ifade ederken, konuyla ilgili resmi bir açıklama henüz yapılmadı.\n\nDurumun tedarik ve dağıtım kaynaklı olabileceği değerlendiriliyor."
+},
   {
     "id": 49,
-    "title": "GÜNDEMX YENİ YILINIZI KUTLAR!!",
+    "title": "GÜNDEMX YENİ YILINIZI KUTLAR!",
     "city": "Türkiye Geneli",
     "category": "Yeni Yıl Mesajı",
     "time": "31 Aralık 2025",
@@ -288,12 +279,12 @@
     "content": "GündemX olarak yeni yılınızı kutluyor ve Yeni yılın sizlere sağlık, huzur, bereket getirmesini temenni ediyoruz.İyi Yıllar TÜRKİYE 🇹🇷"
   },
   {
-    "id": 50,
-    "title": "2026’da Türkiye Haritası Şok Değişiyor! : İl Olmaya Aday İlçelerle Yeni Harita Gündemde!! !",
-    "city": "Türkiye Gündemi",
-    "category": "Gündem",
-    "time": "31 Aralık 2025",
-    "image": "images/50-images.jpg",
-    "content": "2025 yılı verileriyle yeniden güncellenen çalışmaya göre Türkiye’nin idari yapısında ciddi bir dönüşüm gündemde! Nüfus, ekonomik büyüklük, sanayi gücü ve stratejik konum gibi kriterler esas alınarak hazırlanan “il olmaya aday ilçeler” listesi genişletildi. Son değerlendirmeye göre Lüleburgaz, Çerkezköy, Silivri, Çorlu ve Büyükçekmece gibi ilçeler yeni listeye eklendi ve toplam aday sayısı arttı. Özellikle İstanbul’dan Silivri, Büyükçekmece ve Tuzla gibi ilçelerin adaylar arasında yer alması büyük tartışma yarattı. Bu ilçelerin başarılı olması durumunda Türkiye’nin il sayısı 81’den daha fazlaya çıkabilir ve ülkenin idari haritası yeniden şekillenebilir."
-  }
+  "id": 50,
+  "title": "İl Olmaya Aday İlçeler Gündemde",
+  "city": "Türkiye Gündemi",
+  "category": "Gündem",
+  "time": "31 Aralık 2025",
+  "image": "images/50-images.jpg",
+  "content": "Güncellenen değerlendirmelere göre, Türkiye’de il olmaya aday ilçeler yeniden gündeme geldi.\n\nNüfus, ekonomik yapı ve bölgesel gelişmişlik kriterlerine göre hazırlanan listede bazı büyük ilçeler öne çıkıyor.\n\nÇalışmaların hayata geçmesi halinde Türkiye’nin idari yapısında değişiklikler yaşanabileceği ifade ediliyor."
+}
 ]
