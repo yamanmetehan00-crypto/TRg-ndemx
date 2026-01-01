@@ -488,16 +488,6 @@ fetch("data/news.json")
 © 2025 GündemX – Gündeme Net Bakış<br>Tarafsız • Halk Odaklı • Sade Habercilik
 </footer>
 
-<!-- Alt Hızlı Butonlar (Botun tam üstünde, logo ile) -->
-<div id="quick-buttons">
-  <div class="quick-btn whatsapp" onclick="window.open('https://whatsapp.com/channel/0029VbBnOuTLY6dEuRZX022q/')">
-    <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="WhatsApp" style="width:24px;height:24px;">
-  </div>
-  <div class="quick-btn instagram" onclick="window.open('https://instagram.com/','_blank')">
-    <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" style="width:24px;height:24px;">
-  </div>
-</div>
-
 <style>
 #quick-buttons{
   position:fixed;
@@ -523,33 +513,6 @@ fetch("data/news.json")
     25%, 75% { opacity: 0; }
 }
 </style>
-
-
-<!-- HOŞGELDİN BİLDİRİMİ -->
-<div id="welcome-notification">
-  <span>📩</span> Sitemize Hoş Geldiniz!
-</div>
-
-<script>
-// LOADING
-window.addEventListener("load",()=>{
-  setTimeout(()=>{
-    const l=document.getElementById("loading-screen");
-    l.style.opacity="0";
-    setTimeout(()=>l.style.display="none",300);
-  },500);
-});
-
-// Hoş Geldiniz bildirimi
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    const notification = document.getElementById("welcome-notification");
-    notification.classList.add("show");
-    setTimeout(() => {
-      notification.classList.remove("show");
-    }, 4000);
-  }, 1500);
-});
 
 // Döviz
 async function getCurrencies(){
@@ -607,12 +570,19 @@ async function loadNews(){
     document.getElementById("news-container").innerHTML = "<p>Haberler yüklenemedi.</p>";
   }
 }
+</script>
 
-
+<script>
 // İl tıklamaları
 document.querySelectorAll('#province-list a').forEach(a=>{
   a.addEventListener('click',()=>{ window.location.href=`il.html?id=${a.dataset.city}`; });
 });
+</script>
+
+<script>
+loadNews();
+</script>
+
 
 <script type="application/ld+json">
 {
