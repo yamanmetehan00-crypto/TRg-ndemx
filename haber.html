@@ -3,185 +3,52 @@
 <head>
 <meta name="google-adsense-account" content="ca-pub-1201412624479751">
 <meta charset="UTF-8">
-<title>Haber – GündemX</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="description" content="GündemX tarafsız ve güncel haberler.">
+<title>Haber – GündemX</title>
 <style>
-body{
-  margin:0;
-  font-family:Inter,Arial,sans-serif;
-  background:#f4f7fb;
-  color:#1e293b;
-}
-header, footer{
-  background:#0b1220;
-  color:#fff;
-  padding:15px;
-}
-.logo{
-  font-size:26px;
-  font-weight:800;
-}
-.logo span{ color:#0066ff; }
-
-.container{
-  max-width:900px;
-  margin:auto;
-  padding:20px;
-  background:#fff;
-  border-radius:8px;
-  box-shadow:0 2px 6px rgba(0,0,0,.1);
-}
-
-.category{
-  color:#0066ff;
-  font-size:13px;
-  font-weight:600;
-  text-transform:uppercase;
-}
-
-h1{
-  font-size:28px;
-  margin:10px 0;
-  color:#0066ff;
-}
-
-.meta{
-  font-size:13px;
-  color:#777;
-  margin-bottom:20px;
-}
-
-.news-image{
-  width:100%;
-  border-radius:8px;
-  margin-bottom:20px;
-}
-
-.content p{
-  line-height:1.7;
-  font-size:16px;
-  margin-bottom:16px;
-}
-
-.ad{
-  background:#e6f0ff;
-  text-align:center;
-  padding:15px;
-  margin:20px 0;
-  color:#0066ff;
-  border-radius:6px;
-}
-
-/* Paylaşım */
-#social-share {
-  margin-top:20px;
-  font-size:14px;
-}
-#social-share a {
-  text-decoration:none;
-  color:#0066ff;
-  margin-right:10px;
-}
-
-/* Yorum alanı */
-#comments-section {
-  margin-top:30px;
-}
-#comments-section h3 {
-  margin-bottom:10px;
-}
-#comments-list div {
-  border-bottom:1px solid #ccc;
-  padding:8px 0;
-}
-#comment-input {
-  width:100%;
-  padding:8px;
-  margin-top:10px;
-  border-radius:4px;
-  border:1px solid #ccc;
-  resize:none;
-}
-#comment-submit {
-  margin-top:8px;
-  padding:8px 12px;
-  background:#0066ff;
-  color:#fff;
-  border:none;
-  border-radius:4px;
-  cursor:pointer;
-}
-#comment-submit:hover {
-  background:#004fcc;
-}
-
-/* Diğer Haberler Kart */
-#otherNewsContainer{
-  margin-top:30px;
-}
-#otherNewsContainer h3{
-  margin-bottom:10px;
-  color:#0066ff;
-}
-.other-news-list{
-  display:flex;
-  gap:12px;
-  overflow-x:auto;
-  padding-bottom:10px;
-}
-.other-news-card{
-  min-width:220px;
-  background:#fff;
-  border-radius:8px;
-  box-shadow:0 4px 10px rgba(0,0,0,0.1);
-  flex-shrink:0;
-  cursor:pointer;
-  transition:transform 0.2s;
-}
-.other-news-card:hover{
-  transform:translateY(-3px);
-}
-.other-news-card img{
-  width:100%;
-  height:120px;
-  object-fit:cover;
-  border-radius:8px 8px 0 0;
-}
-.other-news-card h4{
-  font-size:14px;
-  margin:6px;
-  color:#0066ff;
-}
-.other-news-card span{
-  font-size:12px;
-  color:#555;
-  margin:0 6px 6px 6px;
-  display:block;
-}
+body{margin:0;font-family:Inter,Arial,sans-serif;background:#f4f7fb;color:#1e293b;}
+header,footer{background:#0b1220;color:#fff;padding:15px;}
+.logo{font-size:26px;font-weight:800;}
+.logo span{color:#0066ff;}
+.container{max-width:900px;margin:auto;padding:20px;background:#fff;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,.1);}
+.category{color:#0066ff;font-size:13px;font-weight:600;text-transform:uppercase;}
+h1{font-size:28px;margin:10px 0;color:#0066ff;}
+.meta{font-size:13px;color:#777;margin-bottom:20px;}
+.news-image{width:100%;border-radius:8px;margin-bottom:20px;}
+.content p{line-height:1.7;font-size:16px;margin-bottom:16px;}
+.ad{background:#e6f0ff;text-align:center;padding:15px;margin:20px 0;color:#0066ff;border-radius:6px;}
+#social-share{margin-top:20px;font-size:14px;}
+#social-share a{text-decoration:none;color:#0066ff;margin-right:10px;}
+#comments-section{margin-top:30px;}
+#comments-section h3{margin-bottom:10px;}
+#comments-list div{border-bottom:1px solid #ccc;padding:8px 0;}
+#comment-input{width:100%;padding:8px;margin-top:10px;border-radius:4px;border:1px solid #ccc;resize:none;}
+#comment-submit{margin-top:8px;padding:8px 12px;background:#0066ff;color:#fff;border:none;border-radius:4px;cursor:pointer;}
+#comment-submit:hover{background:#004fcc;}
+#otherNewsContainer{margin-top:30px;}
+#otherNewsContainer h3{margin-bottom:10px;color:#0066ff;}
+.other-news-list{display:flex;gap:12px;overflow-x:auto;padding-bottom:10px;}
+.other-news-card{min-width:220px;background:#fff;border-radius:8px;box-shadow:0 4px 10px rgba(0,0,0,0.1);flex-shrink:0;cursor:pointer;transition:transform 0.2s;}
+.other-news-card:hover{transform:translateY(-3px);}
+.other-news-card img{width:100%;height:120px;object-fit:cover;border-radius:8px 8px 0 0;}
+.other-news-card h4{font-size:14px;margin:6px;color:#0066ff;}
+.other-news-card span{font-size:12px;color:#555;margin:0 6px 6px 6px;display:block;}
 </style>
-
-<!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 </head>
-
 <body>
-
 <header>
   <div class="logo">Gündem<span>X</span></div>
 </header>
 
 <div class="container" id="newsContainer">
-
   <img id="newsImage" class="news-image" src="">
   <div class="category" id="newsCategory"></div>
   <h1 id="newsTitle"></h1>
-
-<div class="meta" id="newsMeta"></div>
-<div class="content" id="newsContent"></div>
-
-
+  <div class="meta" id="newsMeta"></div>
+  <div class="content" id="newsContent"></div>
 
   <div id="social-share">
     <strong>Paylaş: </strong>
@@ -197,24 +64,21 @@ h1{
     <button id="comment-submit">Gönder</button>
   </div>
 
-  <!-- Diğer Haberler -->
   <div id="otherNewsContainer">
     <h3>Diğer Haberler</h3>
     <div class="other-news-list" id="otherNewsList"></div>
   </div>
-
 </div>
 
-<<footer>  
-<footer style="text-align:center; padding:20px; font-size:14px;">  
-  <a href="about.html">Hakkımızda</a> |  
-  <a href="privacy.html">Gizlilik Politikası</a> |  
-  <a href="contact.html">İletişim</a>  
-© 2025 GündemX – Gündeme Net Bakış<br>Tarafsız • Halk Odaklı • Sade Habercilik  
-</footer>   
+<footer style="text-align:center; padding:20px; font-size:14px;">
+  <a href="about.html">Hakkımızda</a> |
+  <a href="privacy.html">Gizlilik Politikası</a> |
+  <a href="contact.html">İletişim</a><br>
+  © 2025 GündemX – Gündeme Net Bakış<br>Tarafsız • Halk Odaklı • Sade Habercilik
+</footer>
 
 <script>
-// Firebase Ayarları
+// Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyDzaK6-NkzyEeH4SMgu599iZ0YKx1SYl-o",
   authDomain: "gundemx-2de07.firebaseapp.com",
@@ -246,7 +110,7 @@ const db = firebase.firestore();
       return;
     }
 
-    // DOM'a bas
+    // DOM
     document.getElementById("newsImage").src = news.image;
     document.getElementById("newsTitle").innerText = news.title;
     document.getElementById("newsCategory").innerText = news.category;
@@ -260,7 +124,7 @@ const db = firebase.firestore();
     document.getElementById("share-twitter").href = `https://twitter.com/intent/tweet?text=${pageTitle}&url=${pageUrl}`;
     document.getElementById("share-whatsapp").href = `https://wa.me/?text=${pageTitle}%20${pageUrl}`;
 
-    // Yorumları Firestore'dan yükle
+    // Yorumlar
     const commentsKey = "news_" + id;
     const commentsList = document.getElementById('comments-list');
 
@@ -321,38 +185,20 @@ const db = firebase.firestore();
     console.error(error);
   }
 })();
-
-// JS
-
 </script>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "NewsArticle",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": window.location.href
-  },
-  "headline": document.title,
-  "description": document.querySelector("meta[name='description']")?.content || "GündemX tarafsız ve güncel haberler.",
-  "image": {
-    "@type": "ImageObject",
-    "url": document.getElementById("newsImage")?.src || "https://www.gundemx.online/logo.png"
-  },
-  "datePublished": new Date().toISOString(),
-  "dateModified": new Date().toISOString(),
-  "author": {
-    "@type": "Organization",
-    "name": "GündemX"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "GündemX",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.gundemx.online/logo.png"
-    }
-  }
+  "mainEntityOfPage": {"@type":"WebPage","@id":"https://www.gundemx.online/"},
+  "headline": "GündemX Haber",
+  "description": "GündemX tarafsız ve güncel haberler.",
+  "image": {"@type":"ImageObject","url":"https://www.gundemx.online/logo.png"},
+  "datePublished": "2025-01-01T00:00:00Z",
+  "dateModified": "2025-01-01T00:00:00Z",
+  "author": {"@type":"Organization","name":"GündemX"},
+  "publisher": {"@type":"Organization","name":"GündemX","logo":{"@type":"ImageObject","url":"https://www.gundemx.online/logo.png"}}
 }
 </script>
 </body>
