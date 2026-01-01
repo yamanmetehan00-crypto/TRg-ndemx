@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Kategori Haberleri – GündemX</title>
+  <meta name="description" content="GündemX kategori haberleri. Güncel, sade ve tarafsız içerikler.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Ana CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .category-container {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 15px;
+    }
+
+    .category-title {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .category-description {
+      font-size: 15px;
+      color: #555;
+      margin-bottom: 25px;
+    }
+
+    .category-news {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .news-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      overflow: hidden;
+      transition: transform 0.2s ease;
+    }
+
+    .news-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .news-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .news-card-content {
+      padding: 15px;
+    }
+
+    .news-card-content h3 {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .news-card-content p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .news-card a {
+      text-decoration: none;
+      color: inherit;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- İstersen header include edebilirsin -->
+  
+  <div class="category-container">
+    <h1 class="category-title" id="categoryTitle"></h1>
+    <p class="category-description" id="categoryDesc"></p>
+
+    <div class="category-news" id="categoryNews">
+      <!-- Haberler JS ile yüklenecek -->
+    </div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const category = params.get("category");
+
+    const descriptions = {
+      "Gündem": "Türkiye ve dünyadan güncel gelişmeler, yerel olaylar ve kamuoyunu ilgilendiren haberler.",
+      "Siyaset": "Siyasi gelişmeler, resmi açıklamalar ve diplomatik temaslara dair haberler.",
+      "Ekonomi": "Ekonomik veriler, piyasa gelişmeleri ve maaş düzenlemelerine dair haberler.",
+      "Trafik": "Kazalar, yol çalışmaları ve ulaşımı etkileyen gelişmelere dair haberler.",
+      "Türkiye Geneli": "Türkiye genelinde yaşanan önemli ve güncel gelişmeler."
+    };
+
+    document.getElementById("categoryTitle").innerText = category;
+    document.getElementById("categoryDesc").innerText = descriptions[category] || "";
+
+    fetch("data/news.json") // JSON yolunu kendi yapına göre düzenle
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById("categoryNews");
+
+        const filtered = data
+          .filter(item => item.category === category)
+          .sort((a, b) => new Date(b.time) - new Date(a.time));
+
+        if (filtered.length === 0) {
+          container.innerHTML = "<p>Bu kategoride henüz haber bulunmamaktadır.</p>";
+          return;
+        }
+
+        filtered.forEach(news => {
+          const shortText = news.content.substring(0, Math.floor(news.content.length * 0.2)) + "...";
+
+          container.innerHTML += `
+            <div class="news-card">
+              <a href="haber.html?id=${news.id}">
+                <img src="${news.image}" alt="${news.title}">
+                <div class="news-card-content">
+                  <h3>${news.title}</h3>
+                  <p>${shortText}</p>
+                </div>
+              </a>
+            </div>
+          `;
+        });
+      });
+  </script>
+
+</body>
+</html>
