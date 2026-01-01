@@ -159,43 +159,6 @@ h1{
   margin:0 6px 6px 6px;
   display:block;
 }
-
-/* MUTUBOT */
-#mutubot{
-  position:fixed; bottom:20px; right:20px; width:50px; height:50px; border-radius:50%; background:#0066ff;
-  display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.3);z-index:10000;
-  transition:transform 0.2s ease;
-}
-#mutubot:hover{transform:scale(1.1);}
-#mutubot img{width:28px;height:28px;}
-#mutubot-window{
-  position:fixed; bottom:80px; right:20px; width:300px; max-height:400px; background:#fff; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.3); display:none; flex-direction:column; overflow:hidden; z-index:10000; font-size:14px;
-}
-#mutubot-window-header{background:#0066ff; color:#fff; padding:10px; font-weight:600;}
-#mutubot-window-body{flex:1; padding:8px; overflow-y:auto;}
-#mutubot-window-body p{margin:6px 0;}
-#mutubot-window-footer{display:flex; border-top:1px solid #ccc;}
-#mutubot-input{flex:1; border:none; padding:8px; font-size:14px;}
-#mutubot-send{background:#0066ff; color:#fff; border:none; padding:0 12px; cursor:pointer;}
-#mutubot-send:hover{background:#004fcc;}
-
-/* ALT BUTONLAR (WHATSAPP & INSTAGRAM) */
-#quick-buttons{
-  position:fixed;
-  bottom:85px;
-  right:20px;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-  z-index:10001;
-}
-.quick-btn{
-  width:50px; height:50px; border-radius:50%; display:flex; justify-content:center; align-items:center; cursor:pointer; box-shadow:0 4px 12px rgba(0,0,0,0.3); transition:transform 0.2s ease;
-}
-.quick-btn:hover{transform:scale(1.1);}
-.quick-btn.whatsapp{background:#25d366;}
-.quick-btn.instagram{background:#c32aa3;}
-.quick-btn img{width:28px;height:28px;}
 </style>
 
 <!-- Firebase -->
@@ -246,29 +209,6 @@ h1{
 © 2025 GündemX – Tarafsız Habercilik
 </footer>
 
-<!-- MutuBot -->
-<div id="mutubot">
-  <img src="https://cdn-icons-png.flaticon.com/512/4712/4712043.png" alt="MutuBot">
-</div>
-<div id="mutubot-window">
-  <div id="mutubot-window-header">MutuBot</div>
-  <div id="mutubot-window-body"></div>
-  <div id="mutubot-typing">Yazıyor...</div>
-  <div id="mutubot-window-footer">
-    <input id="mutubot-input" placeholder="Bir şey sor...">
-    <button id="mutubot-send">Gönder</button>
-  </div>
-</div>
-
-<!-- Alt Hızlı Butonlar -->
-<div id="quick-buttons">
-  <div class="quick-btn whatsapp" onclick="window.open('https://wa.me/','_blank')">
-    <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="WhatsApp">
-  </div>
-  <div class="quick-btn instagram" onclick="window.open('https://instagram.com/','_blank')">
-    <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
-  </div>
-</div>
 
 <script>
 // Firebase Ayarları
@@ -378,19 +318,6 @@ const db = firebase.firestore();
     console.error(error);
   }
 })();
-
-// KAR YAĞIŞI
-function createSnow(){
-  const snow=document.createElement('div');
-  snow.className='snowflake';
-  snow.style.left=Math.random()*window.innerWidth+'px';
-  snow.style.fontSize=(Math.random()*10+10)+'px';
-  snow.style.animationDuration=(Math.random()*5+5)+'s';
-  snow.innerText='❄';
-  document.body.appendChild(snow);
-  setTimeout(()=>snow.remove(),10000);
-}
-setInterval(createSnow,200);
 
 // JS
 const quickButtons=document.createElement('div');
