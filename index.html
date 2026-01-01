@@ -744,6 +744,8 @@ botInput.addEventListener('keypress',e=>{if(e.key==='Enter'){botSend.click(); e.
 document.querySelectorAll('#province-list a').forEach(a=>{  
   a.addEventListener('click',()=>{ window.location.href=`il.html?id=${a.dataset.city}`; });  
 });  
+
+loadNews();  
   
 </script>  <!-- Bildirim için HTML (body sonunda ekle) -->  <div id="locationNotification" style="display:none;"></div>  
 <audio id="notificationSound" src="images/ses.mp3" preload="auto"></audio>  <script>  
