@@ -178,6 +178,48 @@ footer{background:var(--dark);color:#aaa;padding:20px;text-align:center;font-siz
   margin-top: 6px;
 }
 
+.categories-section {
+  margin: 30px 0;
+}
+
+.categories-section h2 {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+}
+
+.category-box {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  transition: transform 0.2s ease;
+}
+
+.category-box:hover {
+  transform: translateY(-3px);
+}
+
+.category-box h3 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.category-box p {
+  font-size: 14px;
+  color: #555;
+}
+
+.category-box a {
+  text-decoration: none;
+  color: inherit;
+}
+
 </style>
 </head>
 <body>
@@ -261,6 +303,13 @@ if(weatherLink){
     });
 }
 </script>
+<section id="categories" class="categories-section">
+  <h2>Kategoriler</h2>
+  <div class="categories-grid" id="categoriesGrid">
+    <!-- JS ile doldurulacak -->
+  </div>
+</section>
+
 
   <!-- İLLER KATEGORİSİ EN ALTA -->
   <div class="box">
@@ -694,6 +743,43 @@ Object.assign(notification.style, {
     }
   }
 });
+</script>
+
+<script>
+const categories = [
+  "Gündem",
+  "Siyaset",
+  "Ekonomi",
+  "Trafik",
+  "Türkiye Geneli"
+];
+
+fetch("data/news.json") // JSON dosya yolunu kendi yapına göre düzenle
+  .then(res => res.json())
+  .then(data => {
+    const grid = document.getElementById("categoriesGrid");
+
+    categories.forEach(cat => {
+      const filtered = data
+        .filter(item => item.category === cat)
+        .sort((a, b) => new Date(b.time) - new Date(a.time));
+
+      if (filtered.length === 0) return;
+
+      const latest = filtered[0];
+      const shortText = latest.content.substring(0, Math.floor(latest.content.length * 0.1)) + "...";
+
+      grid.innerHTML += `
+        <div class="category-box">
+          <a href="category.html?category=${encodeURIComponent(cat)}">
+            <h3>${cat}</h3>
+            <strong>${latest.title}</strong>
+            <p>${shortText}</p>
+          </a>
+        </div>
+      `;
+    });
+  });
 </script>
 
 </body>
