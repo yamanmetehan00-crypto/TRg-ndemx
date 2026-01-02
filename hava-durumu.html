@@ -13,41 +13,51 @@ body {
   padding: 20px;
 }
 .weather-container {
-  max-width: 500px;
+  max-width: 600px;
   margin: 40px auto;
-  background: #0b1220;
+  background: #0077cc;
   color: #fff;
-  border-radius: 12px;
-  padding: 20px;
+  border-radius: 15px;
+  padding: 25px;
   text-align: center;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
 }
 .weather-container h2 {
-  margin: 0 0 15px;
-  color: #00aaff;
-  font-size: 26px;
+  margin: 0 0 20px;
+  color: #fff;
+  font-size: 28px;
 }
 .hourly-forecast {
-  margin-top: 20px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  max-height: 450px;
+  gap: 10px;
+  max-height: 500px;
   overflow-y: auto;
 }
 .forecast-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #1e293b;
-  padding: 10px;
-  border-radius: 8px;
+  background: #005fa3;
+  padding: 12px 20px;
+  border-radius: 10px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.forecast-item:hover {
+  background: #00487a;
 }
 .forecast-time {
-  font-weight: bold;
+  font-weight: 700;
+  font-size: 16px;
 }
 .forecast-temp {
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: 600;
+}
+.forecast-icon {
+  width: 28px;
+  height: 28px;
 }
 </style>
 </head>
@@ -59,76 +69,82 @@ body {
 </div>
 
 <script>
-async function getHourlyWeather() {
+const IST_LAT = 41.0082;
+const IST_LON = 28.9784;
 
-  const IST_LAT = 41.0082;
-  const IST_LON = 28.9784;
+function getWeatherIcon(code) {
+  // Open-meteo weathercode 0-99
+  if (code === 0) return "☀️"; // Clear
+  if (code <= 3) return "🌤️"; // Partly cloudy
+  if (code <= 48) return "☁️"; // Cloudy
+  if (code <= 67) return "🌧️"; // Rain
+  if (code <= 77) return "❄️"; // Snow
+  if (code <= 99) return "🌩️"; // Thunderstorm
+  return "❔";
+}
 
-  function renderWeather(data) {
-    const container = document.getElementById("hourly-forecast");
-    container.innerHTML = "";
+async function renderWeather(data) {
+  const container = document.getElementById("hourly-forecast");
+  container.innerHTML = "";
 
-    for (let i = 0; i < 24; i++) {
-      const time = new Date(data.hourly.time[i]);
-      const hour = time.getHours().toString().padStart(2,"0") + ":00";
-      const temp = Math.round(data.hourly.temperature_2m[i]);
+  for (let i = 0; i < 24; i++) {
+    const time = new Date(data.hourly.time[i]);
+    const hour = time.getHours().toString().padStart(2,"0") + ":00";
+    const temp = Math.round(data.hourly.temperature_2m[i]);
+    const icon = getWeatherIcon(data.hourly.weathercode[i]);
 
-      const item = document.createElement("div");
-      item.className = "forecast-item";
-      item.innerHTML = `
-        <span class="forecast-time">${hour}</span>
-        <span>🌤️</span>
-        <span class="forecast-temp">${temp}°C</span>
-      `;
-      container.appendChild(item);
-    }
-  }
-
-  async function fetchWeather(lat, lon) {
-    try {
-      const res = await fetch(
-        `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m&timezone=Europe/Istanbul`
-      );
-      const data = await res.json();
-      renderWeather(data);
-    } catch {
-      document.getElementById("hourly-forecast").innerText = "Hava durumu alınamadı";
-    }
-  }
-
-  // İl adı arka planda (hata olsa bile sayfa çalışır)
-  async function setCityName(lat, lon) {
-    try {
-      const res = await fetch(
-        `https://geocoding-api.open-meteo.com/v1/reverse?latitude=${lat}&longitude=${lon}&language=tr`
-      );
-      const data = await res.json();
-      if (data.results && data.results[0]) {
-        document.getElementById("cityTitle").innerText =
-          data.results[0].name + " – 24 Saatlik Hava Durumu";
-      }
-    } catch {}
-  }
-
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(
-      pos => {
-        fetchWeather(pos.coords.latitude, pos.coords.longitude);
-        setCityName(pos.coords.latitude, pos.coords.longitude);
-      },
-      () => {
-        fetchWeather(IST_LAT, IST_LON);
-        setCityName(IST_LAT, IST_LON);
-      },
-      { timeout: 5000 }
-    );
-  } else {
-    fetchWeather(IST_LAT, IST_LON);
-    setCityName(IST_LAT, IST_LON);
+    const item = document.createElement("div");
+    item.className = "forecast-item";
+    item.innerHTML = `
+      <span class="forecast-time">${hour}</span>
+      <span class="forecast-icon">${icon}</span>
+      <span class="forecast-temp">${temp}°C</span>
+    `;
+    container.appendChild(item);
   }
 }
 
-getHourlyWeather();
+async function fetchWeather(lat, lon) {
+  try {
+    const res = await fetch(
+      `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,weathercode&timezone=Europe/Istanbul`
+    );
+    const data = await res.json();
+    renderWeather(data);
+  } catch {
+    document.getElementById("hourly-forecast").innerText = "Hava durumu alınamadı";
+  }
+}
+
+async function setCityName(lat, lon) {
+  try {
+    const res = await fetch(
+      `https://geocoding-api.open-meteo.com/v1/reverse?latitude=${lat}&longitude=${lon}&language=tr`
+    );
+    const data = await res.json();
+    if (data.results && data.results[0]) {
+      document.getElementById("cityTitle").innerText =
+        data.results[0].name + " – 24 Saatlik Hava Durumu";
+    }
+  } catch {}
+}
+
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(
+    pos => {
+      fetchWeather(pos.coords.latitude, pos.coords.longitude);
+      setCityName(pos.coords.latitude, pos.coords.longitude);
+    },
+    () => {
+      fetchWeather(IST_LAT, IST_LON);
+      setCityName(IST_LAT, IST_LON);
+    },
+    { timeout: 5000 }
+  );
+} else {
+  fetchWeather(IST_LAT, IST_LON);
+  setCityName(IST_LAT, IST_LON);
+}
 </script>
 
 </body>
