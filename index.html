@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -16,6 +15,21 @@
 body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--text);}
 a{text-decoration:none;color:inherit;}
 
+/* LOADING */
+#loading-screen{
+  position:fixed; inset:0; background:#fff;
+  display:flex; align-items:center; justify-content:center; z-index:9999;
+}
+.x-loader{
+  font-size:140px; font-weight:900; color:transparent;
+  -webkit-text-stroke:4px var(--primary);
+  background:linear-gradient(to top,var(--primary) 0%,var(--primary) 50%,transparent 50%);
+  background-size:100% 200%; background-position:bottom;
+  -webkit-background-clip:text; background-clip:text;
+  animation:fillX 2.5s ease forwards;
+}
+@keyframes fillX{from{background-position:bottom} to{background-position:top}}
+
 /* HEADER */
 header{
   background:var(--dark); color:#fff;
@@ -31,50 +45,75 @@ header{
 nav a{margin-left:16px;font-size:14px;opacity:.9}
 @media(max-width:768px){header{flex-direction:column;align-items:center} .social-header{margin:8px 0;justify-content:center} nav{display:none}}
 
-/* MAIN */
-.container{max-width:1200px;margin:auto;padding:16px;}
-.box{background:#fff;padding:20px;margin-bottom:20px;border-radius:12px;box-shadow:0 6px 16px rgba(0,0,0,0.05);}
-.box h2{border-bottom:2px solid var(--primary);padding-bottom:6px;margin-bottom:14px;}
+/* SLIDER */
+.top-slider{position:relative;overflow:hidden;width:100%;height:300px;margin-bottom:20px;border-radius:12px}
+.slide{width:100%;height:100%;position:absolute;top:0;left:100%;transition:left 0.5s ease-in-out;display:flex;align-items:flex-end}
+.slide.active{left:0}
+.slide img{width:100%;height:100%;object-fit:cover;border-radius:12px}
+.slide-content{position:absolute;bottom:20px;left:20px;color:#fff;background:rgba(0,0,0,0.4);padding:12px;border-radius:6px}
+.slide-content h2{margin:0;font-size:22px}
+.slide-content p{margin:4px 0 0;font-size:14px}
 
-/* CATEGORIES */
-.categories-section {margin: 20px 0;}
+/* NEWS CARD - Son 5 Haber */
+.news-section{margin:20px 0;}
+.news-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;}
+.news-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,0.08);transition:0.25s ease;cursor:pointer;}
+.news-card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,0.15);}
+.news-card img{width:100%;height:140px;object-fit:cover;}
+.news-card-content{padding:12px;}
+.news-card-content h3{margin:0 0 6px;color:#222;font-size:16px;}
+.news-card-content p{font-size:14px;color:#555;line-height:1.4;}
+
+/* KATEGORİ KARTLARI */
+.categories-section {margin: 30px 0;}
+.categories-section h2 {font-size: 20px;margin-bottom: 15px;color: #0b3c5d;}
 .category-grid {display: grid;grid-template-columns: repeat(auto-fit,minmax(240px,1fr));gap:15px;}
 .category-card {background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,0.08);transition:0.25s ease;cursor:pointer;}
 .category-card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,0.15);}
 .category-card img{width:100%;height:140px;object-fit:cover;}
-.category-content{padding:12px 14px;}
+.category-content{padding:12px;}
 .category-name{font-size:13px;font-weight:bold;color:#1e88e5;margin-bottom:6px;text-transform:uppercase;}
 .category-content h3{font-size:15px;margin:0 0 6px;color:#222;}
 .category-content p{font-size:13px;color:#555;line-height:1.4;}
 
-/* NEWS CARD */
-.news-card{display:flex;gap:12px;background:#fff;border-radius:10px;padding:10px;align-items:center;box-shadow:0 6px 16px rgba(0,0,0,0.05);transition:transform 0.2s ease,box-shadow 0.2s ease;cursor:pointer;margin-bottom:12px;}
-.news-card:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(0,0,0,0.08);}
-.news-card img{width:90px;height:70px;object-fit:cover;border-radius:8px;}
-.news-card h3{font-size:15px;margin:0 0 6px;line-height:1.3;}
-.news-card span{font-size:12px;color:#64748b;}
+/* İLLER */
+.provinces{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;margin-bottom:20px;}
+.provinces a{background:#f8f9fb;padding:10px;text-align:center;border:1px solid #e5e7eb;font-size:13px;border-radius:6px;transition:all 0.2s ease;}
+.provinces a:hover{background:#e0ebff;}
 
-/* PROVINCES */
-.provinces{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;}
-.provinces a{background:#f8f9fb;padding:10px;text-align:center;border:1px solid #e5e7eb;font-size:13px;border-radius:6px;}
-
-/* CURRENCY */
-.currency-card{background:#fff;border-top:2px solid var(--primary);padding:8px 12px;border-radius:6px 6px 0 0;width:100%;max-width:350px;margin:20px auto 0 auto;box-shadow:0 2px 6px rgba(0,0,0,0.08);}
-.currency-item{display:flex;justify-content:space-between;margin-bottom:4px;}
-.currency-item span:first-child{font-weight:600;color:#1e293b;}
-.currency-item span:last-child{color:var(--primary);}
+/* Döviz */
+.currency-card{background:#fff;border-top:2px solid var(--primary);padding:8px 12px;border-radius:6px 6px 0 0;width:100%;max-width:350px;margin:20px auto 0 auto;box-shadow:0 2px 6px rgba(0,0,0,0.08)}
+.currency-item{display:flex;justify-content:space-between;margin-bottom:4px}
+.currency-item span:first-child{font-weight:600;color:#1e293b}
+.currency-item span:last-child{color:var(--primary)}
 
 /* FOOTER */
-footer{background:var(--dark);color:#aaa;padding:20px;text-align:center;font-size:13px;}
+footer{background:var(--dark);color:#aaa;padding:20px;text-align:center;font-size:13px}
+
+/* BREAKING NEWS */
+.breaking-news-container {
+  width: 100%; background-color: #0b1220; overflow: hidden; white-space: nowrap;
+  border-top: 3px solid #0066ff; border-bottom: 3px solid #0066ff; padding: 8px 0;
+}
+.breaking-news { display: inline-block; color: #00aaff; font-weight: 600; font-size: 16px; position: relative; left: 100%; animation: marquee 15s linear infinite; }
+.breaking-news:hover { animation-play-state: paused; }
+@keyframes marquee { 0%{left:100%}100%{left:-100%}}
 </style>
 </head>
 <body>
 
+<!-- LOADING -->
+<div id="loading-screen"><div class="x-loader">X</div></div>
+
+<!-- HEADER -->
 <header>
   <div class="logo">Gündem<span>X</span></div>
   <div class="social-header">
     <a href="hava-durumu.html" class="social-link">Hava Durumu</a>
     <a href="biyografiler.html" class="social-link">Biyografiler</a>
+  </div>
+  <div class="breaking-news-container">
+    <div class="breaking-news" id="breakingNews"></div>
   </div>
   <nav>
     <a href="index.html">Gündem</a>
@@ -85,114 +124,37 @@ footer{background:var(--dark);color:#aaa;padding:20px;text-align:center;font-siz
   </nav>
 </header>
 
-<div class="container">
+<!-- Slider -->
+<div class="top-slider" id="top-slider"></div>
 
-  <!-- Kategoriler -->
-  <section class="categories-section">
-    <h2>Kategoriler</h2>
-    <div class="category-grid">
-      
-      <!-- Gündem -->
-      <div class="category-card" onclick="window.location.href='haber.html?id=1'">
-        <img src="images/gundem1.jpg" alt="Gündem Haber 1">
-        <div class="category-content">
-          <div class="category-name">Gündem</div>
-          <h3>Gündem Haber Başlığı 1</h3>
-          <p>Bu haber gündemdeki en son gelişmeleri özetliyor... <a href="haber.html?id=1">Devamını oku</a></p>
-        </div>
-      </div>
-      
-      <div class="category-card" onclick="window.location.href='haber.html?id=2'">
-        <img src="images/gundem2.jpg" alt="Gündem Haber 2">
-        <div class="category-content">
-          <div class="category-name">Gündem</div>
-          <h3>Gündem Haber Başlığı 2</h3>
-          <p>Gündemdeki önemli detaylar burada yer alıyor... <a href="haber.html?id=2">Devamını oku</a></p>
-        </div>
-      </div>
-
-      <!-- Siyaset -->
-      <div class="category-card" onclick="window.location.href='haber.html?id=3'">
-        <img src="images/siyaset1.jpg" alt="Siyaset Haber 1">
-        <div class="category-content">
-          <div class="category-name">Siyaset</div>
-          <h3>Siyaset Haber Başlığı 1</h3>
-          <p>Son siyasi gelişmeler ve analizler... <a href="haber.html?id=3">Devamını oku</a></p>
-        </div>
-      </div>
-      
-      <div class="category-card" onclick="window.location.href='haber.html?id=4'">
-        <img src="images/siyaset2.jpg" alt="Siyaset Haber 2">
-        <div class="category-content">
-          <div class="category-name">Siyaset</div>
-          <h3>Siyaset Haber Başlığı 2</h3>
-          <p>Güncel siyasi olaylar burada... <a href="haber.html?id=4">Devamını oku</a></p>
-        </div>
-      </div>
-
-      <!-- Ekonomi -->
-      <div class="category-card" onclick="window.location.href='haber.html?id=5'">
-        <img src="images/ekonomi1.jpg" alt="Ekonomi Haber 1">
-        <div class="category-content">
-          <div class="category-name">Ekonomi</div>
-          <h3>Ekonomi Haber Başlığı 1</h3>
-          <p>Ekonomi dünyasındaki son gelişmeler... <a href="haber.html?id=5">Devamını oku</a></p>
-        </div>
-      </div>
-
-      <div class="category-card" onclick="window.location.href='haber.html?id=6'">
-        <img src="images/ekonomi2.jpg" alt="Ekonomi Haber 2">
-        <div class="category-content">
-          <div class="category-name">Ekonomi</div>
-          <h3>Ekonomi Haber Başlığı 2</h3>
-          <p>Finans ve piyasa analizleri... <a href="haber.html?id=6">Devamını oku</a></p>
-        </div>
-      </div>
-
-      <!-- Türkiye Geneli -->
-      <div class="category-card" onclick="window.location.href='haber.html?id=7'">
-        <img src="images/turkiye1.jpg" alt="Türkiye Geneli Haber 1">
-        <div class="category-content">
-          <div class="category-name">Türkiye Geneli</div>
-          <h3>Türkiye Geneli Haber Başlığı 1</h3>
-          <p>Ülke genelinde yaşanan önemli olaylar... <a href="haber.html?id=7">Devamını oku</a></p>
-        </div>
-      </div>
-
-      <div class="category-card" onclick="window.location.href='haber.html?id=8'">
-        <img src="images/turkiye2.jpg" alt="Türkiye Geneli Haber 2">
-        <div class="category-content">
-          <div class="category-name">Türkiye Geneli</div>
-          <h3>Türkiye Geneli Haber Başlığı 2</h3>
-          <p>Güncel gelişmeler ve haber detayları... <a href="haber.html?id=8">Devamını oku</a></p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- İller -->
-  <div class="box">
-    <h2>İller</h2>
-    <div class="provinces">
-      <a href="il.html?id=İstanbul">İstanbul</a>
-      <a href="il.html?id=Ankara">Ankara</a>
-      <a href="il.html?id=İzmir">İzmir</a>
-      <a href="il.html?id>Bursa">Bursa</a>
-      <a href="il.html?id>Antalya">Antalya</a>
-      <!-- Diğer illeri ekleyebilirsin -->
-    </div>
+<!-- Son 5 Haber -->
+<section class="news-section">
+  <div class="container">
+    <h2>Son Haberler</h2>
+    <div class="news-list" id="news-container"></div>
   </div>
+</section>
 
-  <!-- Döviz -->
-  <div class="currency-card">
-    <div class="currency-item"><span>USD</span> <span id="usd">--</span> TL</div>
-    <div class="currency-item"><span>EUR</span> <span id="eur">--</span> TL</div>
-    <div class="currency-item"><span>GBP</span> <span id="gbp">--</span> TL</div>
-  </div>
+<!-- Kategoriler -->
+<section class="categories-section">
+  <h2>Kategoriler</h2>
+  <div class="category-grid" id="categoryGrid"></div>
+</section>
 
+<!-- İller -->
+<div class="box">
+  <h2>İller</h2>
+  <div class="provinces" id="province-list"></div>
 </div>
 
+<!-- Döviz -->
+<div class="currency-card">
+  <div class="currency-item"><span>USD</span> <span id="usd">--</span> TL</div>
+  <div class="currency-item"><span>EUR</span> <span id="eur">--</span> TL</div>
+  <div class="currency-item"><span>GBP</span> <span id="gbp">--</span> TL</div>
+</div>
+
+<!-- Footer -->
 <footer>
   <a href="about.html">Hakkımızda</a> |
   <a href="privacy.html">Gizlilik Politikası</a> |
@@ -202,6 +164,15 @@ footer{background:var(--dark);color:#aaa;padding:20px;text-align:center;font-siz
 </footer>
 
 <script>
+// LOADING
+window.addEventListener("load",()=>{
+  setTimeout(()=>{
+    const l=document.getElementById("loading-screen");
+    l.style.opacity="0";
+    setTimeout(()=>l.style.display="none",300);
+  },500);
+});
+
 // Döviz
 async function getCurrencies(){
   try{
@@ -213,8 +184,75 @@ async function getCurrencies(){
   }catch(e){ console.error("Döviz alınamadı", e); }
 }
 getCurrencies();
-setInterval(getCurrencies,60000);
-</script>
+setInterval(getCurrencies, 60000);
 
+// Haberler, Slider, Son 5 haber ve Kategoriler
+async function loadNews(){
+  try{
+    const res = await fetch("data/news.json?t="+Date.now());
+    const newsList = await res.json();
+    const sorted = newsList.sort((a,b)=>b.id - a.id);
+
+    // Slider
+    const slider = document.getElementById("top-slider"); slider.innerHTML="";
+    sorted.slice(0,2).forEach(item=>{
+      const slide = document.createElement("div"); slide.className="slide";
+      slide.innerHTML = `<img src="${item.image}" alt="${item.title}"><div class="slide-content"><h2>${item.title}</h2><p>${item.city} • ${item.time}</p></div>`;
+      slider.appendChild(slide);
+    });
+    const slides = slider.querySelectorAll('.slide'); let current=0;
+    function showSlide(i){slides.forEach(s=>s.classList.remove('active'));slides[i].classList.add('active');}
+    showSlide(current); setInterval(()=>{current=(current+1)%slides.length;showSlide(current);},4000);
+
+    // Son 5 Haber
+    const newsContainer = document.getElementById("news-container"); newsContainer.innerHTML="";
+    sorted.slice(0,5).forEach(item=>{
+      const shortText = item.content.length > 80 ? item.content.substring(0,80)+"..." : item.content;
+      const card = document.createElement('div'); card.className='news-card';
+      card.innerHTML = `<img src="${item.image}" alt="${item.title}"><div class="news-card-content"><h3>${item.title}</h3><p>${shortText}</p></div>`;
+      card.addEventListener('click',()=>{ window.location.href=`haber.html?id=${item.id}`; });
+      newsContainer.appendChild(card);
+    });
+
+    // Breaking News
+    const latestNews = sorted[0];
+    document.getElementById('breakingNews').innerText = "SON HABER: " + latestNews.title;
+    window.latestNewsList = sorted;
+
+    // Kategoriler
+    const categories = ["Gündem","Siyaset","Ekonomi","Türkiye Geneli"];
+    const categoryGrid = document.getElementById("categoryGrid");
+    categoryGrid.innerHTML="";
+    categories.forEach(cat=>{
+      const latest = sorted.filter(n=>n.category===cat).sort((a,b)=>b.id - a.id)[0];
+      if(!latest) return;
+      const shortText = latest.content.length > 80 ? latest.content.substring(0,80)+"..." : latest.content;
+      const card = document.createElement('div'); card.className='category-card';
+      card.innerHTML = `<img src="${latest.image}" alt="${latest.title}"><div class="category-content"><div class="category-name">${cat}</div><h3>${latest.title}</h3><p>${shortText}</p></div>`;
+      card.addEventListener('click',()=>{ window.location.href=`kategori.html?cat=${cat}`; });
+      categoryGrid.appendChild(card);
+    });
+
+  } catch(err){
+    console.error("Haberler yüklenemedi:", err);
+    document.getElementById("news-container").innerHTML = "<p>Haberler yüklenemedi.</p>";
+  }
+}
+loadNews();
+
+// 81 İl
+const provinces = ["Adana","Adıyaman","Afyonkarahisar","Ağrı","Amasya","Ankara","Antalya","Artvin","Aydın","Balıkesir","Bilecik","Bingöl","Bitlis","Bolu","Burdur","Bursa","Çanakkale","Çankırı","Çorum","Denizli","Diyarbakır","Edirne","Elazığ","Erzincan","Erzurum","Eskişehir","Gaziantep","Giresun","Gümüşhane","Hakkari","Hatay","Isparta","Mersin","İstanbul","İzmir","Kars","Kastamonu","Kayseri","Kırklareli","Kırşehir","Kocaeli","Konya","Kütahya","Malatya","Manisa","Kahramanmaraş","Mardin","Muğla","Muş","Nevşehir","Niğde","Ordu","Rize","Sakarya","Samsun","Siirt","Sinop","Sivas","Tekirdağ","Tokat","Trabzon","Tunceli","Şanlıurfa","Uşak","Van","Yozgat","Zonguldak","Aksaray","Bayburt","Karaman","Kırıkkale","Batman","Şırnak","Bartın","Ardahan","Iğdır","Yalova","Karabük","Kilis","Osmaniye","Düzce"];
+const container = document.getElementById("province-list");
+provinces.forEach(city=>{
+  const a=document.createElement("a");
+  a.href="#";
+  a.dataset.city=city;
+  a.textContent=city;
+  container.appendChild(a);
+});
+document.querySelectorAll('#province-list a').forEach(a=>{
+  a.addEventListener('click',()=>{ window.location.href=`il.html?id=${a.dataset.city}`; });
+});
+</script>
 </body>
 </html>
