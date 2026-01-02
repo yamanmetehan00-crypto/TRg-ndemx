@@ -207,12 +207,26 @@ links.forEach(link => {
   margin: 40px 0;
 }
 
-.categories-section h2 {
+.categories-title {
   font-size: 28px;
   font-weight: 700;
   color: #0b1220;
-  text-align: center;
+  text-align: right; /* Sağda konumlandır */
+  position: relative;
+  display: inline-block;
   margin-bottom: 30px;
+  padding-bottom: 6px;
+}
+
+.categories-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0; /* Sağ hizalı mavi çizgi */
+  width: 50px; /* Çizgi uzunluğu */
+  height: 4px; /* Çizgi kalınlığı */
+  background-color: #0066ff; /* Mavi çizgi */
+  border-radius: 2px;
 }
 
 .categories-grid {
