@@ -51,7 +51,7 @@ nav a{margin-left:16px;font-size:14px;opacity:.9}
 .box{background:#fff;padding:20px;margin-bottom:20px;}
 .box h2{border-bottom:2px solid var(--primary);padding-bottom:6px;margin-bottom:14px;}
 .provinces{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;}
-.provinces a{background:#f8f9fb;padding:10px;text-align:center;border:1px solid #e5e7eb;font-size:13px}
+.provinces a{background:#f8f9fb;padding:10px;text-align:center;border:1px solid #e5e7eb;font-size:13px;}
 
 /* SLIDER */
 .top-slider{position:relative;overflow:hidden;width:100%;height:300px;margin-bottom:20px;border-radius:12px}
@@ -88,17 +88,17 @@ footer{background:var(--dark);color:#aaa;padding:20px;text-align:center;font-siz
 .breaking-news:hover { animation-play-state: paused; }
 @keyframes marquee { 0%{left:100%}100%{left:-100%}}
 
-/* === ANA SAYFA KATEGORİ KARTLARI === */
-.categories-section {margin: 35px 0;}
-.categories-section h2 {font-size: 22px;margin-bottom: 18px;color: #0b3c5d;}
-.categories-grid {display: grid;grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));gap: 18px;}
-.category-box {background: linear-gradient(135deg, #ffffff, #f4f8fb);border: 1px solid #e3edf5;border-radius: 14px;padding: 18px;box-shadow: 0 6px 18px rgba(11, 60, 93, 0.08);transition: all 0.25s ease;position: relative;overflow: hidden;}
-.category-box::before {content: "";position: absolute;top: 0;left: 0;width: 100%;height: 4px;background: linear-gradient(to right, #1e88e5, #42a5f5);}
-.category-box:hover {transform: translateY(-5px);box-shadow: 0 12px 28px rgba(11, 60, 93, 0.15);}
-.category-box h3 {font-size: 17px;color: #1e88e5;margin-bottom: 10px;}
-.category-box strong {display: block;font-size: 15px;margin-bottom: 8px;color: #222;}
-.category-box p {font-size: 14px;color: #555;line-height: 1.5;}
-.category-box a {text-decoration: none;color: inherit;display: block;}
+/* KATEGORİ KARTLARI */
+.categories-section {margin: 20px 0;}
+.categories-section h2 {font-size: 20px;margin-bottom: 15px;color: #0b3c5d;}
+.category-grid {display: grid;grid-template-columns: repeat(auto-fit,minmax(240px,1fr));gap:15px;}
+.category-card {background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,0.08);transition:0.25s ease;cursor:pointer;}
+.category-card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,0.15);}
+.category-card img{width:100%;height:140px;object-fit:cover;}
+.category-content{padding:12px 14px;}
+.category-name{font-size:13px;font-weight:bold;color:#1e88e5;margin-bottom:6px;text-transform:uppercase;}
+.category-content h3{font-size:15px;margin:0 0 6px;color:#222;}
+.category-content p{font-size:13px;color:#555;line-height:1.4;}
 </style>
 </head>
 <body>
@@ -106,9 +106,7 @@ footer{background:var(--dark);color:#aaa;padding:20px;text-align:center;font-siz
 <!-- LOADING -->
 <div id="loading-screen"><div class="x-loader">X</div></div>
 
-<!-- Adsense Script -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1201412624479751" crossorigin="anonymous"></script>
-
+<!-- HEADER -->
 <header>
   <div class="logo">Gündem<span>X</span></div>
   <div class="social-header">
@@ -127,8 +125,16 @@ footer{background:var(--dark);color:#aaa;padding:20px;text-align:center;font-siz
   </nav>
 </header>
 
+<!-- Slider -->
 <div class="top-slider" id="top-slider"></div>
 
+<!-- Kategoriler üstte -->
+<section class="categories-section">
+  <h2>Kategoriler</h2>
+  <div class="category-grid" id="categoryGrid"></div>
+</section>
+
+<!-- Haber Listesi -->
 <div class="grid">
   <div>
     <div class="box">
@@ -138,24 +144,20 @@ footer{background:var(--dark);color:#aaa;padding:20px;text-align:center;font-siz
   </div>
 </div>
 
-<!-- Kategoriler -->
-<section class="categories-section">
-  <h2 class="section-title">Kategoriler</h2>
-  <div class="category-grid" id="categoryGrid"></div>
-</section>
-
 <!-- İller -->
 <div class="box">
   <h2>İller</h2>
   <div class="provinces" id="province-list"></div>
 </div>
 
+<!-- Döviz -->
 <div class="currency-card">
   <div class="currency-item"><span>USD</span> <span id="usd">--</span> TL</div>
   <div class="currency-item"><span>EUR</span> <span id="eur">--</span> TL</div>
   <div class="currency-item"><span>GBP</span> <span id="gbp">--</span> TL</div>
 </div>
 
+<!-- Footer -->
 <footer>
   <a href="about.html">Hakkımızda</a> |
   <a href="privacy.html">Gizlilik Politikası</a> |
@@ -214,9 +216,30 @@ async function loadNews(){
       newsContainer.appendChild(card);
     });
 
+    // Breaking News
     const latestNews = sorted[0];
     document.getElementById('breakingNews').innerText = "SON HABER: " + latestNews.title;
     window.latestNewsList = sorted;
+
+    // Kategoriler
+    const categories = ["Gündem","Siyaset","Ekonomi","Türkiye Geneli"];
+    const categoryGrid = document.getElementById("categoryGrid");
+    categoryGrid.innerHTML="";
+    categories.forEach(cat=>{
+      const latest = sorted.filter(n=>n.category===cat).sort((a,b)=>b.id - a.id)[0];
+      if(!latest) return;
+      const shortText = latest.content.length > 80 ? latest.content.substring(0,80)+"..." : latest.content;
+      categoryGrid.innerHTML += `
+        <div class="category-card" onclick="window.location.href='haber.html?id=${latest.id}'">
+          <img src="${latest.image}" alt="${latest.title}">
+          <div class="category-content">
+            <div class="category-name">${cat}</div>
+            <h3>${latest.title}</h3>
+            <p>${shortText}</p>
+          </div>
+        </div>
+      `;
+    });
 
   } catch(err){
     console.error("Haberler yüklenemedi:", err);
@@ -225,25 +248,14 @@ async function loadNews(){
 }
 loadNews();
 
-// İller - JS ile ekleme
-const provinces = [
-  "Adana","Adıyaman","Afyonkarahisar","Ağrı","Amasya","Ankara","Antalya","Artvin","Aydın",
-  "Balıkesir","Bilecik","Bingöl","Bitlis","Bolu","Burdur","Bursa","Çanakkale","Çankırı",
-  "Çorum","Denizli","Diyarbakır","Edirne","Elazığ","Erzincan","Erzurum","Eskişehir","Gaziantep",
-  "Giresun","Gümüşhane","Hakkari","Hatay","Isparta","Mersin","İstanbul","İzmir","Kars",
-  "Kastamonu","Kayseri","Kırklareli","Kırşehir","Kocaeli","Konya","Kütahya","Malatya","Manisa",
-  "Kahramanmaraş","Mardin","Muğla","Muş","Nevşehir","Niğde","Ordu","Rize","Sakarya","Samsun",
-  "Siirt","Sinop","Sivas","Tekirdağ","Tokat","Trabzon","Tunceli","Şanlıurfa","Uşak","Van",
-  "Yozgat","Zonguldak","Aksaray","Bayburt","Karaman","Kırıkkale","Batman","Şırnak","Bartın",
-  "Ardahan","Iğdır","Yalova","Karabük","Kilis","Osmaniye","Düzce"
-];
-
+// İller
+const provinces = ["Adana","Adıyaman","Afyonkarahisar","Ağrı","Amasya","Ankara","Antalya","Artvin","Aydın","Balıkesir","Bilecik","Bingöl","Bitlis","Bolu","Burdur","Bursa","Çanakkale","Çankırı","Çorum","Denizli","Diyarbakır","Edirne","Elazığ","Erzincan","Erzurum","Eskişehir","Gaziantep","Giresun","Gümüşhane","Hakkari","Hatay","Isparta","Mersin","İstanbul","İzmir","Kars","Kastamonu","Kayseri","Kırklareli","Kırşehir","Kocaeli","Konya","Kütahya","Malatya","Manisa","Kahramanmaraş","Mardin","Muğla","Muş","Nevşehir","Niğde","Ordu","Rize","Sakarya","Samsun","Siirt","Sinop","Sivas","Tekirdağ","Tokat","Trabzon","Tunceli","Şanlıurfa","Uşak","Van","Yozgat","Zonguldak","Aksaray","Bayburt","Karaman","Kırıkkale","Batman","Şırnak","Bartın","Ardahan","Iğdır","Yalova","Karabük","Kilis","Osmaniye","Düzce"];
 const container = document.getElementById("province-list");
-provinces.forEach(city => {
-  const a = document.createElement("a");
-  a.href = "#";
-  a.dataset.city = city;
-  a.textContent = city;
+provinces.forEach(city=>{
+  const a=document.createElement("a");
+  a.href="#";
+  a.dataset.city=city;
+  a.textContent=city;
   container.appendChild(a);
 });
 document.querySelectorAll('#province-list a').forEach(a=>{
