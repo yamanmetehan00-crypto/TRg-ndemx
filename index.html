@@ -1,41 +1,38 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-<meta charset="UTF-8">
-<title>GündemX – Gündeme Net Bakış</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-:root{
-  --primary:#0066ff;
-  --dark:#0b1220;
-  --bg:#f4f7fb;
-  --text:#1e293b;
-}
-*{box-sizing:border-box;}
-body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--text);}
-a{text-decoration:none;color:inherit;}
-
-/* LOADING */
+<!DOCTYPE html>  <html lang="tr">  
+<head>  
+<meta charset="UTF-8">  
+<title>GündemX – Gündeme Net Bakış</title>  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<style>  
+:root{  
+  --primary:#0066ff;  
+  --dark:#0b1220;  
+  --bg:#f4f7fb;  
+  --text:#1e293b;  
+}  
+*{box-sizing:border-box;}  
+body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--text);}  
+a{text-decoration:none;color:inherit;}  /* LOADING */
 #loading-screen{
-  position:fixed; inset:0; background:#fff;
-  display:flex; align-items:center; justify-content:center; z-index:9999;
+position:fixed; inset:0; background:#fff;
+display:flex; align-items:center; justify-content:center; z-index:9999;
 }
 .x-loader{
-  font-size:140px; font-weight:900; color:transparent;
-  -webkit-text-stroke:4px var(--primary);
-  background:linear-gradient(to top,var(--primary) 0%,var(--primary) 50%,transparent 50%);
-  background-size:100% 200%; background-position:bottom;
-  -webkit-background-clip:text; background-clip:text;
-  animation:fillX 2.5s ease forwards;
+font-size:140px; font-weight:900; color:transparent;
+-webkit-text-stroke:4px var(--primary);
+background:linear-gradient(to top,var(--primary) 0%,var(--primary) 50%,transparent 50%);
+background-size:100% 200%; background-position:bottom;
+-webkit-background-clip:text; background-clip:text;
+animation:fillX 2.5s ease forwards;
 }
 @keyframes fillX{from{background-position:bottom} to{background-position:top}}
 
 /* HEADER */
 header{
-  background:var(--dark); color:#fff;
-  padding:14px 20px; display:flex;
-  justify-content:space-between; align-items:center;
-  flex-wrap: wrap;
+background:var(--dark); color:#fff;
+padding:14px 20px; display:flex;
+justify-content:space-between; align-items:center;
+flex-wrap: wrap;
 }
 .logo{font-size:26px;font-weight:800}
 .logo span{color:var(--primary)}
@@ -44,6 +41,14 @@ header{
 .social-link:hover{background:#004fcc;transform:scale(1.05)}
 nav a{margin-left:16px;font-size:14px;opacity:.9}
 @media(max-width:768px){header{flex-direction:column;align-items:center} .social-header{margin:8px 0;justify-content:center} nav{display:none}}
+
+/* MAIN */
+.container{max-width:1200px;margin:auto;padding:16px;}
+.grid{display:grid;grid-template-columns:1fr;gap:20px;}
+.box{background:#fff;padding:20px;margin-bottom:20px;}
+.box h2{border-bottom:2px solid var(--primary);padding-bottom:6px;margin-bottom:14px;}
+.provinces{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;}
+.provinces a{background:#f8f9fb;padding:10px;text-align:center;border:1px solid #e5e7eb;font-size:13px;}
 
 /* SLIDER */
 .top-slider{position:relative;overflow:hidden;width:100%;height:300px;margin-bottom:20px;border-radius:12px}
@@ -54,34 +59,15 @@ nav a{margin-left:16px;font-size:14px;opacity:.9}
 .slide-content h2{margin:0;font-size:22px}
 .slide-content p{margin:4px 0 0;font-size:14px}
 
-/* NEWS CARD - Son 5 Haber */
-.news-section{margin:20px 0;}
-.news-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;}
-.news-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,0.08);transition:0.25s ease;cursor:pointer;}
-.news-card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,0.15);}
-.news-card img{width:100%;height:140px;object-fit:cover;}
-.news-card-content{padding:12px;}
-.news-card-content h3{margin:0 0 6px;color:#222;font-size:16px;}
-.news-card-content p{font-size:14px;color:#555;line-height:1.4;}
+/* NEWS CARD */
+.news-card{display:flex;gap:12px;background:#fff;border-radius:10px;padding:10px;align-items:center;box-shadow:0 6px 16px rgba(0,0,0,0.05);transition:transform 0.2s ease,box-shadow 0.2s ease;cursor:pointer}
+.news-card:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(0,0,0,0.08)}
+.news-card img{width:90px;height:70px;object-fit:cover;border-radius:8px}
+.news-card h3{font-size:15px;margin:0 0 6px;line-height:1.3}
+.news-card span{font-size:12px;color:#64748b}
+.news-list{display:flex;flex-direction:column;gap:14px}
 
-/* KATEGORİ KARTLARI */
-.categories-section {margin: 30px 0;}
-.categories-section h2 {font-size: 20px;margin-bottom: 15px;color: #0b3c5d;}
-.category-grid {display: grid;grid-template-columns: repeat(auto-fit,minmax(240px,1fr));gap:15px;}
-.category-card {background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,0.08);transition:0.25s ease;cursor:pointer;}
-.category-card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,0.15);}
-.category-card img{width:100%;height:140px;object-fit:cover;}
-.category-content{padding:12px;}
-.category-name{font-size:13px;font-weight:bold;color:#1e88e5;margin-bottom:6px;text-transform:uppercase;}
-.category-content h3{font-size:15px;margin:0 0 6px;color:#222;}
-.category-content p{font-size:13px;color:#555;line-height:1.4;}
-
-/* İLLER */
-.provinces{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;margin-bottom:20px;}
-.provinces a{background:#f8f9fb;padding:10px;text-align:center;border:1px solid #e5e7eb;font-size:13px;border-radius:6px;transition:all 0.2s ease;}
-.provinces a:hover{background:#e0ebff;}
-
-/* Döviz */
+/* CURRENCY CARD */
 .currency-card{background:#fff;border-top:2px solid var(--primary);padding:8px 12px;border-radius:6px 6px 0 0;width:100%;max-width:350px;margin:20px auto 0 auto;box-shadow:0 2px 6px rgba(0,0,0,0.08)}
 .currency-item{display:flex;justify-content:space-between;margin-bottom:4px}
 .currency-item span:first-child{font-weight:600;color:#1e293b}
@@ -92,167 +78,503 @@ footer{background:var(--dark);color:#aaa;padding:20px;text-align:center;font-siz
 
 /* BREAKING NEWS */
 .breaking-news-container {
-  width: 100%; background-color: #0b1220; overflow: hidden; white-space: nowrap;
-  border-top: 3px solid #0066ff; border-bottom: 3px solid #0066ff; padding: 8px 0;
+width: 100%; background-color: #0b1220; overflow: hidden; white-space: nowrap;
+border-top: 3px solid #0066ff; border-bottom: 3px solid #0066ff; padding: 8px 0;
 }
 .breaking-news { display: inline-block; color: #00aaff; font-weight: 600; font-size: 16px; position: relative; left: 100%; animation: marquee 15s linear infinite; }
 .breaking-news:hover { animation-play-state: paused; }
 @keyframes marquee { 0%{left:100%}100%{left:-100%}}
-</style>
-</head>
-<body>
 
-<!-- LOADING -->
-<div id="loading-screen"><div class="x-loader">X</div></div>
 
-<!-- HEADER -->
-<header>
-  <div class="logo">Gündem<span>X</span></div>
-  <div class="social-header">
-    <a href="hava-durumu.html" class="social-link">Hava Durumu</a>
-    <a href="biyografiler.html" class="social-link">Biyografiler</a>
-  </div>
-  <div class="breaking-news-container">
-    <div class="breaking-news" id="breakingNews"></div>
-  </div>
-  <nav>
-    <a href="index.html">Gündem</a>
-    <a href="il.html">Siyaset</a>
-    <a href="il.html">Halkın Sesi</a>
-    <a href="il.html">Gençlik</a>
-    <a href="index.html#analiz">Analiz</a>
-  </nav>
-</header>
+/* === ANA SAYFA KATEGORİ KARTLARI === */
 
-<!-- Slider -->
-<div class="top-slider" id="top-slider"></div>
-
-<!-- Son 5 Haber -->
-<section class="news-section">
-  <div class="container">
-    <h2>Son Haberler</h2>
-    <div class="news-list" id="news-container"></div>
-  </div>
-</section>
-
-<!-- Kategoriler -->
-<section class="categories-section">
-  <h2>Kategoriler</h2>
-  <div class="category-grid" id="categoryGrid"></div>
-</section>
-
-<!-- İller -->
-<div class="box">
-  <h2>İller</h2>
-  <div class="provinces" id="province-list"></div>
-</div>
-
-<!-- Döviz -->
-<div class="currency-card">
-  <div class="currency-item"><span>USD</span> <span id="usd">--</span> TL</div>
-  <div class="currency-item"><span>EUR</span> <span id="eur">--</span> TL</div>
-  <div class="currency-item"><span>GBP</span> <span id="gbp">--</span> TL</div>
-</div>
-
-<!-- Footer -->
-<footer>
-  <a href="about.html">Hakkımızda</a> |
-  <a href="privacy.html">Gizlilik Politikası</a> |
-  <a href="contact.html">İletişim</a><br>
-  © 2025 GündemX – Gündeme Net Bakış<br>
-  Tarafsız • Halk Odaklı • Sade Habercilik
-</footer>
-
-<script>
-// LOADING
-window.addEventListener("load",()=>{
-  setTimeout(()=>{
-    const l=document.getElementById("loading-screen");
-    l.style.opacity="0";
-    setTimeout(()=>l.style.display="none",300);
-  },500);
-});
-
-// Döviz
-async function getCurrencies(){
-  try{
-    const res = await fetch("https://open.er-api.com/v6/latest/TRY");
-    const data = await res.json();
-    document.getElementById("usd").innerText = (1 / data.rates.USD).toFixed(2);
-    document.getElementById("eur").innerText = (1 / data.rates.EUR).toFixed(2);
-    document.getElementById("gbp").innerText = (1 / data.rates.GBP).toFixed(2);
-  }catch(e){ console.error("Döviz alınamadı", e); }
+.categories-section {
+margin: 35px 0;
 }
-getCurrencies();
-setInterval(getCurrencies, 60000);
 
-// Haberler, Slider, Son 5 haber ve Kategoriler
-async function loadNews(){
-  try{
-    const res = await fetch("data/news.json?t="+Date.now());
-    const newsList = await res.json();
-    const sorted = newsList.sort((a,b)=>b.id - a.id);
-
-    // Slider
-    const slider = document.getElementById("top-slider"); slider.innerHTML="";
-    sorted.slice(0,2).forEach(item=>{
-      const slide = document.createElement("div"); slide.className="slide";
-      slide.innerHTML = `<img src="${item.image}" alt="${item.title}"><div class="slide-content"><h2>${item.title}</h2><p>${item.city} • ${item.time}</p></div>`;
-      slider.appendChild(slide);
-    });
-    const slides = slider.querySelectorAll('.slide'); let current=0;
-    function showSlide(i){slides.forEach(s=>s.classList.remove('active'));slides[i].classList.add('active');}
-    showSlide(current); setInterval(()=>{current=(current+1)%slides.length;showSlide(current);},4000);
-
-    // Son 5 Haber
-    const newsContainer = document.getElementById("news-container"); newsContainer.innerHTML="";
-    sorted.slice(0,5).forEach(item=>{
-      const shortText = item.content.length > 80 ? item.content.substring(0,80)+"..." : item.content;
-      const card = document.createElement('div'); card.className='news-card';
-      card.innerHTML = `<img src="${item.image}" alt="${item.title}"><div class="news-card-content"><h3>${item.title}</h3><p>${shortText}</p></div>`;
-      card.addEventListener('click',()=>{ window.location.href=`haber.html?id=${item.id}`; });
-      newsContainer.appendChild(card);
-    });
-
-    // Breaking News
-    const latestNews = sorted[0];
-    document.getElementById('breakingNews').innerText = "SON HABER: " + latestNews.title;
-    window.latestNewsList = sorted;
-
-    // Kategoriler
-    const categories = ["Gündem","Siyaset","Ekonomi","Türkiye Geneli"];
-    const categoryGrid = document.getElementById("categoryGrid");
-    categoryGrid.innerHTML="";
-    categories.forEach(cat=>{
-      const latest = sorted.filter(n=>n.category===cat).sort((a,b)=>b.id - a.id)[0];
-      if(!latest) return;
-      const shortText = latest.content.length > 80 ? latest.content.substring(0,80)+"..." : latest.content;
-      const card = document.createElement('div'); card.className='category-card';
-      card.innerHTML = `<img src="${latest.image}" alt="${latest.title}"><div class="category-content"><div class="category-name">${cat}</div><h3>${latest.title}</h3><p>${shortText}</p></div>`;
-      card.addEventListener('click',()=>{ window.location.href=`kategori.html?cat=${cat}`; });
-      categoryGrid.appendChild(card);
-    });
-
-  } catch(err){
-    console.error("Haberler yüklenemedi:", err);
-    document.getElementById("news-container").innerHTML = "<p>Haberler yüklenemedi.</p>";
-  }
+.categories-section h2 {
+font-size: 22px;
+margin-bottom: 18px;
+color: #0b3c5d;
 }
-loadNews();
 
-// 81 İl
-const provinces = ["Adana","Adıyaman","Afyonkarahisar","Ağrı","Amasya","Ankara","Antalya","Artvin","Aydın","Balıkesir","Bilecik","Bingöl","Bitlis","Bolu","Burdur","Bursa","Çanakkale","Çankırı","Çorum","Denizli","Diyarbakır","Edirne","Elazığ","Erzincan","Erzurum","Eskişehir","Gaziantep","Giresun","Gümüşhane","Hakkari","Hatay","Isparta","Mersin","İstanbul","İzmir","Kars","Kastamonu","Kayseri","Kırklareli","Kırşehir","Kocaeli","Konya","Kütahya","Malatya","Manisa","Kahramanmaraş","Mardin","Muğla","Muş","Nevşehir","Niğde","Ordu","Rize","Sakarya","Samsun","Siirt","Sinop","Sivas","Tekirdağ","Tokat","Trabzon","Tunceli","Şanlıurfa","Uşak","Van","Yozgat","Zonguldak","Aksaray","Bayburt","Karaman","Kırıkkale","Batman","Şırnak","Bartın","Ardahan","Iğdır","Yalova","Karabük","Kilis","Osmaniye","Düzce"];
-const container = document.getElementById("province-list");
-provinces.forEach(city=>{
-  const a=document.createElement("a");
-  a.href="#";
-  a.dataset.city=city;
-  a.textContent=city;
-  container.appendChild(a);
-});
-document.querySelectorAll('#province-list a').forEach(a=>{
-  a.addEventListener('click',()=>{ window.location.href=`il.html?id=${a.dataset.city}`; });
-});
+.categories-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+gap: 18px;
+}
+
+.category-box {
+background: linear-gradient(135deg, #ffffff, #f4f8fb);
+border: 1px solid #e3edf5;
+border-radius: 14px;
+padding: 18px;
+box-shadow: 0 6px 18px rgba(11, 60, 93, 0.08);
+transition: all 0.25s ease;
+position: relative;
+overflow: hidden;
+}
+
+.category-box::before {
+content: "";
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 4px;
+background: linear-gradient(to right, #1e88e5, #42a5f5);
+}
+
+.category-box:hover {
+transform: translateY(-5px);
+box-shadow: 0 12px 28px rgba(11, 60, 93, 0.15);
+}
+
+.category-box h3 {
+font-size: 17px;
+color: #1e88e5;
+margin-bottom: 10px;
+}
+
+.category-box strong {
+display: block;
+font-size: 15px;
+margin-bottom: 8px;
+color: #222;
+}
+
+.category-box p {
+font-size: 14px;
+color: #555;
+line-height: 1.5;
+}
+
+.category-box a {
+text-decoration: none;
+color: inherit;
+display: block;
+}
+
+</style>  
+</head>  
+<body>  <!-- LOADING -->  <div id="loading-screen"><div class="x-loader">X</div></div>  <!-- Adsense Script -->  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1201412624479751"  
+     crossorigin="anonymous"></script>  <header>  
+  <div class="logo">Gündem<span>X</span></div>  
+<div class="social-header">  
+  <a href="hava-durumu.html" class="social-link">Hava Durumu</a>  
+  <a href="biyografiler.html" class="social-link">Biyografiler</a>  
+</div>  
+  <div class="breaking-news-container">  
+    <div class="breaking-news" id="breakingNews"></div>  
+  </div>  
+  <nav>  
+    <a href="index.html">Gündem</a>  
+    <a href="il.html">Siyaset</a>  
+    <a href="il.html">Halkın Sesi</a>  
+    <a href="il.html">Gençlik</a>  
+    <a href="index.html#analiz">Analiz</a>  
+  </nav>  
+</header>    <div class="top-slider" id="top-slider"></div>  
+  <div class="grid">  
+    <div>  
+      <div class="box">  
+        <h2>Gündem</h2>  
+        <div class="news-list" id="news-container"></div>  
+      </div>  
+    </div>  
+  </div>  <script>  
+let pressTimer;  
+  
+// Hava Durumu linkini buluyoruz (href ile kontrol ederek)  
+const links = document.querySelectorAll('.social-header .social-link');  
+let weatherLink;  
+links.forEach(link => {  
+    if(link.getAttribute('href') === 'hava-durumu.html') {  
+        weatherLink = link;  
+    }  
+});  
+
+</script>  <section class="category-section">  
+  <h2 class="section-title">Kategoriler</h2>  
+  <div class="category-grid" id="categoryGrid"></div>  
+</section>  <style>  
+.category-section {  
+  margin: 25px 0;  
+}  
+  
+.section-title {  
+  font-size: 20px;  
+  color: #0b3c5d;  
+  margin-bottom: 15px;  
+  font-weight: bold;  
+}  
+  
+.category-grid {  
+  display: grid;  
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));  
+  gap: 18px;  
+}  
+  
+.category-card {  
+  background: #fff;  
+  border-radius: 16px;  
+  overflow: hidden;  
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);  
+  transition: 0.25s ease;  
+}  
+  
+.category-card:hover {  
+  transform: translateY(-5px);  
+}  
+  
+.category-card img {  
+  width: 100%;  
+  height: 140px;  
+  object-fit: cover;  
+}  
+  
+.category-content {  
+  padding: 12px 14px;  
+}  
+  
+.category-name {  
+  font-size: 13px;  
+  font-weight: bold;  
+  color: #1e88e5;  
+  margin-bottom: 6px;  
+  text-transform: uppercase;  
+}  
+  
+.category-content h3 {  
+  font-size: 15px;  
+  margin: 0 0 6px;  
+  color: #222;  
+}  
+  
+.category-content p {  
+  font-size: 13px;  
+  color: #555;  
+  line-height: 1.4;  
+}  
+</style>  <script>  
+const categories = [  
+  "Gündem",  
+  "Siyaset",  
+  "Ekonomi",  
+  "Trafik",  
+  "Türkiye Geneli"  
+];  
+  
+fetch("data/news.json")  
+  .then(res => res.json())  
+  .then(data => {  
+    const grid = document.getElementById("categoryGrid");  
+  
+    categories.forEach(cat => {  
+      const lastNews = data  
+        .filter(n => n.category === cat)  
+        .sort((a, b) => new Date(b.time) - new Date(a.time))[0];  
+  
+      if (!lastNews) return;  
+  
+      const shortText = lastNews.content.substring(0, Math.floor(lastNews.content.length * 0.1)) + "...";  
+  
+      grid.innerHTML += `  
+        <a href="category.html?category=${encodeURIComponent(cat)}">  
+          <div class="category-card">  
+            <img src="${lastNews.image}" alt="${lastNews.title}">  
+            <div class="category-content">  
+              <div class="category-name">${cat}</div>  
+              <h3>${lastNews.title}</h3>  
+              <p>${shortText}</p>  
+            </div>  
+          </div>  
+        </a>  
+      `;  
+    });  
+  });  
+</script>    <!-- İLLER KATEGORİSİ EN ALTA -->    <div class="box">  
+    <h2>İller</h2>  
+    <div class="provinces" id="province-list">  
+      <!-- 81 İL BURAYA EKLENECEK -->  
+      <a href="#" data-city="Adana">Adana</a>  
+      <a href="#" data-city="Adıyaman">Adıyaman</a>  
+      <a href="#" data-city="Afyonkarahisar">Afyonkarahisar</a>  
+      <a href="#" data-city="Ağrı">Ağrı</a>  
+      <a href="#" data-city="Amasya">Amasya</a>  
+      <a href="#" data-city="Ankara">Ankara</a>  
+      <a href="#" data-city="Antalya">Antalya</a>  
+      <a href="#" data-city="Artvin">Artvin</a>  
+      <a href="#" data-city="Aydın">Aydın</a>  
+      <a href="#" data-city="Balıkesir">Balıkesir</a>  
+      <a href="#" data-city="Bilecik">Bilecik</a>  
+      <a href="#" data-city="Bingöl">Bingöl</a>  
+      <a href="#" data-city="Bitlis">Bitlis</a>  
+      <a href="#" data-city="Bolu">Bolu</a>  
+      <a href="#" data-city="Burdur">Burdur</a>  
+      <a href="#" data-city="Bursa">Bursa</a>  
+      <a href="#" data-city="Çanakkale">Çanakkale</a>  
+      <a href="#" data-city="Çankırı">Çankırı</a>  
+      <a href="#" data-city="Çorum">Çorum</a>  
+      <a href="#" data-city="Denizli">Denizli</a>  
+      <a href="#" data-city="Diyarbakır">Diyarbakır</a>  
+      <a href="#" data-city="Edirne">Edirne</a>  
+      <a href="#" data-city="Elazığ">Elazığ</a>  
+      <a href="#" data-city="Erzincan">Erzincan</a>  
+      <a href="#" data-city="Erzurum">Erzurum</a>  
+      <a href="#" data-city="Eskişehir">Eskişehir</a>  
+      <a href="#" data-city="Gaziantep">Gaziantep</a>  
+      <a href="#" data-city="Giresun">Giresun</a>  
+      <a href="#" data-city="Gümüşhane">Gümüşhane</a>  
+      <a href="#" data-city="Hakkari">Hakkari</a>  
+      <a href="#" data-city="Hatay">Hatay</a>  
+      <a href="#" data-city="Isparta">Isparta</a>  
+      <a href="#" data-city="Mersin">Mersin</a>  
+      <a href="#" data-city="İstanbul">İstanbul</a>  
+      <a href="#" data-city="İzmir">İzmir</a>  
+      <a href="#" data-city="Kars">Kars</a>  
+      <a href="#" data-city="Kastamonu">Kastamonu</a>  
+      <a href="#" data-city="Kayseri">Kayseri</a>  
+      <a href="#" data-city="Kırklareli">Kırklareli</a>  
+      <a href="#" data-city="Kırşehir">Kırşehir</a>  
+      <a href="#" data-city="Kocaeli">Kocaeli</a>  
+      <a href="#" data-city="Konya">Konya</a>  
+      <a href="#" data-city="Kütahya">Kütahya</a>  
+      <a href="#" data-city="Malatya">Malatya</a>  
+      <a href="#" data-city="Manisa">Manisa</a>  
+      <a href="#" data-city="Kahramanmaraş">Kahramanmaraş</a>  
+      <a href="#" data-city="Mardin">Mardin</a>  
+      <a href="#" data-city="Muğla">Muğla</a>  
+      <a href="#" data-city="Muş">Muş</a>  
+      <a href="#" data-city="Nevşehir">Nevşehir</a>  
+      <a href="#" data-city="Niğde">Niğde</a>  
+      <a href="#" data-city="Ordu">Ordu</a>  
+      <a href="#" data-city="Rize">Rize</a>  
+      <a href="#" data-city="Sakarya">Sakarya</a>  
+      <a href="#" data-city="Samsun">Samsun</a>  
+      <a href="#" data-city="Siirt">Siirt</a>  
+      <a href="#" data-city="Sinop">Sinop</a>  
+      <a href="#" data-city="Sivas">Sivas</a>  
+      <a href="#" data-city="Tekirdağ">Tekirdağ</a>  
+      <a href="#" data-city="Tokat">Tokat</a>  
+      <a href="#" data-city="Trabzon">Trabzon</a>  
+      <a href="#" data-city="Tunceli">Tunceli</a>  
+      <a href="#" data-city="Şanlıurfa">Şanlıurfa</a>  
+      <a href="#" data-city="Uşak">Uşak</a>  
+      <a href="#" data-city="Van">Van</a>  
+      <a href="#" data-city="Yozgat">Yozgat</a>  
+      <a href="#" data-city="Zonguldak">Zonguldak</a>  
+      <a href="#" data-city="Aksaray">Aksaray</a>  
+      <a href="#" data-city="Bayburt">Bayburt</a>  
+      <a href="#" data-city="Karaman">Karaman</a>  
+      <a href="#" data-city="Kırıkkale">Kırıkkale</a>  
+      <a href="#" data-city="Batman">Batman</a>  
+      <a href="#" data-city="Şırnak">Şırnak</a>  
+      <a href="#" data-city="Bartın">Bartın</a>  
+      <a href="#" data-city="Ardahan">Ardahan</a>  
+      <a href="#" data-city="Iğdır">Iğdır</a>  
+      <a href="#" data-city="Yalova">Yalova</a>  
+      <a href="#" data-city="Karabük">Karabük</a>  
+      <a href="#" data-city="Kilis">Kilis</a>  
+      <a href="#" data-city="Osmaniye">Osmaniye</a>  
+      <a href="#" data-city="Düzce">Düzce</a>  
+    </div>  
+  </div>  
+</div>  <div class="currency-card">  
+  <div class="currency-item"><span>USD</span> <span id="usd">--</span> TL</div>  
+  <div class="currency-item"><span>EUR</span> <span id="eur">--</span> TL</div>  
+  <div class="currency-item"><span>GBP</span> <span id="gbp">--</span> TL</div>  
+</div>  <footer>  
+<footer style="text-align:center; padding:20px; font-size:14px;">  
+  <a href="about.html">Hakkımızda</a> |  
+  <a href="privacy.html">Gizlilik Politikası</a> |  
+  <a href="contact.html">İletişim</a>  
+© 2025 GündemX – Gündeme Net Bakış<br>Tarafsız • Halk Odaklı • Sade Habercilik  
+</footer>   
+</div 
+
+<style>  
+</style>  
+
+<script>  
+// LOADING  
+window.addEventListener("load",()=>{  
+  setTimeout(()=>{  
+    const l=document.getElementById("loading-screen");  
+    l.style.opacity="0";  
+    setTimeout(()=>l.style.display="none",300);  
+  },500);  
+});  
+
+  
+// Döviz  
+async function getCurrencies(){  
+  try{  
+    const res = await fetch("https://open.er-api.com/v6/latest/TRY");  
+    const data = await res.json();  
+  
+    document.getElementById("usd").innerText = (1 / data.rates.USD).toFixed(2);  
+    document.getElementById("eur").innerText = (1 / data.rates.EUR).toFixed(2);  
+    document.getElementById("gbp").innerText = (1 / data.rates.GBP).toFixed(2);  
+  }catch(e){  
+    console.error("Döviz alınamadı", e);  
+  }  
+}  
+  
+getCurrencies();  
+setInterval(getCurrencies, 60000);  
+  
+// Haberler ve slider  
+async function loadNews(){  
+  try{  
+    const res = await fetch("data/news.json?t="+Date.now());  
+    const newsList = await res.json();  
+    const sorted = newsList.sort((a,b)=>b.id - a.id);  
+  
+    // SLIDER - en güncel 2 haber  
+    const slider = document.getElementById("top-slider"); slider.innerHTML="";  
+    sorted.slice(0,2).forEach(item=>{  
+      const slide = document.createElement("div"); slide.className="slide";  
+      slide.innerHTML = `<img src="${item.image}" alt="${item.title}"><div class="slide-content"><h2>${item.title}</h2><p>${item.city} • ${item.time}</p></div>`;  
+      slider.appendChild(slide);  
+    });  
+    const slides = slider.querySelectorAll('.slide'); let current=0;  
+    function showSlide(i){slides.forEach(s=>s.classList.remove('active'));slides[i].classList.add('active');}  
+    showSlide(current); setInterval(()=>{current=(current+1)%slides.length;showSlide(current);},4000);  
+  
+  
+    // ANA HABER LİSTESİ - sadece son 5 haber  
+    const newsContainer = document.getElementById("news-container");   
+    newsContainer.innerHTML = "";  
+    sorted.slice(0,5).forEach(item=>{  
+      const card = document.createElement('div'); card.className='news-card';  
+      card.innerHTML = `<img src="${item.image}" alt="${item.title}"><div><h3>${item.title}</h3><span>${item.city} • ${item.time}</span></div>`;  
+      card.addEventListener('click',()=>{ window.location.href=`haber.html?id=${item.id}`; });  
+      newsContainer.appendChild(card);  
+    });  
+  
+    // Son haber metni  
+    const latestNews = sorted[0];  
+    document.getElementById('breakingNews').innerText = "SON HABER: " + latestNews.title;  
+    window.latestNewsList = sorted;  
+      
+  } catch(err){  
+    console.error("Haberler yüklenemedi:", err);   
+    document.getElementById("news-container").innerHTML = "<p>Haberler yüklenemedi.</p>";  
+  }  
+}  
+
+// İl tıklamaları  
+document.querySelectorAll('#province-list a').forEach(a=>{  
+  a.addEventListener('click',()=>{ window.location.href=`il.html?id=${a.dataset.city}`; });  
+});  
+
+loadNews();  
+  
 </script>
-</body>
+  
+    // Son haberi al  
+    let latestNews;  
+    try {  
+      const newsRes = await fetch("data/news.json?t="+Date.now());  
+      const newsList = await newsRes.json();  
+      // Şehir bazlı en son haber  
+      latestNews = newsList.filter(n=>n.city===city).sort((a,b)=>b.id-a.id)[0] || newsList.sort((a,b)=>b.id-a.id)[0];  
+    } catch(e) {  
+      console.error("Haberler alınamadı.", e);  
+    }  
+  
+    if(latestNews){  
+      notification.innerHTML = `  
+        <div style="font-size:16px; font-weight:bold; margin-bottom:6px;">${city} - Son Haber</div>  
+        <div style="font-size:14px;">${latestNews.title}</div>  
+        <a href="haber.html?id=${latestNews.id}" style="color:#fff; text-decoration:underline; font-size:13px;">Haberi Oku</a>  
+      `;  
+      // Stil  
+Object.assign(notification.style, {  
+        display:"flex",  
+        flexDirection:"column",  
+        position:"fixed",  
+        bottom:"20px",  
+        left:"50%",  
+        transform:"translateX(-50%)",  
+        background:"#0066ff",  
+        color:"#fff",  
+        padding:"15px 30px",  // yatay genişlik arttı, üstten inceltildi  
+        borderRadius:"12px",  
+        boxShadow:"0 4px 12px rgba(0,0,0,0.3)",  
+        fontSize:"16px",  
+        zIndex:"9999",  
+        maxWidth:"450px",      // daha geniş  
+        minWidth:"300px"  
+      });  
+      
+      // 5 saniye sonra kaybolsun  
+      setTimeout(()=>{ notification.style.display="none"; }, 5000);  
+    }  
+  }  
+});  
+</script> 
+<script>  
+const categories = [  
+  "Gündem",  
+  "Siyaset",  
+  "Ekonomi",  
+  "Trafik",  
+  "Türkiye Geneli"  
+];  
+  
+fetch("data/news.json") // JSON dosya yolunu kendi yapına göre düzenle  
+  .then(res => res.json())  
+  .then(data => {  
+    const grid = document.getElementById("categoriesGrid");  
+  
+    categories.forEach(cat => {  
+      const filtered = data  
+        .filter(item => item.category === cat)  
+        .sort((a, b) => new Date(b.time) - new Date(a.time));  
+  
+      if (filtered.length === 0) return;  
+  
+      const latest = filtered[0];  
+      const shortText = latest.content.substring(0, Math.floor(latest.content.length * 0.1)) + "...";  
+  
+      grid.innerHTML += `  
+        <div class="category-box">  
+          <a href="category.html?category=${encodeURIComponent(cat)}">  
+            <h3>${cat}</h3>  
+            <strong>${latest.title}</strong>  
+            <p>${shortText}</p>  
+          </a>  
+        </div>  
+      `;  
+    });  
+  });  
+</script>
+<script type="application/ld+json">  
+{  
+  "@context": "https://schema.org",  
+  "@type": "WebSite",  
+  "name": "GündemX",  
+  "url": "https://www.gundemx.online/",  
+  "potentialAction": {  
+    "@type": "SearchAction",  
+    "target": "https://www.gundemx.online/?q={search_term_string}",  
+    "query-input": "required name=search_term_string"  
+  }  
+}  
+</script>  <script type="application/ld+json">  
+{  
+  "@context": "https://schema.org",  
+  "@type": "Organization",  
+  "name": "GündemX",  
+  "url": "https://www.gundemx.online/",  
+  "logo": "https://www.gundemx.online/logo.png",  
+  "sameAs": [  
+    "https://www.instagram.com/",  
+    "https://www.facebook.com/"  
+  ]  
+}  
+</script>  
+</body>  
 </html>
