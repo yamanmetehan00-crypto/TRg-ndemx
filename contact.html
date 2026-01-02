@@ -1,17 +1,36 @@
-<section class="contact-section py-16 px-6 bg-gray-50">
-  <div class="max-w-3xl mx-auto text-center">
-    <h1 class="text-4xl font-bold text-gray-800 mb-6">İletişim</h1>
-    <p class="text-gray-600 mb-8">
-      Her türlü soru, öneri veya iş birliği talepleriniz için bize aşağıdaki form üzerinden ulaşabilirsiniz. Size en kısa sürede geri dönüş yapacağız.
-    </p>
-
-    <form class="bg-white p-8 rounded-lg shadow-md">
-      <input type="text" placeholder="Adınız" class="w-full mb-4 p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
-      <input type="yamanmedya00@gmail.com" placeholder="yamanmedya00@gmail.com" class="w-full mb-4 p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
-      <textarea placeholder="Mesajınız" class="w-full mb-4 p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" rows="5"></textarea>
-      <button type="submit" class="w-full bg-blue-600 text-white font-semibold py-3 rounded hover:bg-blue-700 transition">
-        Gönder
-      </button>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact - GündemX</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+  body { margin:0; font-family:'Roboto',sans-serif; background:#e0f0ff; color:#1a1a1a; }
+  .container { max-width:900px; margin:40px auto; padding:20px; }
+  .card { background:#0077cc; color:#fff; border-radius:12px; padding:30px; box-shadow:0 8px 20px rgba(0,0,0,0.15); transition:0.3s; }
+  .card:hover { transform:translateY(-5px); box-shadow:0 12px 25px rgba(0,0,0,0.25); }
+  .logo { text-align:center; font-size:2.5rem; font-weight:700; margin-bottom:25px; letter-spacing:2px; color:#fff; }
+  .card h1 { text-align:center; font-size:2rem; margin-bottom:15px; }
+  .contact-form { display:flex; flex-direction:column; gap:15px; }
+  .contact-form input, .contact-form textarea { padding:12px; border-radius:8px; border:none; font-size:1rem; }
+  .contact-form textarea { resize:none; height:120px; }
+  .contact-form button { padding:14px; background-color:#005fa3; color:#fff; border:none; font-size:1.1rem; font-weight:700; border-radius:8px; cursor:pointer; transition:0.3s; }
+  .contact-form button:hover { background-color:#00487a; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="logo">GündemX</div>
+  <div class="card">
+    <h1>Contact Us</h1>
+    <form class="contact-form">
+      <input type="text" placeholder="Adınız" required>
+      <input type="email" placeholder="E-posta Adresiniz" required>
+      <textarea placeholder="Mesajınız" required></textarea>
+      <button type="submit">Gönder</button>
     </form>
   </div>
-</section>
+</div>
+</body>
+</html>
