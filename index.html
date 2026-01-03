@@ -175,6 +175,11 @@ font-size: 14px;
 color: #555;
 line-height: 1.4;
 }
+#loading-screen.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
 </style>
 </head>
 <body>
@@ -327,14 +332,7 @@ line-height: 1.4;
 </footer>
 
 <script>
-// LOADING
-window.addEventListener("load",()=>{
-  setTimeout(()=>{
-    const l=document.getElementById("loading-screen");
-    l.style.opacity="0";
-    setTimeout(()=>l.style.display="none",300);
-  },500);
-});
+
 
 // Döviz
 async function getCurrencies(){
@@ -414,6 +412,20 @@ fetch("data/news.json?t="+Date.now())
   });
 });
 </script>
+<script>
+function hideLoading(){
+  const loader = document.getElementById("loading-screen");
+  if(loader){
+    loader.classList.add("hidden");
+    setTimeout(()=> loader.remove(), 500);
+  }
+}
 
+// Sayfa DOM hazır olunca kapat
+document.addEventListener("DOMContentLoaded", hideLoading);
+
+// 3 saniye sonra ne olursa olsun kapat (fail-safe)
+setTimeout(hideLoading, 3000);
+</script>
 </body>
 </html>
