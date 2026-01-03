@@ -205,7 +205,15 @@ line-height: 1.4;
 <div>
   <div class="box">
     <h2>Gündem</h2>
-    <div class="news-list" id="news-container"></div>
+    <div class="news-list"
+<a href="haberler/istanbul-kar-engeli.html" class="news-card">
+  <img src="images/istanbul-kar.jpg" alt="İstanbul’da Eğitime Kar Engeli">
+  <div>
+    <h3>İstanbul’da Eğitime Kar Engeli</h3>
+    <span>İstanbul • 20 Ocak 2026</span>
+    <p>Yoğun kar yağışı nedeniyle bazı ilçelerde eğitime ara verildi...</p>
+  </div>
+</a>
   </div>
 </div>
 </div>
@@ -342,13 +350,6 @@ async function getCurrencies(){
 }
 getCurrencies();
 setInterval(getCurrencies, 60000);
-
-// Haberler ve slider
-async function loadNews(){
-  try{
-    const res = await fetch("data/news.json?t="+Date.now());
-    const newsList = await res.json();
-    const sorted = newsList.sort((a,b)=>b.id - a.id);
 
     // SLIDER
     const slider = document.getElementById("top-slider"); slider.innerHTML="";
