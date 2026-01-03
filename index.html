@@ -205,14 +205,31 @@ line-height: 1.4;
 </nav>
 </header>
 
-<div class="top-slider" id="top-slider"></div>
+<div class="top-slider">
+  <a href="haber-istanbul-kar.html" class="slide active">
+    <img src="images/slider1.jpg" alt="İstanbul’da eğitime kar engeli">
+    <div class="slide-content">
+      <h2>İstanbul’da 5 ilçede eğitime kar engeli</h2>
+      <p>İstanbul • Son Dakika</p>
+    </div>
+  </a>
+
+  <a href="haber-ekonomi-faiz.html" class="slide">
+    <img src="images/slider2.jpg" alt="Merkez Bankası faiz kararı">
+    <div class="slide-content">
+      <h2>Merkez Bankası faiz kararını açıkladı</h2>
+      <p>Türkiye • Ekonomi</p>
+    </div>
+  </a>
+</div>
+
 <div class="grid">
 <div>
   <div class="box">
     <h2>Gündem</h2>
     <div class="news-list"
 <a href="haberler/istanbul-kar-engeli.html" class="news-card">
-  <img src="images/istanbul-kar.jpg" alt="İstanbul’da Eğitime Kar Engeli">
+  <img src="images/sdyagis.jpg" alt="İstanbul’da Eğitime Kar Engeli">
   <div>
     <h3>İstanbul’da Eğitime Kar Engeli</h3>
     <span>İstanbul • 20 Ocak 2026</span>
@@ -349,16 +366,14 @@ async function getCurrencies(){
 getCurrencies();
 setInterval(getCurrencies, 60000);
 
-    // SLIDER
-    const slider = document.getElementById("top-slider"); slider.innerHTML="";
-    sorted.slice(0,2).forEach(item=>{
-      const slide = document.createElement("div"); slide.className="slide";
-      slide.innerHTML = `<img src="${item.image}" alt="${item.title}"><div class="slide-content"><h2>${item.title}</h2><p>${item.city} • ${item.time}</p></div>`;
-      slider.appendChild(slide);
-    });
-    const slides = slider.querySelectorAll('.slide'); let current=0;
-    function showSlide(i){slides.forEach(s=>s.classList.remove('active'));slides[i].classList.add('active');}
-    showSlide(current); setInterval(()=>{current=(current+1)%slides.length;showSlide(current);},4000);
+const slides = document.querySelectorAll(".slide");
+let current = 0;
+
+setInterval(() => {
+  slides[current].classList.remove("active");
+  current = (current + 1) % slides.length;
+  slides[current].classList.add("active");
+}, 4000);
 
     // ANA HABER LİSTESİ
     const newsContainer = document.getElementById("news-container");
