@@ -227,7 +227,7 @@ line-height: 1.4;
 <div>
   <div class="box">
     <h2>Gündem</h2>
-    <div class="news-list"
+    <div class="news-list">
 <a href="haberler/istanbul-kar-engeli.html" class="news-card">
   <img src="images/sdyagis.jpg" alt="İstanbul’da Eğitime Kar Engeli">
   <div>
@@ -275,6 +275,8 @@ line-height: 1.4;
 
   </div>
 </section>
+
+<div id="news-container"></div>
 
 
   <!-- İLLER KATEGORİSİ EN ALTA -->    <div class="box">  
@@ -405,56 +407,9 @@ setInterval(() => {
   slides[current].classList.add("active");
 }, 4000);
 
-    // ANA HABER LİSTESİ
-    const newsContainer = document.getElementById("news-container");
-    newsContainer.innerHTML = "";
-    sorted.slice(0,5).forEach(item=>{
-      const shortText = item.content.substring(0, Math.floor(item.content.length * 0.25)) + "...";
-      const card = document.createElement('div'); card.className='news-card';
-      card.innerHTML = `<img src="${item.image}" alt="${item.title}"><div><h3>${item.title}</h3><span>${item.city} • ${item.time}</span><p>${shortText}</p></div>`;
-      card.addEventListener('click',()=>{ window.location.href=`haber.html?id=${item.id}`; });
-      newsContainer.appendChild(card);
-    });
-
-    const latestNews = sorted[0];
-    document.getElementById('breakingNews').innerText = "SON HABER: " + latestNews.title;
-    window.latestNewsList = sorted;
-
-  } catch(err){
-    console.error("Haberler yüklenemedi:", err);
-    document.getElementById("news-container").innerHTML = "<p>Haberler yüklenemedi.</p>";
-  }
-}
-loadNews();
-
 // İl tıklamaları
 document.querySelectorAll('#province-list a').forEach(a=>{
   a.addEventListener('click',()=>{ window.location.href=`il.html?id=${a.dataset.city}`; });
-});
-
-// KATEGORİLER
-const categories = ["Gündem","Siyaset","Ekonomi","Trafik","Türkiye Geneli"];
-fetch("data/news.json?t="+Date.now())
-.then(res=>res.json())
-.then(data=>{
-  const grid = document.getElementById("categoryGrid");
-  categories.forEach(cat=>{
-    const latestNews = data.filter(n=>n.category===cat).sort((a,b)=>new Date(b.time)-new Date(a.time))[0];
-    if(!latestNews) return;
-    const shortText = latestNews.content.substring(0, Math.floor(latestNews.content.length * 0.3)) + "...";
-    grid.innerHTML += `
-      <a href="category.html?category=${encodeURIComponent(cat)}" style="text-decoration:none;color:inherit">
-        <div class="category-card">
-          <img src="${latestNews.image}" alt="${latestNews.title}">
-          <div class="category-content">
-            <div class="category-name">${cat}</div>
-            <h3>${latestNews.title}</h3>
-            <p>${shortText}</p>
-          </div>
-        </div>
-      </a>
-    `;
-  });
 });
 
 function hideLoading(){
