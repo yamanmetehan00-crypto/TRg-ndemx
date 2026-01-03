@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GündemX – Geçmiş Haberler</title>
+
+<style>
+:root{
+  --primary:#0066ff;
+  --dark:#0b1220;
+  --bg:#f4f7fb;
+  --text:#1e293b;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Inter,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+/* HEADER */
+header{
+  background:var(--dark);
+  color:#fff;
+  padding:14px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.logo{font-size:26px;font-weight:800}
+.logo span{color:var(--primary)}
+nav a{color:#fff;text-decoration:none;font-size:14px}
+
+/* CONTAINER */
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:20px;
+}
+
+/* BAŞLIK */
+.page-title{
+  font-size:26px;
+  font-weight:800;
+  margin-bottom:20px;
+}
+
+/* LİSTE */
+.archive-list{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+/* KART */
+.archive-item{
+  background:#fff;
+  padding:16px 20px;
+  border-radius:12px;
+  text-decoration:none;
+  color:inherit;
+  box-shadow:0 6px 16px rgba(0,0,0,.06);
+  transition:.25s;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.archive-item:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 26px rgba(0,0,0,.12);
+}
+
+.archive-title{
+  font-size:16px;
+  font-weight:600;
+}
+
+.archive-date{
+  font-size:13px;
+  color:#64748b;
+  white-space:nowrap;
+}
+
+/* FOOTER */
+footer{
+  margin-top:60px;
+  background:var(--dark);
+  color:#aaa;
+  padding:20px;
+  text-align:center;
+  font-size:13px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">Gündem<span>X</span></div>
+  <nav><a href="../index.html">Ana Sayfa</a></nav>
+</header>
+
+<div class="container">
+  <div class="page-title">Geçmiş Haberler</div>
+
+  <div class="archive-list">
+
+    <!-- SADECE BURAYI DOLDURACAKSIN -->
+
+    <a href="istanbul-kar-engeli.html" class="archive-item">
+      <div class="archive-title">İstanbul’da 5 ilçede eğitime kar engeli</div>
+      <div class="archive-date">20 Ocak 2026</div>
+    </a>
+
+    <a href="faiz-karari.html" class="archive-item">
+      <div class="archive-title">Merkez Bankası faiz kararını açıkladı</div>
+      <div class="archive-date">18 Ocak 2026</div>
+    </a>
+
+    <a href="kocaeli-trafik.html" class="archive-item">
+      <div class="archive-title">Kocaeli’de sabah trafiği kilitlendi</div>
+      <div class="archive-date">17 Ocak 2026</div>
+    </a>
+
+    <!-- KOPYALA – YAPIŞTIR – BAŞLIK DEĞİŞTİR -->
+
+  </div>
+</div>
+
+<footer>
+© 2026 GündemX – Geçmiş Haberler
+</footer>
+
+</body>
+</html>
