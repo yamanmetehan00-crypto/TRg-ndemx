@@ -261,6 +261,56 @@ font-size: 14px;
 color: #555;
 line-height: 1.4;
 }
+/* ANA SAYFA – ARŞİV HABERLER */
+.archive-home{
+  margin:40px 0;
+}
+
+.archive-home-card{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:#0b1220;
+  color:#fff;
+  padding:22px 26px;
+  border-radius:16px;
+  text-decoration:none;
+  box-shadow:0 12px 30px rgba(0,0,0,.18);
+  transition:.3s ease;
+}
+
+.archive-home-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 20px 42px rgba(0,0,0,.28);
+}
+
+.archive-left h3{
+  margin:8px 0 6px;
+  font-size:22px;
+}
+
+.archive-left p{
+  margin:0;
+  font-size:14px;
+  color:#cbd5f5;
+}
+
+.archive-badge{
+  display:inline-block;
+  background:#0066ff;
+  color:#fff;
+  font-size:11px;
+  font-weight:700;
+  padding:4px 10px;
+  border-radius:999px;
+  letter-spacing:.5px;
+}
+
+.archive-arrow{
+  font-size:32px;
+  font-weight:800;
+  opacity:.9;
+}
 </style>
 </head>
 <body>
@@ -419,6 +469,17 @@ line-height: 1.4;
 
 
   </div>
+</section>
+
+<section class="archive-home">
+  <a href="gecmis-haber.html" class="archive-home-card">
+    <div class="archive-left">
+      <span class="archive-badge">ARŞİV</span>
+      <h3>Haber Arşivi</h3>
+      <p>Yayınlanmış tüm haberlerin kronolojik listesi</p>
+    </div>
+    <div class="archive-arrow">→</div>
+  </a>
 </section>
 
 
