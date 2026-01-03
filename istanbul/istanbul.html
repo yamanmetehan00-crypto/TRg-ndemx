@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>İstanbul Haberleri – GündemX</title>
+
+<style>
+:root{
+  --primary:#0066ff;
+  --dark:#0b1220;
+  --bg:#f4f7fb;
+  --text:#1e293b;
+}
+html,body{
+  margin:0;padding:0;
+  font-family:Inter,Arial,sans-serif;
+  background:var(--bg);color:var(--text);
+  overflow-x:hidden;
+}
+header{
+  background:var(--dark);color:#fff;
+  padding:14px 20px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.logo{font-size:26px;font-weight:800}
+.logo span{color:var(--primary)}
+.container{max-width:1200px;margin:auto;padding:16px}
+.grid{display:grid;grid-template-columns:1fr;gap:16px}
+.card{
+  background:#fff;border-radius:10px;
+  box-shadow:0 6px 16px rgba(0,0,0,.06);
+  overflow:hidden;transition:.2s;
+}
+.card:hover{transform:translateY(-3px)}
+.card img{width:100%;height:180px;object-fit:cover}
+.card-content{padding:14px}
+.card-content h3{margin:0 0 6px;font-size:18px}
+.card-content p{margin:0;font-size:14px;color:#64748b}
+</style>
+</head>
+
+<body>
+<header>
+  <div class="logo">Gündem<span>X</span></div>
+  <a href="../index.html" style="color:#fff;text-decoration:none">Ana Sayfa</a>
+</header>
+
+<div class="container">
+  <h1>İstanbul Haberleri</h1>
+
+  <div class="grid">
+
+    <a href="../haberler/istanbul-kar-engeli.html" class="card">
+      <img src="../images/istanbul-kar.jpg" alt="İstanbul’da Eğitime Kar Engeli">
+      <div class="card-content">
+        <h3>İstanbul’da Eğitime Kar Engeli</h3>
+        <p>Yoğun kar yağışı nedeniyle İstanbul’un bazı ilçelerinde eğitime ara verildi...</p>
+      </div>
+    </a>
+
+    <a href="../haberler/istanbul-trafik.html" class="card">
+      <img src="../images/istanbul-trafik.jpg" alt="İstanbul Trafiğinde Yoğunluk">
+      <div class="card-content">
+        <h3>İstanbul Trafiğinde Yoğunluk Arttı</h3>
+        <p>Haftanın ilk günü İstanbul genelinde trafik yoğunluğu yüzde 80’e ulaştı...</p>
+      </div>
+    </a>
+
+  </div>
+</div>
+</body>
+</html>
