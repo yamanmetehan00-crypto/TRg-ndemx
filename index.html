@@ -384,11 +384,6 @@ setInterval(() => {
   slides[current].classList.add("active");
 }, 4000);
 
-// İl tıklamaları
-document.querySelectorAll('#province-list a').forEach(a=>{
-  a.addEventListener('click',()=>{ window.location.href=`il.html?id=${a.dataset.city}`; });
-});
-
 function hideLoading(){
   const loader = document.getElementById("loading-screen");
   if(loader){
