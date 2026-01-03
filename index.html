@@ -411,8 +411,7 @@ fetch("data/news.json?t="+Date.now())
     `;
   });
 });
-</script>
-<script>
+
 function hideLoading(){
   const loader = document.getElementById("loading-screen");
   if(loader){
@@ -427,5 +426,6 @@ document.addEventListener("DOMContentLoaded", hideLoading);
 // 3 saniye sonra ne olursa olsun kapat (fail-safe)
 setTimeout(hideLoading, 3000);
 </script>
+
 </body>
 </html>
