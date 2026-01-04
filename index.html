@@ -311,6 +311,70 @@ line-height: 1.4;
   font-weight:800;
   opacity:.9;
 }
+/* İL HABERLERİ – YATAY KAYDIRMA */
+.city-section{
+  margin:40px 0;
+}
+
+.city-title{
+  font-size:22px;
+  font-weight:800;
+  color:#0b1220;
+  margin-bottom:14px;
+  border-left:5px solid #0066ff;
+  padding-left:10px;
+}
+
+.city-row{
+  display:flex;
+  gap:14px;
+  overflow-x:auto;
+  padding-bottom:10px;
+  max-width:100%;
+  -webkit-overflow-scrolling:touch;
+}
+
+.city-row::-webkit-scrollbar{
+  display:none;
+}
+
+.city-card{
+  flex:0 0 auto;
+  width:260px;
+  background:#fff;
+  border-radius:14px;
+  box-shadow:0 6px 18px rgba(0,0,0,.08);
+  overflow:hidden;
+  transition:.3s ease;
+}
+
+.city-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 14px 30px rgba(0,0,0,.14);
+}
+
+.city-card img{
+  width:100%;
+  height:150px;
+  object-fit:cover;
+  display:block;
+}
+
+.city-card-content{
+  padding:14px;
+}
+
+.city-card-content h3{
+  font-size:15px;
+  margin:0 0 6px;
+  line-height:1.3;
+  color:#0b1220;
+}
+
+.city-card-content span{
+  font-size:12px;
+  color:#64748b;
+}
 </style>
 </head>
 <body>
@@ -470,6 +534,55 @@ line-height: 1.4;
     </a>
 
 
+  </div>
+</section>
+<section class="city-section">
+  <div class="city-title">İstanbul Son Haberler</div>
+
+  <div class="city-row">
+    <a href="yeniler/haber-istanbul-1.html" class="city-card">
+      <img src="yeniler/images/istanbul-1.jpg">
+      <div class="city-card-content">
+        <h3>İstanbul’da Trafik Felç Oldu</h3>
+        <span>İstanbul • Son Dakika</span>
+      </div>
+    </a>
+
+    <a href="yeniler/haber-istanbul-2.html" class="city-card">
+      <img src="yeniler/images/istanbul-2.jpg">
+      <div class="city-card-content">
+        <h3>İstanbul’da Kar Alarmı</h3>
+        <span>İstanbul • Güncel</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section class="city-section">
+  <div class="city-title">Ankara Son Haberler</div>
+
+  <div class="city-row">
+    <a href="yeniler/haber-ankara-1.html" class="city-card">
+      <img src="yeniler/images/ankara-1.jpg">
+      <div class="city-card-content">
+        <h3>Ankara’da Su Kesintisi Tepkisi</h3>
+        <span>Ankara • Güncel</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section class="city-section">
+  <div class="city-title">Zonguldak Son Haberler</div>
+
+  <div class="city-row">
+    <a href="yeniler/haber-zonguldak-1.html" class="city-card">
+      <img src="yeniler/images/zonguldak-1.jpg">
+      <div class="city-card-content">
+        <h3>Zonguldak’ta Fırtına Uyarısı</h3>
+        <span>Zonguldak • Son Dakika</span>
+      </div>
+    </a>
   </div>
 </section>
 
