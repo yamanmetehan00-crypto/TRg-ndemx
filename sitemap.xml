@@ -3,26 +3,62 @@
 
   <url>
     <loc>https://www.gundemx.online/</loc>
-    <lastmod>2026-01-05</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
   </url>
 
+  <!-- HABERLER -->
   <url>
-    <loc>https:///www.gundemx.online/gundem.html</loc>
-    <changefreq>hourly</changefreq>
+    <loc>https://www.gundemx.online/haberler/haber-uzmanlardan-qr-kod-uyarisi.html</loc>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.gundemx.online/haberler/haber-2025-turkiye-ekonomisi-dalgali-seyir-ve-one-cikan-gelismeler.html</loc>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- YENİLER -->
+  <url>
+    <loc>https://www.gundemx.online/yeniler/haber-konya-sehir-hastanesi-nde-yogun-bakimda-siddet-i-ddiasi-aile-savciliga-basvurdu.html</loc>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.gundemx.online/yeniler/haber-kocaelili-genc-gazeteci-melike-aydin-hayatini-kaybetti.html</loc>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.gundemx.online/yeniler/haber-i-stanbul-beykoz-da-komsu-kavgasi-13-gun-sonra-hayatini-kaybetti.html</loc>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.gundemx.online/yeniler/haber-cumhurbaskani-erdogan-trump-la-gorusecek-gazze-ukrayna-ve-venezuela-gundemde-yer-aliyor.html</loc>
+    <changefreq>never</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>/www.gundemx.online/ekonomi.html</loc>
-    <changefreq>hourly</changefreq>
+    <loc>https://www.gundemx.online/yeniler/haber-akp-2026-da-11-milletvekili-transferini-gerceklestirmeye-hazirlaniyor.html</loc>
+    <changefreq>never</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://www.gundemx.online/yeniler/haber-ornek-haber.html</loc>
-    <lastmod>2026-01-05</lastmod>
+    <loc>https://www.gundemx.online/yeniler/haber-hakkari-de-cig-felaketi-120-keci-telef-oldu-8-ev-buyuk-hasar-gordu.html</loc>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.gundemx.online/yeniler/haber-i-stanbul-da-siddetli-lodos-cati-uctu-beton-parcalari-park-halindeki-araclarin-uzerine-dustu.html</loc>
     <changefreq>never</changefreq>
     <priority>0.8</priority>
   </url>
