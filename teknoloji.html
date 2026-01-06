@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Teknoloji Haberleri – GündemX</title>
+
+<meta name="description" content="Teknoloji dünyasındaki son gelişmeler, dijital yenilikler ve güncel teknoloji haberleri GündemX Teknoloji sayfasında.">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico">
+
+<style>
+body{
+  margin:0;
+  font-family:Inter,Arial;
+  background:#f4f7fb;
+  color:#0b1220;
+}
+
+/* HEADER */
+header{
+  background:#0b1220;
+  padding:16px;
+}
+.logo{
+  font-size:26px;
+  font-weight:900;
+  color:#fff;
+}
+.logo span{color:#00aaff}
+
+/* SAYFA */
+.container{
+  max-width:1200px;
+  margin:30px auto;
+  padding:0 16px;
+}
+
+.page-title{
+  font-size:28px;
+  font-weight:900;
+  margin-bottom:20px;
+}
+.page-title span{
+  color:#00aaff;
+}
+
+/* GRID */
+.tech-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:20px;
+}
+
+/* KART */
+.tech-card{
+  background:#fff;
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+  transition:.2s;
+  text-decoration:none;
+  color:inherit;
+}
+.tech-card:hover{
+  transform:translateY(-4px);
+}
+
+.tech-card img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+}
+
+.tech-content{
+  padding:16px;
+}
+
+.tech-content h3{
+  font-size:18px;
+  margin:0 0 8px;
+  line-height:1.35;
+}
+
+.tech-meta{
+  font-size:12px;
+  color:#64748b;
+  margin-bottom:8px;
+}
+
+.tech-content p{
+  font-size:14px;
+  color:#334155;
+  line-height:1.5;
+}
+
+/* ALT */
+.back{
+  display:inline-block;
+  margin-top:30px;
+  background:#00aaff;
+  color:#000;
+  padding:12px 22px;
+  border-radius:10px;
+  font-weight:800;
+  text-decoration:none;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">Gündem<span>X</span></div>
+</header>
+
+<div class="container">
+
+  <div class="page-title">
+    Teknoloji <span>Haberleri</span>
+  </div>
+
+  <div class="tech-grid">
+
+    <!-- HABER 1 -->
+    <a href="yeniler/haber-teknoloji-ornek-1.html" class="tech-card">
+      <img src="yeniler/images/teknoloji-ornek-1.jpg" alt="">
+      <div class="tech-content">
+        <h3>Yeni Mobil Cihaz Türkiye’de Satışa Çıkıyor</h3>
+        <div class="tech-meta">Teknoloji • 6 Ocak 2026</div>
+        <p>Yeni nesil mobil cihazın teknik detayları ve satış tarihi netleşti...</p>
+      </div>
+    </a>
+
+    <!-- HABER 2 -->
+    <a href="yeniler/haber-teknoloji-ornek-2.html" class="tech-card">
+      <img src="yeniler/images/teknoloji-ornek-2.jpg" alt="">
+      <div class="tech-content">
+        <h3>Dijital Güvenlikte Yeni Dönem Başlıyor</h3>
+        <div class="tech-meta">Teknoloji • 5 Ocak 2026</div>
+        <p>Uzmanlar, kullanıcıları yeni güvenlik sistemleri konusunda uyardı...</p>
+      </div>
+    </a>
+
+    <!-- HABER 3 -->
+    <a href="yeniler/haber-teknoloji-ornek-3.html" class="tech-card">
+      <img src="yeniler/images/teknoloji-ornek-3.jpg" alt="">
+      <div class="tech-content">
+        <h3>Sosyal Medya Platformlarında Yeni Güncelleme</h3>
+        <div class="tech-meta">Teknoloji • 5 Ocak 2026</div>
+        <p>Kullanıcı deneyimini etkileyen yeni özellikler devreye alındı...</p>
+      </div>
+    </a>
+
+  </div>
+
+  <a href="index.html" class="back">← Ana Sayfaya Dön</a>
+
+</div>
+
+</body>
+</html>
