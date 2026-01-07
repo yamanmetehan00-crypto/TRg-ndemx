@@ -153,36 +153,93 @@ header{
 
 </div>
 
-<script>
-// HABER ID
-const newsId = "tech-haber-1";
+<!-- ETKİLEŞİM -->
+<div class="interaction">
+  <button class="like-btn" id="likeBtn">
+    ❤️ <span id="likeCount">0</span> Beğeni
+  </button>
 
-// Beğeni verisi
-let likes = localStorage.getItem(newsId + "_likes") || 0;
-let liked = localStorage.getItem(newsId + "_liked");
+  <div class="views">
+    👁️ <span id="viewCount">0</span> görüntülenme
+  </div>
+</div>
 
-const btn = document.getElementById("likeBtn");
-const count = document.getElementById("likeCount");
+<!-- YORUMLAR -->
+<div class="comments-section">
+  <h3>Yorumlar</h3>
 
-count.innerText = likes;
+  <form id="commentForm">
+    <input id="commentText" placeholder="Yorum yaz..." required>
+    <button type="submit">Gönder</button>
+  </form>
 
-// Daha önce beğenildiyse
-if(liked){
-  btn.classList.add("liked");
-  btn.innerHTML = "✔️ Beğenildi (" + likes + ")";
+  <div id="comments"></div>
+</div>
+
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getFirestore, doc, getDoc, setDoc, updateDoc, increment, collection, addDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyALn5wr8MV2g7Onibymw3ndddJoxD_4LUg",
+  authDomain: "gundemx-15fb4.firebaseapp.com",
+  projectId: "gundemx-15fb4",
+  storageBucket: "gundemx-15fb4.firebasestorage.app",
+  messagingSenderId: "669326972418",
+  appId: "1:669326972418:web:47bbfd7b815629bc1df91b"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// 🔑 HER HABERE ÖZEL ID (HTML dosya adına göre)
+const articleId = location.pathname.split("/").pop();
+const articleRef = doc(db, "articles", articleId);
+
+// 📊 Görüntülenme + Beğeni
+async function initStats() {
+  const snap = await getDoc(articleRef);
+  if (!snap.exists()) {
+    await setDoc(articleRef, { views: 1, likes: 0 });
+  } else {
+    await updateDoc(articleRef, { views: increment(1) });
+  }
+
+  onSnapshot(articleRef, (docSnap) => {
+    const data = docSnap.data();
+    document.getElementById("viewCount").innerText = data.views;
+    document.getElementById("likeCount").innerText = data.likes;
+  });
 }
 
-btn.addEventListener("click", () => {
-  if(liked) return;
+// ❤️ Beğeni
+document.getElementById("likeBtn").onclick = async () => {
+  await updateDoc(articleRef, { likes: increment(1) });
+};
 
-  likes++;
-  localStorage.setItem(newsId + "_likes", likes);
-  localStorage.setItem(newsId + "_liked", true);
+// 💬 Yorum ekleme
+document.getElementById("commentForm").onsubmit = async (e) => {
+  e.preventDefault();
+  const text = commentText.value.trim();
+  if (!text) return;
 
-  count.innerText = likes;
-  btn.classList.add("liked");
-  btn.innerHTML = "✔️ Beğenildi (" + likes + ")";
+  await addDoc(collection(db, "articles", articleId, "comments"), {
+    text,
+    date: new Date()
+  });
+  commentText.value = "";
+};
+
+// 💬 Yorumları çek
+onSnapshot(collection(db, "articles", articleId, "comments"), (snap) => {
+  comments.innerHTML = "";
+  snap.forEach(doc => {
+    comments.innerHTML += `<div class="comment">${doc.data().text}</div>`;
+  });
 });
+
+initStats();
 </script>
 
 </body>
