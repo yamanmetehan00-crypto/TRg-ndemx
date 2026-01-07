@@ -272,8 +272,6 @@ header{
   <div id="comments" class="comment-list"></div>
 </div>
 
-const viewedKey = "viewed_" + articleId;
-
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import {
@@ -315,6 +313,8 @@ const commentText = document.getElementById("commentText");
 
 /* LOCAL STORAGE */
 const likedKey = "liked_" + articleId;
+
+const viewedKey = "viewed_" + articleId;
 
 /* 📊 GÖRÜNTÜLENME + BEĞENİ */
 async function initStats() {
