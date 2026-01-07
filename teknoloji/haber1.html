@@ -249,16 +249,26 @@ header{
   <div id="comments" class="comment-list"></div>
 </div>
 
-
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getFirestore, doc, getDoc, setDoc, updateDoc, increment, collection, addDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  setDoc,
+  updateDoc,
+  increment,
+  collection,
+  addDoc,
+  onSnapshot
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
+/* FIREBASE */
 const firebaseConfig = {
   apiKey: "AIzaSyALn5wr8MV2g7Onibymw3ndddJoxD_4LUg",
   authDomain: "gundemx-15fb4.firebaseapp.com",
   projectId: "gundemx-15fb4",
-  storageBucket: "gundemx-15fb4.firebasestorage.app",
+  storageBucket: "gundemx-15fb4.appspot.com",
   messagingSenderId: "669326972418",
   appId: "1:669326972418:web:47bbfd7b815629bc1df91b"
 };
@@ -266,13 +276,25 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// 🔑 HER HABERE ÖZEL ID (HTML dosya adına göre)
+/* HABER ID */
 const articleId = location.pathname.split("/").pop();
 const articleRef = doc(db, "articles", articleId);
 
-// 📊 Görüntülenme + Beğeni
+/* ELEMENTLER */
+const likeBtn = document.getElementById("likeBtn");
+const likeCountEl = document.getElementById("likeCount");
+const viewCountEl = document.getElementById("viewCount");
+const commentsEl = document.getElementById("comments");
+const commentForm = document.getElementById("commentForm");
+const commentText = document.getElementById("commentText");
+
+/* LOCAL STORAGE */
+const likedKey = "liked_" + articleId;
+
+/* 📊 GÖRÜNTÜLENME + BEĞENİ */
 async function initStats() {
   const snap = await getDoc(articleRef);
+
   if (!snap.exists()) {
     await setDoc(articleRef, { views: 1, likes: 0 });
   } else {
@@ -281,26 +303,32 @@ async function initStats() {
 
   onSnapshot(articleRef, (docSnap) => {
     const data = docSnap.data();
-    document.getElementById("viewCount").innerText = data.views;
-    document.getElementById("likeCount").innerText = data.likes;
+    viewCountEl.innerText = data.views;
+    likeCountEl.innerText = data.likes;
+
+    if (localStorage.getItem(likedKey)) {
+      likeBtn.classList.add("liked");
+    }
   });
 }
 
-// ❤️ Beğeni
-const likedKey = "liked_" + articleId;
+/* ❤️ BEĞEN / GERİ ÇEK */
+likeBtn.addEventListener("click", async () => {
+  const liked = localStorage.getItem(likedKey);
 
-document.getElementById("likeBtn").onclick = async () => {
-  if (localStorage.getItem(likedKey)) {
-    alert("Bu haberi zaten beğendiniz");
-    return;
+  if (liked) {
+    await updateDoc(articleRef, { likes: increment(-1) });
+    localStorage.removeItem(likedKey);
+    likeBtn.classList.remove("liked");
+  } else {
+    await updateDoc(articleRef, { likes: increment(1) });
+    localStorage.setItem(likedKey, "true");
+    likeBtn.classList.add("liked");
   }
+});
 
-  await updateDoc(articleRef, { likes: increment(1) });
-  localStorage.setItem(likedKey, "true");
-};
-
-// 💬 Yorum ekleme
-document.getElementById("commentForm").onsubmit = async (e) => {
+/* 💬 YORUM EKLE */
+commentForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   const text = commentText.value.trim();
   if (!text) return;
@@ -309,17 +337,18 @@ document.getElementById("commentForm").onsubmit = async (e) => {
     text,
     date: new Date()
   });
-  commentText.value = "";
-};
 
-// 💬 Yorumları çek
+  commentText.value = "";
+});
+
+/* 💬 YORUMLARI ÇEK */
 onSnapshot(collection(db, "articles", articleId, "comments"), (snap) => {
-  comments.innerHTML = "";
+  commentsEl.innerHTML = "";
   snap.forEach(doc => {
     const d = doc.data();
-    comments.innerHTML += `
+    commentsEl.innerHTML += `
       <div class="comment">
-        <div>${d.text}</div>
+        <div class="comment-text">${d.text}</div>
         <div class="comment-date">
           ${new Date(d.date.seconds * 1000).toLocaleString("tr-TR")}
         </div>
@@ -330,6 +359,5 @@ onSnapshot(collection(db, "articles", articleId, "comments"), (snap) => {
 
 initStats();
 </script>
-
 </body>
 </html>
