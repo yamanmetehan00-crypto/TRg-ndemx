@@ -187,6 +187,29 @@ header{
     transform: translateY(0);
   }
 }
+
+.comment-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.comment-like-btn {
+  background: #0f172a;
+  border: 1px solid #1f2937;
+  color: #e5e7eb;
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.comment-like-btn.liked {
+  background: #ff2e63;
+  border-color: #ff2e63;
+  color: #fff;
+}
 </style>
 </head>
 
@@ -333,10 +356,11 @@ commentForm.addEventListener("submit", async (e) => {
   const text = commentText.value.trim();
   if (!text) return;
 
-  await addDoc(collection(db, "articles", articleId, "comments"), {
-    text,
-    date: new Date()
-  });
+await addDoc(collection(db, "articles", articleId, "comments"), {
+  text,
+  likes: 0,
+  date: new Date()
+});
 
   commentText.value = "";
 });
@@ -344,19 +368,51 @@ commentForm.addEventListener("submit", async (e) => {
 /* 💬 YORUMLARI ÇEK */
 onSnapshot(collection(db, "articles", articleId, "comments"), (snap) => {
   commentsEl.innerHTML = "";
-  snap.forEach(doc => {
-    const d = doc.data();
+  snap.forEach(docSnap => {
+    const d = docSnap.data();
+    const commentId = docSnap.id;
+    const likedCommentKey = `comment_like_${commentId}`;
+
     commentsEl.innerHTML += `
       <div class="comment">
         <div class="comment-text">${d.text}</div>
-        <div class="comment-date">
-          ${new Date(d.date.seconds * 1000).toLocaleString("tr-TR")}
+
+        <div class="comment-footer">
+          <button class="comment-like-btn ${localStorage.getItem(likedCommentKey) ? "liked" : ""}"
+            data-id="${commentId}">
+            ❤️ <span>${d.likes || 0}</span>
+          </button>
+
+          <div class="comment-date">
+            ${new Date(d.date.seconds * 1000).toLocaleString("tr-TR")}
+          </div>
         </div>
       </div>
     `;
   });
+
+  initCommentLikes();
 });
 
+function initCommentLikes() {
+  document.querySelectorAll(".comment-like-btn").forEach(btn => {
+    btn.onclick = async () => {
+      const commentId = btn.dataset.id;
+      const key = `comment_like_${commentId}`;
+      const ref = doc(db, "articles", articleId, "comments", commentId);
+
+      if (localStorage.getItem(key)) {
+        await updateDoc(ref, { likes: increment(-1) });
+        localStorage.removeItem(key);
+        btn.classList.remove("liked");
+      } else {
+        await updateDoc(ref, { likes: increment(1) });
+        localStorage.setItem(key, "true");
+        btn.classList.add("liked");
+      }
+    };
+  });
+}
 initStats();
 </script>
 </body>
