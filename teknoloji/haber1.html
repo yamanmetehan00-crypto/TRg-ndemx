@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Yeni Mobil Cihaz Türkiye’de Satışa Çıkıyor – GündemX</title>
+
+<meta name="description" content="Yeni mobil cihazın teknik özellikleri, fiyatı ve Türkiye satış tarihi açıklandı.">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico">
+
+<style>
+body{
+  margin:0;
+  font-family:Inter,Arial;
+  background:#0b1220;
+  color:#e5e7eb;
+}
+
+/* HEADER */
+header{
+  padding:16px 20px;
+  background:#050a14;
+}
+.logo{
+  font-size:26px;
+  font-weight:900;
+}
+.logo span{color:#00aaff}
+
+/* HABER */
+.container{
+  max-width:900px;
+  margin:30px auto;
+  padding:0 16px;
+}
+
+.news-box{
+  background:#0f172a;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 20px 50px rgba(0,0,0,.45);
+}
+
+.news-box img{
+  width:100%;
+  height:420px;
+  object-fit:cover;
+}
+
+.news-content{
+  padding:24px;
+}
+
+.news-category{
+  color:#00aaff;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:1px;
+}
+
+.news-content h1{
+  font-size:30px;
+  margin:10px 0 12px;
+  line-height:1.3;
+}
+
+.news-meta{
+  font-size:13px;
+  color:#94a3b8;
+  margin-bottom:18px;
+}
+
+.news-content p{
+  font-size:16px;
+  line-height:1.7;
+  color:#e2e8f0;
+}
+
+/* ETKİLEŞİM */
+.interaction{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:24px;
+  padding-top:16px;
+  border-top:1px solid #1e293b;
+}
+
+.like-btn{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  background:#020617;
+  border:1px solid #00aaff;
+  color:#00aaff;
+  padding:10px 18px;
+  border-radius:999px;
+  font-weight:700;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.like-btn.liked{
+  background:#00aaff;
+  color:#000;
+}
+
+.like-btn:hover{
+  transform:scale(1.05);
+}
+
+.views{
+  font-size:13px;
+  color:#94a3b8;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">Gündem<span>X</span></div>
+</header>
+
+<div class="container">
+
+  <div class="news-box">
+    <img src="yeniler/images/teknoloji-ornek-1.jpg" alt="Yeni Mobil Cihaz">
+
+    <div class="news-content">
+      <div class="news-category">TEKNOLOJİ</div>
+
+      <h1>Yeni Mobil Cihaz Türkiye’de Satışa Çıkıyor</h1>
+
+      <div class="news-meta">
+        GündemX • 6 Ocak 2026
+      </div>
+
+      <p>
+        Yeni nesil mobil cihaz, gelişmiş ekran teknolojisi ve güçlü donanımıyla
+        kullanıcıların karşısına çıkmaya hazırlanıyor. Türkiye satış tarihi ve
+        fiyat bilgileri resmi olarak açıklandı.
+      </p>
+
+      <p>
+        Cihazın sunduğu yenilikler özellikle mobil kullanıcılar arasında büyük
+        ilgi uyandırırken, uzmanlar performans ve pil verimliliğine dikkat çekiyor.
+      </p>
+
+      <!-- ETKİLEŞİM -->
+      <div class="interaction">
+        <button class="like-btn" id="likeBtn">
+          ❤️ <span id="likeCount">0</span> Beğeni
+        </button>
+
+        <div class="views">
+          👁️ 1.284 görüntülenme
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+// HABER ID
+const newsId = "tech-haber-1";
+
+// Beğeni verisi
+let likes = localStorage.getItem(newsId + "_likes") || 0;
+let liked = localStorage.getItem(newsId + "_liked");
+
+const btn = document.getElementById("likeBtn");
+const count = document.getElementById("likeCount");
+
+count.innerText = likes;
+
+// Daha önce beğenildiyse
+if(liked){
+  btn.classList.add("liked");
+  btn.innerHTML = "✔️ Beğenildi (" + likes + ")";
+}
+
+btn.addEventListener("click", () => {
+  if(liked) return;
+
+  likes++;
+  localStorage.setItem(newsId + "_likes", likes);
+  localStorage.setItem(newsId + "_liked", true);
+
+  count.innerText = likes;
+  btn.classList.add("liked");
+  btn.innerHTML = "✔️ Beğenildi (" + likes + ")";
+});
+</script>
+
+</body>
+</html>
