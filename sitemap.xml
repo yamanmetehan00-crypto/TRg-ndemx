@@ -87,5 +87,18 @@
     <changefreq>never</changefreq>
     <priority>0.8</priority>
   </url>
+
+<url>
+<loc>https://www.gundemx.online/yeniler/haber-gebze-de-gece-yarisi-operasyonu-ataturk-aniti-kaldirildi.html</loc>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+<url>
+<loc>https://www.gundemx.online/yeniler/haber-zonguldak-ta-feci-trafik-kazasi-otomobil-takla-atti-3-kisi-yaralandi.html</loc>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+  </url>
+
     
 </urlset>
